@@ -1,0 +1,17 @@
+#!/bin/bash
+# updots
+
+# Do an update
+yay -Syu
+
+# Install Any PKGs needed but not ignored from .pkgs
+yay -Qqe |
+  sort |
+  comm -23 <(sort ./.pkgs) - |
+  comm -13 <(sort ./.pkgignore) - |
+  yay -S - --needed
+
+# Regenerate .pkgs ignoring ignored pkgs
+yay -Qqe |
+  sort |
+  comm -13 <(sort ./.pkgignore) - > .pkgs
