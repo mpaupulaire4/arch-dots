@@ -1,0 +1,39 @@
+
+
+*Dialog.font:			-adobe-helvetica-bold-r-normal-*-*-120-*-*-*-*-iso8859-1
+*?.foreground:			rgb:00/00/00
+*?.background:			rgb:c0/c0/c0
+*topShadowColor:		rgb:e5/e5/e5
+*bottomShadowColor:		rgb:69/69/69
+*borderColor:			rgb:00/00/00
+*shadowThickness:		2
+*borderWidth:			0
+*horizontalSpacing:		8
+*verticalSpacing:		6
+
+*Button.font:			-adobe-helvetica-bold-r-normal-*-*-120-*-*-*-*-iso8859-1
+*Button.shadowThickness:	2
+*Button.borderWidth:		0
+*Button.horizontalSpacing:	5
+*Button.verticalSpacing:	4
+
+*Indicator.foreground:		rgb:ff/ff/70
+*Indicator.background:		rgb:4f/94/cd
+*Indicator.shadowThickness:	2
+*Indicator.borderWidth:		0
+*Indicator.height:		7
+*Indicator.width:		15
+*Indicator.horizontalSpacing:	3
+*Indicator.verticalSpacing:	6
+*Indicator.minimumCount:	8
+*Indicator.maximumCount:	24
+
+*defaultXResolution:		75/in
+*defaultYResolution:		75/in
+*xResolutionFuzz:		20/in
+*yResolutionFuzz:		20/in
+
+*Dialog.title:			OpenSSH Authentication Passphrase Request
+*Dialog.label:			Please enter your authentication passphrase:
+*okButton.label:		OK
+*cancelButton.label:		Cancel

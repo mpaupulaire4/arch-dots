@@ -1,0 +1,17 @@
+[user]
+	name = Michel Pupulaire
+	email = mpaupulaire4@gmail.com
+[core]
+	editor = codium --wait
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = codium --wait --diff $LOCAL $REMOTE
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = codium --wait $MERGED
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main
