@@ -1,17 +1,24 @@
 #!/bin/bash
 # updots
+touch $HOME/.pkgs
+touch $HOME/.pkgignore
 
 # Do an update
+cp -f $HOME/.pkgs $HOME/.pkgs.backup
+sudo pacmatic -Syu
 yay -Syu
 
 # Install Any PKGs needed but not ignored from .pkgs
 yay -Qqe |
   sort |
-  comm -23 <(sort ./.pkgs) - |
-  comm -13 <(sort ./.pkgignore) - |
+  comm -23 <(sort $HOME/.pkgs) - |
+  comm -13 <(sort $HOME/.pkgignore) - |
   yay -S - --needed
+
 
 # Regenerate .pkgs ignoring ignored pkgs
 yay -Qqe |
   sort |
-  comm -13 <(sort ./.pkgignore) - > .pkgs
+  comm -13 <(sort $HOME/.pkgignore) - > $HOME/.pkgs
+
+codium --diff $HOME/.pkgs $HOME/.pkgs.backup --wait
