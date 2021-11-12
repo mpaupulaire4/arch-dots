@@ -1,5 +1,6 @@
 arandr
 atool
+autorandr
 base
 bitwarden-cli
 blueman
@@ -27,7 +28,6 @@ ly
 man-db
 man-pages
 micro
-nano
 nerd-fonts-fira-code
 networkmanager
 networkmanager-openvpn
@@ -46,19 +46,15 @@ python-pillow
 ranger
 reflector
 rofi
-sequeler-git
-slack-desktop
 sof-firmware
 sudo
 syncthing
-syncthing-gtk
 tlp
 ttf-fira-code
 ttf-meslo-nerd-font-powerlevel10k
 udiskie
 udisks2
 unzip
-vscodium-bin
 x11-ssh-askpass
 xclip
 xdg-user-dirs
@@ -68,9 +64,7 @@ xorg-server
 xorg-xrandr
 xorg-xrdb
 xss-lock
-yay
 zip
-zoom
 zsh
 zsh-completions
 zsh-theme-powerlevel10k-git

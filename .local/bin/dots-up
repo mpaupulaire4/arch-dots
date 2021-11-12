@@ -6,18 +6,18 @@ touch $HOME/.pkgignore
 # Do an update
 cp -f $HOME/.pkgs $HOME/.pkgs.backup
 sudo pacmatic -Syu
-yay -Syu
+paru -Syu
 
 # Install Any PKGs needed but not ignored from .pkgs
-yay -Qqe |
+paru -Qqe |
   sort |
   comm -23 <(sort $HOME/.pkgs) - |
   comm -13 <(sort $HOME/.pkgignore) - |
-  yay -S - --needed
+  paru -S - --needed
 
 
 # Regenerate .pkgs ignoring ignored pkgs
-yay -Qqe |
+paru -Qqe |
   sort |
   comm -13 <(sort $HOME/.pkgignore) - > $HOME/.pkgs
 
