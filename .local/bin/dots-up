@@ -1,6 +1,7 @@
 #!/bin/bash
 # updots
 touch $HOME/.pkgs
+touch $HOME/.fpkgs
 touch $HOME/.pkgignore
 
 # Do an update
@@ -9,16 +10,27 @@ sudo pacmatic -Syu
 paru -Syu
 
 # Install Any PKGs needed but not ignored from .pkgs
-paru -Qqe |
+paru -Qqen |
   sort |
   comm -23 <(sort $HOME/.pkgs) - |
   comm -13 <(sort $HOME/.pkgignore) - |
   paru -S - --needed
 
+# Install Any Foreign PKGs needed but not ignored from .pkgs
+paru -Qqem |
+  sort |
+  comm -23 <(sort $HOME/.fpkgs) - |
+  comm -13 <(sort $HOME/.pkgignore) - |
+  paru -S - --needed
+
 
 # Regenerate .pkgs ignoring ignored pkgs
-paru -Qqe |
+paru -Qqen |
   sort |
   comm -13 <(sort $HOME/.pkgignore) - > $HOME/.pkgs
 
-codium --diff $HOME/.pkgs $HOME/.pkgs.backup --wait
+paru -Qqem |
+  sort |
+  comm -13 <(sort $HOME/.pkgignore) - > $HOME/.fpkgs
+
+# codium --diff $HOME/.pkgs.backup $HOME/.pkgs --wait

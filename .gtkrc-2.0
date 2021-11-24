@@ -2,10 +2,10 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/mpaupulaire/.gtkrc-2.0.mine"
-gtk-theme-name="Nordic-darker"
-gtk-icon-theme-name="Paper"
+gtk-theme-name="Arc-Dark"
+gtk-icon-theme-name="Papirus-Dark"
 gtk-font-name="Fira Code weight=450 11"
-gtk-cursor-theme-name="BreezeX-Dark"
+gtk-cursor-theme-name="ComixCursors-White"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH
 gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
