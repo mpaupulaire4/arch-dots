@@ -56,6 +56,10 @@ if yorn 'Install and enable power management?'; then
   sudo systemctl enable tlp
 fi
 
+if yorn 'Enable ssh agaent systemd unit?';  then
+  systemctl --user enable ssh-agent
+fi
+
 if yorn 'Install pkgs from pkglist?'; then
   source $HOME/.zshrc
   dots-up
