@@ -5,7 +5,6 @@ source $HOME/.scripts/utils.sh
 
 echo "Settting Up DNS Resolution"
 sudo ln -sf /run/systemd/resolve/stub-resolve.conf /etc/resolve.conf
-touch .pkgignore
 
 echo 'Updating'
 sudo pacman -Syu
