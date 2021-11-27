@@ -8,7 +8,6 @@ blueman
 bluez
 bluez-utils
 docker
-docker-compose
 dunst
 efibootmgr
 feh
