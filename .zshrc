@@ -375,9 +375,4 @@ source $HOME/.zsh.env.local
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# pacmatic needs to be run as root: https://github.com/keenerd/pacmatic/issues/35
-alias pacmatic='sudo --preserve-env=pacman_program /usr/bin/pacmatic'
-# Downgrade permissions as AUR helpers expect to be run as a non-root user. $UID is read-only in {ba,z}sh.
-alias yay='pacman_program="sudo -u #$UID /usr/bin/yay" pacmatic'
-
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+alias dots='/usr/bin/git --git-dir=$HOME/.dots.git/ --work-tree=$HOME'

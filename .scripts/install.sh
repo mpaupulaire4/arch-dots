@@ -11,6 +11,9 @@ sudo pacman -Syu
 
 if yorn 'Install PARU?'; then
   sudo pacman -S --needed git base-devel --asdeps
+  sudo pacman -S rustup
+  rustup toolchain install stable
+  rustup default stable
   git clone https://aur.archlinux.org/paru.git
   cd paru
   makepkg -si
@@ -22,7 +25,7 @@ fi
 
 if yorn 'Configure Reflector?'; then
   sudo mkdir -p /etc/xdg/reflector
-  create_link $HOME/.config/reflector/reflector.conf /etc/xdg/reflector/reflector.conf
+  sudo ln -si $HOME/.config/reflector/reflector.conf /etc/xdg/reflector/reflector.conf
   paru -S reflector --needed
   sudo systemctl enable reflector.service
   sudo systemctl start reflector.service
