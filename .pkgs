@@ -12,6 +12,7 @@ dunst
 efibootmgr
 feh
 firefox
+flatpak
 git
 grml-zsh-config
 i3-gaps
@@ -34,6 +35,7 @@ pacman-contrib
 pacmatic
 papirus-icon-theme
 pavucontrol
+picom
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
