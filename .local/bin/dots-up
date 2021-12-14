@@ -6,7 +6,7 @@ touch $HOME/.pkgignore
 
 # Do an update
 cp -f $HOME/.pkgs $HOME/.pkgs.backup
-sudo pacmatic -Syu
+sudo pacdiff_program="DIFFPROG=\"nvim -d\" pacdiff" pacmatic -Syu
 paru -Syu
 
 # Install Any PKGs needed but not ignored from .pkgs

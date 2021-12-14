@@ -27,6 +27,7 @@ lvm2
 man-db
 man-pages
 micro
+neovim
 networkmanager
 networkmanager-openvpn
 openssh
