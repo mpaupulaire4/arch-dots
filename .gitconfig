@@ -3,10 +3,12 @@
 	email = mpaupulaire4@gmail.com
 [core]
 	editor = codium --wait
+[difftool]
+    prompt = true
 [diff]
-	tool = vscode
-[difftool "vscode"]
-	cmd = codium --wait --diff $LOCAL $REMOTE
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [merge]
 	tool = vscode
 [mergetool "vscode"]

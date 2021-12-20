@@ -25,7 +25,7 @@ fi
 
 if yorn 'Configure Reflector?'; then
   sudo mkdir -p /etc/xdg/reflector
-  sudo ln -si $HOME/.config/reflector/reflector.conf /etc/xdg/reflector/reflector.conf
+  sudo cp -i $HOME/.config/reflector/reflector.conf /etc/xdg/reflector/reflector.conf
   paru -S reflector --needed
   sudo systemctl enable reflector.service
   sudo systemctl start reflector.service

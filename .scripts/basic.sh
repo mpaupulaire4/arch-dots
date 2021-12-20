@@ -2,8 +2,6 @@
 
 set -e
 
-source utils.sh
-
 echo 'Updating'
 pacman -Syu
 

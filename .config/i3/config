@@ -10,21 +10,23 @@ title_align center
 set $Mod      Mod4
 
 # alt direction keys
-set $up       I
-set $down     K
-set $left     J
-set $right    L
+set $up       U
+set $down     E
+set $left     N
+set $right    I
 
-set $comm     J
-set $home     K
-set $code     L
-set $docs     P
+set $comm     N
+set $home     E
+set $code     H
+set $docs     comma
 
-set $Prev      U
-set $Next      O
-set $Paren     Y
-set $Child     H
+set $Prev      L
+set $Next      Y
+set $Paren     J
+set $Child     M 
 
+set $Notif     H 
+set $Resize    R 
 
 
 # gaps
@@ -88,9 +90,9 @@ bindsym $Mod+slash        exec --no-startup-id rofi -show combi
 bindsym $Mod+Return       exec --no-startup-id kitty
 
 # Notifications script
-bindsym $Mod+Escape       exec --no-startup-id dunstctl close
-bindsym $Mod+n            exec --no-startup-id dunstctl action
-bindsym $Mod+Shift+n      exec --no-startup-id dunstctl history-pop
+bindsym $Mod+Escape         exec --no-startup-id dunstctl close
+bindsym $Mod+$Notif         exec --no-startup-id dunstctl action
+bindsym $Mod+Shift+$Notif   exec --no-startup-id dunstctl history-pop
 
 # screenshot
 # bindsym $Mod+Shift+s exec --no-startup-id flameshot gui
@@ -107,7 +109,7 @@ bindsym $Mod+Shift+n      exec --no-startup-id dunstctl history-pop
 bindsym $Mod+Shift+r restart
 
 # reload the configuration file
-bindsym $Mod+r reload
+# bindsym $Mod+r reload
 
 ###########        Workspace Settings          ###############
 workspace "1: comm"       output DP2
@@ -130,7 +132,8 @@ bindsym $Mod+Shift+4          move to workspace number "4: docs"; workspace numb
 
 set $mode_workspace Workspaces: [1]Comms [2]Home [3]Code [4]Docs
 bindsym $Mod+apostrophe         mode "$mode_workspace"
-bindsym $Mod+apostrophe+Shift   mode "$mode_workspace"
+bindsym $Mod+Shift+apostrophe   mode "$mode_workspace"
+
 mode "$mode_workspace" {
   bindsym $Mod+$comm            workspace number "1: comm"; mode "default"
   bindsym $Mod+$home            workspace number "2: home"; mode "default"
@@ -214,7 +217,7 @@ bindsym $Mod+$Child         focus child
 
 # resize
 set $mode_resize Resize: [Up/Down]Vertical [Left/Right]Horizontal
-bindsym $Mod+m mode "$mode_resize"
+bindsym $Mod+$Resize mode "$mode_resize"
 mode "$mode_resize" {
   bindsym $Mod+$up          resize grow   up     10 px or 1 ppt
   bindsym $Mod+$down        resize grow   down   10 px or 1 ppt
