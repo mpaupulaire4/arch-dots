@@ -6,11 +6,15 @@ source $HOME/.scripts/utils.sh
 echo "Settting Up DNS Resolution"
 sudo ln -sf /run/systemd/resolve/stub-resolve.conf /etc/resolve.conf
 
+if yorn 'Connect to Internet?'; then
+  nmtui
+fi
+
 echo 'Updating'
 sudo pacman -Syu
 
 if yorn 'Install PARU?'; then
-  sudo pacman -S --needed git base-devel --asdeps
+  sudo pacman -S --needed base-devel --asdeps
   sudo pacman -S rustup
   rustup toolchain install stable
   rustup default stable
@@ -41,7 +45,7 @@ if yorn 'Install NVM and Node?'; then
   source /usr/share/nvm/init-nvm.sh
   nvm install 'lts/*'
   nvm install-latest-npm
-  npm install -g yarn
+  corepack enable
 fi
 
 if yorn 'Install xorg?'; then
@@ -60,9 +64,4 @@ fi
 
 if yorn 'Enable ssh agaent systemd unit?';  then
   systemctl --user enable ssh-agent
-fi
-
-if yorn 'Install pkgs from pkglist?'; then
-  source $HOME/.zshrc
-  dots-up
 fi
