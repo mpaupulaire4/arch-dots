@@ -30,8 +30,7 @@ if yorn 'Configure Reflector?'; then
   sudo mkdir -p /etc/xdg/reflector
   sudo cp -i $HOME/.config/reflector/reflector.conf /etc/xdg/reflector/reflector.conf
   paru -S reflector --needed
-  sudo systemctl enable reflector.service
-  sudo systemctl start reflector.service
+  sudo systemctl enable --now reflector.service
 fi
 
 if yorn 'Configure Bluetooth?'; then
@@ -47,12 +46,12 @@ if yorn 'Install NVM and Node?'; then
   corepack enable
 fi
 
-if yorn 'Install xorg?'; then
-  paru -S xorg-server xf86-video-intel xorg-xrandr --needed
+if yorn 'Install Sway?'; then
+  paru -S sway mako grim slurp swayidle swaylock swaybg --needed
 fi
 
-if yorn 'Install Display Manager and Window Manager?'; then
-  paru -S ly i3-gaps i3lock --needed
+if yorn 'Install Display Manager?'; then
+  paru -S ly --needed
   sudo systemctl enable ly.service
 fi
 

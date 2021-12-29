@@ -345,8 +345,15 @@ fi
 
 ## END OF FILE #################################################################
 # source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+if test -d /.config/environment.d/; then
+  for profile in /.config/environment.d/*.conf; do
+  	test -r "$profile" && . "$profile"
+  done
+  unset profile
+fi
+
+
 export EDITOR=micro
-export NVM_DIR="$HOME/.config/nvm"
 export NPM_TOKEN="$(grep -s //registry.npmjs.org/:_authToken= $HOME/.npmrc | cut -c34- )"
 export PATH="$HOME/.local/bin:$PATH"
 source /usr/share/nvm/init-nvm.sh
