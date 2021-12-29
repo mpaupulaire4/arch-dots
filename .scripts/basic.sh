@@ -6,7 +6,7 @@ echo 'Updating'
 pacman -Syu
 
 echo 'Installing Some Basic Packages'
-pacman -S cryptsetup lvm2 efibootmgr zsh micro git sudo xdg-user-dirs grml-zsh-config intel-ucode networkmanager --needed
+pacman -S cryptsetup lvm2 efibootmgr zsh micro git sudo xdg-user-dirs grml-zsh-config intel-ucode networkmanager base-devel --needed
 
 echo 'Create a password for the root user'
 passwd

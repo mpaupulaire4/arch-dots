@@ -14,7 +14,6 @@ echo 'Updating'
 sudo pacman -Syu
 
 if yorn 'Install PARU?'; then
-  sudo pacman -S --needed base-devel --asdeps
   sudo pacman -S rustup
   rustup toolchain install stable
   rustup default stable
