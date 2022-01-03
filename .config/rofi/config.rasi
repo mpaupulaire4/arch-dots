@@ -1,6 +1,6 @@
 configuration {
-	modi: "combi,window,run,drun,keys,wifi:./.config/rofi/wifi.sh";
-  combi-modi: "window,drun";
+	modi: "combi,run,drun,keys,wifi:./.config/rofi/wifi.sh";
+  combi-modi: "drun";
 	terminal: "kitty";
 /*	width: 50;*/
 /*	lines: 15;*/

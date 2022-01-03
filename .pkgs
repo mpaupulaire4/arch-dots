@@ -1,3 +1,4 @@
+alsa-utils
 arc-gtk-theme
 atool
 autoconf
@@ -5,6 +6,8 @@ automake
 base
 bison
 bluez
+bluez-utils
+docker
 efibootmgr
 fakeroot
 firefox
@@ -34,10 +37,16 @@ pacman-contrib
 pacmatic
 papirus-icon-theme
 patch
+pipewire
+pipewire-alsa
+pipewire-pulse
 pkgconf
+pulsemixer
 reflector
+ripgrep
 rustup
 slurp
+sof-firmware
 sudo
 sway
 swaybg
@@ -45,8 +54,13 @@ swayidle
 swaylock
 texinfo
 udiskie
+unzip
 which
 wl-clipboard
 xcursor-comix
+xdg-desktop-portal-gtk
+xdg-desktop-portal-wlr
 xdg-user-dirs
+xdg-utils
+xorg-xwayland
 zsh
