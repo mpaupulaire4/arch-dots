@@ -7,7 +7,9 @@ base
 bison
 bluez
 bluez-utils
+code
 docker
+dunst
 efibootmgr
 fakeroot
 firefox
@@ -24,7 +26,6 @@ linux-firmware
 lvm2
 m4
 make
-mako
 man-db
 man-pages
 micro
@@ -55,6 +56,9 @@ swaylock
 texinfo
 udiskie
 unzip
+vscode-css-languageserver
+vscode-html-languageserver
+vscode-json-languageserver
 which
 wl-clipboard
 xcursor-comix
@@ -62,5 +66,6 @@ xdg-desktop-portal-gtk
 xdg-desktop-portal-wlr
 xdg-user-dirs
 xdg-utils
+xorg-xeyes
 xorg-xwayland
 zsh
