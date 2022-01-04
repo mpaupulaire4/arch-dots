@@ -1,0 +1,12 @@
+output 'Acer Technologies ET322QK C 0x00009730' {
+  mode 3840x2160@60Hz
+  pos 0 400
+  bg ~/Pictures/walls/nord-japan.png fit
+}
+
+output 'Ancor Communications Inc ASUS PB278 E6LMTF174677' {
+  mode 2560x1440@59.951Hz
+  transform 270
+  pos 3840 0
+  bg ~/Pictures/walls/nord-color-blast.png fill
+}

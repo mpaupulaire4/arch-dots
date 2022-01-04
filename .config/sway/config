@@ -1,0 +1,312 @@
+# i3 config file (v4)
+
+# mod key used for most binds
+# Mod1 = Alt
+# Mod4 = Super
+
+set $Mod Mod4
+
+include ./outputs
+include ./inputs
+include ./launch
+
+exec_always ./import-gsettings
+
+# border & title
+for_window [class="^.*"] title_format "%title"
+title_align center
+
+# alt direction keys
+set $up       U
+set $down     E
+set $left     N
+set $right    I
+
+set $comm     N
+set $home     E
+set $code     H
+set $docs     comma
+
+set $Prev      L
+set $Next      Y
+set $Paren     J
+set $Child     M 
+
+set $Notif     H 
+set $Resize    R 
+
+
+# gaps
+gaps inner 12
+gaps outer 0
+
+# font
+font pango:Fira Code Retina Bold 12
+
+# ###############     Autostart      ##################
+# # run with reload
+# exec_always --no-startup-id xrdb -load ~/.Xresources
+
+# # run once
+# exec --no-startup-id dunst &
+
+#############         Colors           ##################
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #a3be8c #a3be8c #2e3440 #b48ead   #a3be8c
+client.focused_inactive #a3be8c #2e3440 #a3be8c #4c566a   #4c566a
+client.unfocused        #4c566a #4c566a #e5e9f0 #4c566a   #2e3440
+client.urgent           #bf616a #bf616a #e5e9f0 #bf616a   #bf616a
+client.placeholder      #2e3440 #2e3440 #e5e9f0 #2e3440   #2e3440
+
+client.background       #2e3440
+
+
+#############         Bindings           ##################
+
+# kill focused window
+bindsym $Mod+Shift+BackSpace      kill
+
+# launchers
+bindsym $Mod+Tab                  exec --no-startup-id ~/.config/i3/scripts/bwmenu.sh
+bindsym $Mod+slash                exec --no-startup-id rofi -show drun
+# bindsym $Mod+Tab                exec --no-startup-id rofi -show window
+# bindsym $Mod+w                  exec --no-startup-id rofi -show wifi
+
+# core
+# bindsym $Mod+w          exec --no-startup-id chromium
+bindsym $Mod+Return       exec --no-startup-id kitty
+
+# Notifications script
+bindsym $Mod+Escape         exec --no-startup-id dunstctl close
+bindsym $Mod+$Notif         exec --no-startup-id dunstctl action
+bindsym $Mod+Shift+$Notif   exec --no-startup-id dunstctl history-pop
+
+# screenshot
+# bindsym $Mod+Shift+s exec --no-startup-id flameshot gui
+
+# audio
+# bindsym Control+F7        exec --no-startup-id playerctl play-pause
+# bindsym Control+F8        exec --no-startup-id playerctl next
+# bindsym Control+F6        exec --no-startup-id playerctl previous
+# bindsym Control+F4        exec --no-startup-id pamixer -t
+# bindsym Control+F3        exec --no-startup-id pamixer -i 4
+# bindsym Control+F2        exec --no-startup-id pamixer -d 4
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $Mod+Shift+r reload
+
+###########        Workspace Settings          ###############
+workspace "1: comm"       output DP2
+workspace "2: home"       output DP1 primary
+workspace "3: code"       output DP2
+workspace "4: docs"       output DP1 primary
+# workspace 5               output VGA1 LVDS1
+# workspace "2: vim"        output VGA1
+
+
+bindsym $Mod+1                workspace number "1: comm"; mode "default"
+bindsym $Mod+2                workspace number "2: home"; mode "default"
+bindsym $Mod+3                workspace number "3: code"; mode "default"
+bindsym $Mod+4                workspace number "4: docs"; mode "default"
+
+bindsym $Mod+Shift+1          move to workspace number "1: comm"; workspace number "1: comm"; mode "default"
+bindsym $Mod+Shift+2          move to workspace number "2: home"; workspace number "2: home"; mode "default"
+bindsym $Mod+Shift+3          move to workspace number "3: code"; workspace number "3: code"; mode "default"
+bindsym $Mod+Shift+4          move to workspace number "4: docs"; workspace number "4: docs"; mode "default"
+
+set $mode_workspace Workspaces: [1]Comms [2]Home [3]Code [4]Docs
+bindsym $Mod+apostrophe         mode "$mode_workspace"
+bindsym $Mod+Shift+apostrophe   mode "$mode_workspace"
+
+mode "$mode_workspace" {
+  bindsym $Mod+$comm            workspace number "1: comm"; mode "default"
+  bindsym $Mod+$home            workspace number "2: home"; mode "default"
+  bindsym $Mod+$code            workspace number "3: code"; mode "default"
+  bindsym $Mod+$docs            workspace number "4: docs"; mode "default"
+
+  bindsym $Mod+Shift+$comm      move to workspace number "1: comm"; workspace number "1: comm"; mode "default"
+  bindsym $Mod+Shift+$home      move to workspace number "2: home"; workspace number "2: home"; mode "default"
+  bindsym $Mod+Shift+$code      move to workspace number "3: code"; workspace number "3: code"; mode "default"
+  bindsym $Mod+Shift+$docs      move to workspace number "4: docs"; workspace number "4: docs"; mode "default"
+
+  bindsym Escape                mode "default"
+  bindsym Return                mode "default"
+  bindsym $Mod+apostrophe       mode "default"
+}
+
+# switch to next or previous workspace
+bindsym $Mod+Home           focus output left
+bindsym $Mod+End            focus output right
+
+bindsym $Mod+$Prev           focus output left
+bindsym $Mod+$Next           focus output right
+# move to next or previous workspace
+bindsym $Mod+Shift+$Prev     move to output left;  focus output left
+bindsym $Mod+Shift+$Next     move to output right; focus output right
+
+# move focused container to workspace
+# bindsym $Mod+Shift+1 move container to workspace 1; workspace 1
+# bindsym $Mod+Shift+2 move container to workspace 2; workspace 2
+# bindsym $Mod+Shift+3 move container to workspace 3; workspace 3
+# bindsym $Mod+Shift+4 move container to workspace 4; workspace 4
+# bindsym $Mod+Shift+5 move container to workspace 5; workspace 5
+# bindsym $Mod+Shift+6 move container to workspace 6; workspace 6
+# bindsym $Mod+Shift+7 move container to workspace 7; workspace 7
+# bindsym $Mod+Shift+8 move container to workspace 8; workspace 8
+
+# move focused container to workspace - numpad alternatives
+# bindsym $Mod+Shift+Mod2+KP_End   move container to workspace 1; workspace 1
+# bindsym $Mod+Shift+Mod2+KP_Down  move container to workspace 2; workspace 2
+# bindsym $Mod+Shift+Mod2+KP_Next  move container to workspace 3; workspace 3
+# bindsym $Mod+Shift+Mod2+KP_Left  move container to workspace 4; workspace 4
+# bindsym $Mod+Shift+Mod2+KP_Begin move container to workspace 5; workspace 5
+# bindsym $Mod+Shift+Mod2+KP_Right move container to workspace 6; workspace 7
+# bindsym $Mod+Shift+Mod2+KP_Home  move container to workspace 7; workspace 7
+# bindsym $Mod+Shift+Mod2+KP_Up    move container to workspace 8; workspace 8
+
+workspace_auto_back_and_forth yes
+
+############      Container/Window control  ############
+
+# floating
+bindsym $Mod+Shift+f floating toggle
+floating_modifier $Mod
+
+# change focus and move focused
+bindsym $Mod+Up             focus up
+bindsym $Mod+Down           focus down
+bindsym $Mod+Left           focus left
+bindsym $Mod+Right          focus right
+
+bindsym $Mod+Shift+Up       move up    20px
+bindsym $Mod+Shift+Down     move down  20px
+bindsym $Mod+Shift+Left     move left  20px
+bindsym $Mod+Shift+Right    move right 20px
+
+bindsym $Mod+$up            focus up
+bindsym $Mod+$down          focus down
+bindsym $Mod+$left          focus left
+bindsym $Mod+$right         focus right
+
+bindsym $Mod+Shift+$up      move up    20px
+bindsym $Mod+Shift+$down    move down  20px
+bindsym $Mod+Shift+$left    move left  20px
+bindsym $Mod+Shift+$right   move right 20px
+
+bindsym $Mod+Prior          focus parent
+bindsym $Mod+Next           focus child
+
+bindsym $Mod+$Paren         focus parent
+bindsym $Mod+$Child         focus child
+
+# resize
+set $mode_resize Resize: [Up/Down]Vertical [Left/Right]Horizontal
+bindsym $Mod+$Resize mode "$mode_resize"
+mode "$mode_resize" {
+  bindsym $Mod+$up          resize grow   up     10 px or 1 ppt
+  bindsym $Mod+$down        resize grow   down   10 px or 1 ppt
+  bindsym $Mod+$left        resize grow   left   10 px or 1 ppt
+  bindsym $Mod+$right       resize grow   right  10 px or 1 ppt
+
+  bindsym $Mod+Shift+$up    resize shrink up     10 px or 1 ppt
+  bindsym $Mod+Shift+$down  resize shrink down   10 px or 1 ppt
+  bindsym $Mod+Shift+$left  resize shrink left   10 px or 1 ppt
+  bindsym $Mod+Shift+$right resize shrink right  10 px or 1 ppt
+
+  bindsym $Mod+Up           resize grow   up     10 px or 1 ppt
+  bindsym $Mod+Down         resize grow   down   10 px or 1 ppt
+  bindsym $Mod+Left         resize grow   left   10 px or 1 ppt
+  bindsym $Mod+Right        resize grow   right  10 px or 1 ppt
+
+  bindsym $Mod+Shift+Up     resize shrink up     10 px or 1 ppt
+  bindsym $Mod+Shift+Down   resize shrink down   10 px or 1 ppt
+  bindsym $Mod+Shift+Left   resize shrink left   10 px or 1 ppt
+  bindsym $Mod+Shift+Right  resize shrink right  10 px or 1 ppt
+
+
+  bindsym Escape            mode "default"
+  bindsym Return            mode "default"
+  bindsym $Mod+m            mode "default"
+}
+
+
+# layout toggle ad split
+bindsym $Mod+t              layout toggle tabbed split
+bindsym $Mod+s              layout toggle splitv splith
+bindsym $Mod+Shift+s        split toggle
+
+
+###############      Border & Gaps     ###############
+
+default_border           pixel 8
+default_floating_border  pixel 8
+
+hide_edge_borders none
+
+# bindsym $Mod+shift+b border toggle
+
+# changing border style
+# bindsym $Mod+n border normal
+# bindsym $Mod+y border 1pixel
+# bindsym $Mod+u border none
+
+# change gaps
+# bindsym $Mod+plus                gaps inner current plus  4
+# bindsym $Mod+minus               gaps inner current minus 4
+# bindsym $Mod+Shift+plus          gaps outer current plus  4
+# bindsym $Mod+Shift+minus         gaps outer current minus 4
+# bindsym $Mod+Control+plus        gaps inner all     plus  4
+# bindsym $Mod+Control+minus       gaps inner all     minus 4
+# bindsym $Mod+Control+Shift+plus  gaps outer all     plus  4
+# bindsym $Mod+Control+Shift+minus gaps outer all     minus 4
+
+############    mouse settings   ############
+
+mouse_warping none
+
+############    application settings   ############
+# assign applications to specific workspace
+assign [class="(?i)(?:slack)"]      → number "1: comm"
+assign [class="(?i)(?:vscodium)"]   → number "3: code"
+# assign [class="(?i)(?:chromium)"] → 3
+# assign [class="(?i)(?:jetbrains-idea-ce)"] → 4
+# assign [class="(?i)(?:Spotify)"] → 5
+# assign [class="(?i)(?:discord)"] → 8
+
+# focus, floating, & sticky
+# for_window [class="(?i)(?:qt5ct|pinentry)"]             floating enable, focus
+# for_window [title="(?i)(?:copying|deleting|moving)"]    floating enable
+for_window [window_role="(?i)(?:pop-up|setup)"]         floating enable
+for_window [class="zoom"]                               floating enable
+
+############    global   ############
+default_orientation auto
+focus_wrapping no
+popup_during_fullscreen smart
+force_display_urgency_hint 1000 ms
+focus_on_window_activation urgent
+workspace_auto_back_and_forth yes
+
+
+############    status bar settings   ############
+# bar {
+    # font pango:Fira Code Nerd Font 12
+    # i3bar_command i3bar --transparency
+    # position bottom
+    # mode hide
+    # modifier $Mod
+    # tray_output none
+    # status_command /usr/bin/i3status-rs ./.config/i3/status.toml
+    # colors {
+        # separator #2e3440
+        # background #2e3440
+        # statusline #eceff4
+        # focused_workspace   #a3be8c #a3be8c #2e3440
+        # active_workspace    #a3be8c #2e3440 #a3be8c
+        # inactive_workspace  #4c566a #4c566a #eceff4
+        # urgent_workspace    #bf616a #bf616a #2e3440
+    # }
+    # workspace_buttons yes
+    # strip_workspace_numbers yes
+# }
