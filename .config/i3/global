@@ -1,0 +1,41 @@
+############    global   ############
+for_window [class="^.*"] title_format "%title"
+title_align center
+default_orientation auto
+focus_wrapping no
+popup_during_fullscreen smart
+force_display_urgency_hint 1000 ms
+focus_on_window_activation urgent
+workspace_auto_back_and_forth yes
+
+# gaps
+gaps inner 12
+gaps outer 0
+
+# font
+font pango:FiraCode Nerd Font Bold 12
+
+###############      Border & Gaps     ###############
+
+default_border           pixel 8
+default_floating_border  pixel 8
+
+hide_edge_borders none
+
+############    mouse settings   ############
+
+mouse_warping none
+
+############    application settings   ############
+# assign applications to specific workspace
+assign [class="(?i)(?:slack)"]      → number "1:comm"
+assign [class="(?i)(?:vscodium)"]   → number "3:code"
+
+# focus, floating, & sticky
+# for_window [class="(?i)(?:qt5ct|pinentry)"]             floating enable, focus
+# for_window [title="(?i)(?:copying|deleting|moving)"]    floating enable
+for_window [window_role="(?i)(?:pop-up|setup)"]         floating enable
+for_window [class="zoom"]                               floating enable
+
+# ###############     Autostart      ##################
+exec --no-startup-id dunst &

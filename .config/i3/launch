@@ -1,10 +1,10 @@
 
 
 set $mode_launch "Launch"
-bindsym $Mod+minus        mode "$mode_launch"
+bindsym $Mod+$Launch            mode "$mode_launch"
 
 mode "$mode_launch" {
-  bindsym $Mod+f          		exec --no-startup-id firefox; mode "default"
+  bindsym $Mod+f                exec --no-startup-id firefox; mode "default"
 
 
   bindsym Escape                mode "default"

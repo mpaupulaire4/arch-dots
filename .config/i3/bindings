@@ -1,0 +1,143 @@
+#############         Bindings           ##################
+
+# kill focused window
+bindsym $Mod+Shift+BackSpace      kill
+
+# launchers
+bindsym $Mod+Tab                  exec --no-startup-id $XDG_CONFIG_HOME/i3/scripts/bwmenu.sh
+bindsym $Mod+slash                exec --no-startup-id rofi -show drun
+# bindsym $Mod+Tab                exec --no-startup-id rofi -show window
+# bindsym $Mod+w                  exec --no-startup-id rofi -show wifi
+
+# core
+bindsym $Mod+Return         exec --no-startup-id kitty
+
+# Notifications script
+bindsym $Mod+Escape         exec --no-startup-id dunstctl close
+bindsym $Mod+Shift+$Notif   exec --no-startup-id dunstctl action
+bindsym $Mod++$Notif        exec --no-startup-id dunstctl history-pop
+
+# screenshot
+# bindsym $Mod+Shift+s exec --no-startup-id flameshot gui
+
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $Mod+Shift+r reload
+
+###########        Workspace Settings          ###############
+workspace "1:comm"       output DP2
+workspace "2:home"       output DP1 primary
+workspace "3:code"       output DP2
+workspace "4:docs"       output DP1 primary
+
+
+bindsym $Mod+1                workspace number "1:comm"; mode "default"
+bindsym $Mod+2                workspace number "2:home"; mode "default"
+bindsym $Mod+3                workspace number "3:code"; mode "default"
+bindsym $Mod+4                workspace number "4:docs"; mode "default"
+
+bindsym $Mod+Shift+1          move to workspace number "1:comm"; workspace number "1:comm"; mode "default"
+bindsym $Mod+Shift+2          move to workspace number "2:home"; workspace number "2:home"; mode "default"
+bindsym $Mod+Shift+3          move to workspace number "3:code"; workspace number "3:code"; mode "default"
+bindsym $Mod+Shift+4          move to workspace number "4:docs"; workspace number "4:docs"; mode "default"
+
+set $mode_workspace Workspaces: [1]Comms [2]Home [3]Code [4]Docs
+bindsym $Mod+$Workspace         mode "$mode_workspace"
+bindsym $Mod+Shift+$Workspace   mode "$mode_workspace"
+
+mode "$mode_workspace" {
+  bindsym $Mod+$comm            workspace number "1:comm"; mode "default"
+  bindsym $Mod+$home            workspace number "2:home"; mode "default"
+  bindsym $Mod+$code            workspace number "3:code"; mode "default"
+  bindsym $Mod+$docs            workspace number "4:docs"; mode "default"
+
+  bindsym $Mod+Shift+$comm      move to workspace number "1:comm"; workspace number "1:comm"; mode "default"
+  bindsym $Mod+Shift+$home      move to workspace number "2:home"; workspace number "2:home"; mode "default"
+  bindsym $Mod+Shift+$code      move to workspace number "3:code"; workspace number "3:code"; mode "default"
+  bindsym $Mod+Shift+$docs      move to workspace number "4:docs"; workspace number "4:docs"; mode "default"
+
+  bindsym Escape                mode "default"
+  bindsym Return                mode "default"
+  bindsym $Mod+$Workspace       mode "default"
+}
+
+# switch to next or previous workspace
+bindsym $Mod+Home           focus output left
+bindsym $Mod+End            focus output right
+
+bindsym $Mod+$Prev           focus output left
+bindsym $Mod+$Next           focus output right
+# move to next or previous workspace
+bindsym $Mod+Shift+$Prev     move to output left;  focus output left
+bindsym $Mod+Shift+$Next     move to output right; focus output right
+
+workspace_auto_back_and_forth yes
+
+############      Container/Window control  ############
+
+# floating
+bindsym $Mod+$Float   floating toggle
+floating_modifier           $Mod
+
+# change focus and move focused
+bindsym $Mod+Up             focus up
+bindsym $Mod+Down           focus down
+bindsym $Mod+Left           focus left
+bindsym $Mod+Right          focus right
+
+bindsym $Mod+Shift+Up       move up    20px
+bindsym $Mod+Shift+Down     move down  20px
+bindsym $Mod+Shift+Left     move left  20px
+bindsym $Mod+Shift+Right    move right 20px
+
+bindsym $Mod+$up            focus up
+bindsym $Mod+$down          focus down
+bindsym $Mod+$left          focus left
+bindsym $Mod+$right         focus right
+
+bindsym $Mod+Shift+$up      move up    20px
+bindsym $Mod+Shift+$down    move down  20px
+bindsym $Mod+Shift+$left    move left  20px
+bindsym $Mod+Shift+$right   move right 20px
+
+bindsym $Mod+Prior          focus parent
+bindsym $Mod+Next           focus child
+
+bindsym $Mod+$Paren         focus parent
+bindsym $Mod+$Child         focus child
+
+# resize
+set $mode_resize Resize: [Up/Down]Vertical [Left/Right]Horizontal
+bindsym $Mod+$Resize mode "$mode_resize"
+mode "$mode_resize" {
+  bindsym $Mod+$up          resize grow   up     10 px or 1 ppt
+  bindsym $Mod+$down        resize grow   down   10 px or 1 ppt
+  bindsym $Mod+$left        resize grow   left   10 px or 1 ppt
+  bindsym $Mod+$right       resize grow   right  10 px or 1 ppt
+
+  bindsym $Mod+Shift+$up    resize shrink up     10 px or 1 ppt
+  bindsym $Mod+Shift+$down  resize shrink down   10 px or 1 ppt
+  bindsym $Mod+Shift+$left  resize shrink left   10 px or 1 ppt
+  bindsym $Mod+Shift+$right resize shrink right  10 px or 1 ppt
+
+  bindsym $Mod+Up           resize grow   up     10 px or 1 ppt
+  bindsym $Mod+Down         resize grow   down   10 px or 1 ppt
+  bindsym $Mod+Left         resize grow   left   10 px or 1 ppt
+  bindsym $Mod+Right        resize grow   right  10 px or 1 ppt
+
+  bindsym $Mod+Shift+Up     resize shrink up     10 px or 1 ppt
+  bindsym $Mod+Shift+Down   resize shrink down   10 px or 1 ppt
+  bindsym $Mod+Shift+Left   resize shrink left   10 px or 1 ppt
+  bindsym $Mod+Shift+Right  resize shrink right  10 px or 1 ppt
+
+
+  bindsym Escape            mode "default"
+  bindsym Return            mode "default"
+  bindsym $Mod+$Resize      mode "default"
+}
+
+
+# layout toggle ad split
+bindsym $Mod+$Tab           layout toggle tabbed split
+bindsym $Mod+$Split         layout toggle splitv splith
+bindsym $Mod+Shift+$Split   split toggle

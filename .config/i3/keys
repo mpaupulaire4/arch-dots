@@ -1,0 +1,24 @@
+set $Mod Mod4
+# alt direction keys
+set $up         U
+set $down       E
+set $left       N
+set $right      I
+
+set $comm       N
+set $home       E
+set $code       H
+set $docs       comma
+
+set $Prev       L
+set $Next       Y
+set $Paren      J
+set $Child      M
+
+set $Notif      H
+set $Resize     R
+set $Workspace  apostrophe
+set $Float      F
+set $Tab        T
+set $Split      S
+set $Launch     minus

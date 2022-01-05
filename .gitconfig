@@ -2,7 +2,7 @@
 	name = Michel Pupulaire
 	email = mpaupulaire4@gmail.com
 [core]
-	editor = codium --wait
+	editor = nvim
 [difftool]
     prompt = true
 [diff]
@@ -10,9 +10,9 @@
 [difftool "nvimdiff"]
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [merge]
-	tool = vscode
-[mergetool "vscode"]
-	cmd = codium --wait $MERGED
+	tool = neovim
+[mergetool "meovim"]
+	cmd = nvim $MERGED
 [pull]
 	rebase = true
 [init]
