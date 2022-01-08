@@ -47,7 +47,11 @@ if yorn 'Install NVM and Node?'; then
 fi
 
 if yorn 'Install Sway?'; then
-  paru -S sway mako grim slurp swayidle swaylock swaybg --needed
+  paru -S sway grim slurp swayidle swaylock swaybg xorg-xwayland --needed
+fi
+
+if yorn 'Install I3?'; then
+  paru -S xorg-server xorg-xrandr xf86-video-intel autorandr i3-gaps --needed
 fi
 
 if yorn 'Install Display Manager?'; then

@@ -1,8 +1,7 @@
-include $XDG_CONFIG_HOME/i3/keys
-include $XDG_CONFIG_HOME/i3/colors
-include $XDG_CONFIG_HOME/i3/global
-include $XDG_CONFIG_HOME/i3/Bindings
-include $XDG_CONFIG_HOME/i3/launch
 
-exec_always --no-startup-id feh --no-fehbg --bg-scale --randomize ~/Pictures/walls/*
-exec --no-startup-id xss-lock -- i3lock -n -e -i Pictures/walls/nord-color-blast.png &
+include ~/.config/i3/global
+include ~/.config/i3/bindings
+include ~/.config/i3/colors
+
+# exec_always --no-startup-id feh --no-fehbg --bg-scale --randomize ~/Pictures/walls/*
+# exec --no-startup-id xss-lock -- i3lock -n -e -i Pictures/walls/nord-color-blast.png &

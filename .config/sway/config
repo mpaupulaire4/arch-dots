@@ -1,13 +1,6 @@
-# i3 config file (v4)
-
-# mod key used for most binds
-# Mod1 = Alt
-# Mod4 = Super
-include $XDG_CONFIG_HOME/i3/keys
-include $XDG_CONFIG_HOME/i3/colors
-include $XDG_CONFIG_HOME/i3/global
-include $XDG_CONFIG_HOME/i3/Bindings
-include $XDG_CONFIG_HOME/i3/launch
+include ~/.config/i3/global
+include ~/.config/i3/bindings
+include ~/.config/i3/colors
 include ./outputs
 include ./inputs
 

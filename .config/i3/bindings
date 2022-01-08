@@ -1,7 +1,36 @@
+set $Mod        Mod4
+
+# alt direction keys
+set $up         U
+set $down       E
+set $left       N
+set $right      I
+
+set $comm       N
+set $home       E
+set $code       H
+set $docs       comma
+
+set $Prev       L
+set $Next       Y
+set $Paren      J
+set $Child      M
+
+set $Notif      H
+set $Resize     R
+set $Workspace  apostrophe
+set $Float      F
+set $Tab        T
+set $Split      S
+set $Launch     minus
+
+
 #############         Bindings           ##################
 
 # kill focused window
 bindsym $Mod+Shift+BackSpace      kill
+bindsym $Mod+Shift+Ctrl+BackSpace      exit
+
 
 # launchers
 bindsym $Mod+Tab                  exec --no-startup-id $XDG_CONFIG_HOME/i3/scripts/bwmenu.sh
@@ -77,7 +106,7 @@ workspace_auto_back_and_forth yes
 
 # floating
 bindsym $Mod+$Float   floating toggle
-floating_modifier           $Mod
+floating_modifier     Mod4
 
 # change focus and move focused
 bindsym $Mod+Up             focus up
@@ -137,7 +166,19 @@ mode "$mode_resize" {
 }
 
 
-# layout toggle ad split
+# layout toggle and split
 bindsym $Mod+$Tab           layout toggle tabbed split
 bindsym $Mod+$Split         layout toggle splitv splith
 bindsym $Mod+Shift+$Split   split toggle
+
+#############         Bindings           ##################
+set $mode_launch "Launch"
+bindsym $Mod+$Launch            mode $mode_launch
+
+mode $mode_launch {
+  bindsym $Mod+f                exec --no-startup-id firefox; mode "default"
+
+  bindsym Escape                mode "default"
+  bindsym Return                mode "default"
+  bindsym $Mod+$Launch          mode "default"
+}
