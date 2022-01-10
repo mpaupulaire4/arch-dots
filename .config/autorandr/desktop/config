@@ -1,0 +1,26 @@
+output HDMI1
+off
+output VIRTUAL1
+off
+output DP1
+crtc 1
+mode 2560x1440
+pos 3840x0
+rate 59.95
+rotate left
+x-prop-audio auto
+x-prop-broadcast_rgb Automatic
+x-prop-colorspace Default
+x-prop-max_bpc 12
+x-prop-non_desktop 0
+output DP2
+crtc 0
+mode 3840x2160
+pos 0x400
+primary
+rate 30.00
+x-prop-audio auto
+x-prop-broadcast_rgb Automatic
+x-prop-colorspace Default
+x-prop-max_bpc 12
+x-prop-non_desktop 0

@@ -8,12 +8,15 @@ bluez-utils
 docker
 dunst
 efibootmgr
+feh
 firefox
 git
 grim
 grml-zsh-config
+gtk-layer-shell
 i3-gaps
 intel-ucode
+jq
 kitty
 linux
 linux-firmware
@@ -38,7 +41,6 @@ ripgrep
 rustup
 slurp
 sof-firmware
-sudo
 sway
 swaybg
 swayidle
@@ -49,6 +51,7 @@ vscode-css-languageserver
 vscode-html-languageserver
 vscode-json-languageserver
 wl-clipboard
+xclip
 xcursor-comix
 xdg-desktop-portal-wlr
 xdg-user-dirs
