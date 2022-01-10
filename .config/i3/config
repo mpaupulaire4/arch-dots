@@ -3,5 +3,5 @@ include ~/.config/i3/bindings
 include ~/.config/i3/colors
 
 exec_always --no-startup-id autorandr -c
-# exec_always --no-startup-id feh --no-fehbg --bg-scale --randomize ~/Pictures/walls/*
+exec_always --no-startup-id feh --no-fehbg --bg-scale --randomize ~/Pictures/walls/*
 # exec --no-startup-id xss-lock -- i3lock -n -e -i Pictures/walls/nord-color-blast.png &
