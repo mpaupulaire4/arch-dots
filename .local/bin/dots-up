@@ -1,35 +1,40 @@
 #!/bin/bash
 # updots
-touch $HOME/.pkgs
-touch $HOME/.fpkgs
-touch $HOME/.pkgignore
+CONFIG_DIR=${XDG_CONFIG_HOME:-$HOME}/dots
+DEFAULT_PKGS=$CONFIG_DIR/default.pkgs
+FOREIGN_PKGS=$CONFIG_DIR/foreign.pkgs
+
+mkdir -pv $CONFIG_DIR
+touch $DEFAULT_PKGS
+touch $FOREIGN_PKGS
 
 # Do an update
-cp -f $HOME/.pkgs $HOME/.pkgs.backup
 sudo DIFFPROG='nvim -d' pacman_program="paru" pacmatic -Syu
 
 # Install Any PKGs needed but not ignored from .pkgs
-paru -Qqen |
-  sort |
-  comm -23 <(sort $HOME/.pkgs) - |
-  comm -13 <(sort $HOME/.pkgignore) - |
+paru -Qqe |
+  comm -23 <(sort $CONFIG_DIR/*.pkgs) - |
+  comm -12 <(sort $DEFAULT_PKGS) - |
   paru -S - --needed
 
-# Install Any Foreign PKGs needed but not ignored from .pkgs
-paru -Qqem |
-  sort |
-  comm -23 <(sort $HOME/.fpkgs) - |
-  comm -13 <(sort $HOME/.pkgignore) - |
+# # Install Any Foreign PKGs needed but not ignored from .pkgs
+paru -Qqe |
+  comm -23 <(sort $CONFIG_DIR/*.pkgs) - |
+  comm -12 <(sort $FOREIGN_PKGS) - |
   paru -S - --needed
+
+if [[ -e $1 ]]; then
+  paru -Qqe |
+    sort |
+    comm -23 <(sort $CONFIG_DIR/*.pkgs) - |
+    comm -12 <(sort $1) - |
+    paru -S - --needed
+fi
 
 
 # Regenerate .pkgs ignoring ignored pkgs
-paru -Qqen |
-  sort |
-  comm -13 <(sort $HOME/.pkgignore) - > $HOME/.pkgs
+comm -23 <(sort $CONFIG_DIR/*.pkgs) <(sort $DEFAULT_PKGS) |
+  comm -23 <(paru -Qqen) - > $DEFAULT_PKGS
 
-paru -Qqem |
-  sort |
-  comm -13 <(sort $HOME/.pkgignore) - > $HOME/.fpkgs
-
-# codium --diff $HOME/.pkgs.backup $HOME/.pkgs --wait
+comm -23 <(sort $CONFIG_DIR/*.pkgs) <(sort $FOREIGN_PKGS) |
+  comm -23 <(paru -Qqem) - > $FOREIGN_PKGS

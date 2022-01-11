@@ -5,4 +5,4 @@ Downloads
 .local/share
 .local/state
 .local/cache
-
+.config/dots/ignore.pkgs
