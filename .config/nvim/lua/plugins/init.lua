@@ -1,0 +1,211 @@
+local present, packer = pcall(require, "plugins.packerInit")
+
+if not present then
+   return false
+end
+
+local use = packer.use
+
+return packer.startup(function()
+
+   -- this is arranged on the basis of when a plugin starts
+
+   use "nvim-lua/plenary.nvim"
+
+   use {
+      "wbthomason/packer.nvim",
+      event = "VimEnter",
+   }
+
+   use  {
+     "navarasu/onedark.nvim",
+     config = "require('plugins.configs.onedark')"
+   }
+
+   use {
+      "kyazdani42/nvim-web-devicons",
+      after = "onedark.nvim",
+      config = "require('plugins.configs.icons')",
+   }
+
+   use {
+     'nvim-lualine/lualine.nvim',
+     after = "nvim-web-devicons",
+     requires = 'kyazdani42/nvim-web-devicons',
+     config = "require('plugins.configs.lualine')"
+   }
+
+   use {
+      "lukas-reineke/indent-blankline.nvim",
+      event = "BufRead",
+      config = "require('plugins.configs.others').blankline()",
+   }
+
+   use {
+      "norcalli/nvim-colorizer.lua",
+      event = "BufRead",
+      config = "require('plugins.configs.others').colorizer()",
+   }
+
+   use {
+      "nvim-treesitter/nvim-treesitter",
+      event = "BufRead",
+      config = "require('plugins.configs.treesitter')",
+   }
+
+   -- git stuff
+   use {
+      "lewis6991/gitsigns.nvim",
+      opt = true,
+      config = "require('plugins.configs.others').gitsigns()",
+      setup = function()
+         require("core.utils").packer_lazy_load "gitsigns.nvim"
+      end,
+   }
+
+   -- lsp stuff
+   use "williamboman/nvim-lsp-installer"
+
+   use {
+      "neovim/nvim-lspconfig",
+      requires = "williamboman/nvim-lsp-installer",
+      opt = true,
+      setup = function()
+         require("core.utils").packer_lazy_load "nvim-lspconfig"
+         -- reload the current file so lsp actually starts for it
+         vim.defer_fn(function()
+            vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
+         end, 0)
+      end,
+      config = "require('plugins.configs.lspconfig')",
+   }
+
+   use {
+      "ray-x/lsp_signature.nvim",
+      after = "nvim-lspconfig",
+      config = "require('plugins.configs.others').signature()",
+   }
+
+   use {
+      "andymass/vim-matchup",
+      opt = true,
+      setup = function()
+         require("core.utils").packer_lazy_load "vim-matchup"
+      end,
+   }
+
+   -- load luasnips + cmp related in insert mode only
+   use {
+      "rafamadriz/friendly-snippets",
+      event = "InsertEnter",
+   }
+
+   use {
+      "hrsh7th/nvim-cmp",
+      after = "friendly-snippets",
+      config = "require('plugins.configs.cmp')",
+   }
+
+   use {
+      "L3MON4D3/LuaSnip",
+      wants = "friendly-snippets",
+      after = "nvim-cmp",
+      config = "require('plugins.configs.others').luasnip()",
+   }
+
+   use {
+      "saadparwaiz1/cmp_luasnip",
+      after = "LuaSnip",
+   }
+
+   use {
+      "hrsh7th/cmp-nvim-lua",
+      after = "cmp_luasnip",
+   }
+
+   use {
+      "hrsh7th/cmp-nvim-lsp",
+      after = "cmp-nvim-lua",
+   }
+
+   use {
+      "hrsh7th/cmp-buffer",
+      after = "cmp-nvim-lsp",
+   }
+
+   use {
+      "hrsh7th/cmp-path",
+      after = "cmp-buffer",
+   }
+   -- misc plugins
+   use {
+      "windwp/nvim-autopairs",
+      after = "nvim-cmp",
+      config = "require('plugins.configs.others').autopairs()",
+   }
+
+   use {
+      "glepnir/dashboard-nvim",
+      config = "require('plugins.configs.dashboard')",
+      setup = function()
+         require("core.mappings").dashboard()
+      end,
+   }
+
+   use {
+      "numToStr/Comment.nvim",
+      module = "Comment",
+      config = "require('plugins.configs.others').comment()",
+      setup = function()
+         require("core.mappings").comment()
+      end,
+   }
+
+   -- file managing , picker etc
+   use {
+      "kyazdani42/nvim-tree.lua",
+      -- only set "after" if lazy load is disabled and vice versa for "cmd"
+      -- after = "nvim-web-devicons",
+      cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+      config = "require('plugins.configs.nvimtree')",
+      setup = function()
+         require("core.mappings").nvimtree()
+      end,
+   }
+
+   use {
+      "nvim-telescope/telescope.nvim",
+      cmd = "Telescope",
+      requires = { "nvim-telescope/telescope-fzf-native.nvim" },
+      config = "require('plugins.configs.telescope')",
+      setup = function()
+         require("core.mappings").telescope()
+      end,
+   }
+
+   use {
+     'nvim-telescope/telescope-fzf-native.nvim',
+     run = 'make',
+     after = "telescope.nvim"
+   }
+
+   use {
+      "rcarriga/nvim-notify",
+      after = { "telescope.nvim" },
+      -- opt = true,
+      config = "require('plugins.configs.nvim-notify')",
+   }
+
+   use {
+      "DanilaMihailov/beacon.nvim",
+      event = "VimEnter",
+   }
+
+   use {
+     'sindrets/diffview.nvim',
+     cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+     requires = 'nvim-lua/plenary.nvim'
+   }
+
+end)
+
