@@ -10,7 +10,7 @@ telescope.setup {
    defaults = {
      mappings = {
        i = {
-         ["<esc>"] = actions.close
+         ["<C-e>"] = actions.close
        },
      },
       vimgrep_arguments = {

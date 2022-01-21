@@ -62,7 +62,7 @@ require('lualine').setup({
     lualine_c = {
       {
         'diagnostics',
-        sources = { 'nvim_diagnostic', 'nvim_lsp' },
+        sources = { 'nvim_lsp' },
         colored = true,           -- Displays diagnostics status in color if set to true.
         update_in_insert = false, -- Update diagnostics in insert mode.
         always_visible = false,   -- Show diagnostics even if there are none.

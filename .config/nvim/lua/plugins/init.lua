@@ -9,7 +9,7 @@ local use = packer.use
 return packer.startup(function()
 
    -- this is arranged on the basis of when a plugin starts
-
+   use "nathom/filetype.nvim"
    use "nvim-lua/plenary.nvim"
 
    use {
@@ -57,10 +57,20 @@ return packer.startup(function()
    use {
       "lewis6991/gitsigns.nvim",
       opt = true,
-      config = "require('plugins.configs.others').gitsigns()",
+      config = "require('plugins.configs.gitsigns')",
       setup = function()
          require("core.utils").packer_lazy_load "gitsigns.nvim"
+         require("core.mappings").gitsigns()
       end,
+   }
+
+   use {
+     'sindrets/diffview.nvim',
+     cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+     requires = 'nvim-lua/plenary.nvim',
+     setup = function()
+       require("core.mappings").diffview()
+     end
    }
 
    -- lsp stuff
@@ -75,7 +85,7 @@ return packer.startup(function()
          -- reload the current file so lsp actually starts for it
          vim.defer_fn(function()
             vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
-         end, 0)
+         end, 1)
       end,
       config = "require('plugins.configs.lspconfig')",
    }
@@ -94,33 +104,16 @@ return packer.startup(function()
       end,
    }
 
-   -- load luasnips + cmp related in insert mode only
-   use {
-      "rafamadriz/friendly-snippets",
-      event = "InsertEnter",
-   }
-
+   -- cmp related in insert mode only
    use {
       "hrsh7th/nvim-cmp",
-      after = "friendly-snippets",
+      event = "InsertEnter",
       config = "require('plugins.configs.cmp')",
    }
 
    use {
-      "L3MON4D3/LuaSnip",
-      wants = "friendly-snippets",
-      after = "nvim-cmp",
-      config = "require('plugins.configs.others').luasnip()",
-   }
-
-   use {
-      "saadparwaiz1/cmp_luasnip",
-      after = "LuaSnip",
-   }
-
-   use {
       "hrsh7th/cmp-nvim-lua",
-      after = "cmp_luasnip",
+      after = "nvim-cmp",
    }
 
    use {
@@ -202,9 +195,29 @@ return packer.startup(function()
    }
 
    use {
-     'sindrets/diffview.nvim',
-     cmd = { "DiffviewOpen", "DiffviewFileHistory" },
-     requires = 'nvim-lua/plenary.nvim'
+      "beauwilliams/focus.nvim",
+      cmd = {"FocusSplitNicely", "FocusSplitCycle", "FocusSplitLeft", "FocusSplitRight", "FocusSplitUp", "FocusSplitDown", "FocusMaximise"},
+      config = "require('plugins.configs.focus')",
+      setup = function()
+         require("core.mappings").focus()
+      end,
+   }
+
+   use {
+     'luukvbaal/stabilize.nvim',
+     config = "require('plugins.configs.stabilize')",
+     setup = function()
+       require("core.utils").packer_lazy_load "stabilize.nvim"
+     end
+   }
+
+   use {
+      "kazhala/close-buffers.nvim",
+      cmd = {"BDelete", "BWipeout"},
+      config = "require('plugins.configs.close_buffers')",
+      setup = function()
+         require("core.mappings").close_buffers()
+      end,
    }
 
 end)

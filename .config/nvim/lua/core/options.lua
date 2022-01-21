@@ -45,7 +45,7 @@ opt.updatetime = 250
 opt.whichwrap:append "<>[]hl"
 
 g.mapleader = " "
-
+g.did_load_filetypes = 1
 -- disable some builtin vim plugins
 local disabled_built_ins = {
    "2html_plugin",

@@ -7,6 +7,15 @@ local M = {}
 
 -- these mappings will only be called during initialization
 M.misc = function()
+
+  -- Better jumts and tag follows
+  map("n", "<C-f>", '<C-]>')
+  -- map("", "<C-[>", '<C-o>')
+  -- map("", "<C-]>", '<C-i>')
+
+  -- Alternate Esc
+  map({"n", "i", "v", "c"}, "<C-e>", '<Esc>')
+  map({"n", "i", "v", "c"}, "<Esc>", '<Nop>')
   -- Don't copy the replaced text after pasting in visual mode
   map("v", "p", '"_dP')
 
@@ -20,7 +29,7 @@ M.misc = function()
   map("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
 
   -- use ESC to turn off search highlighting
-  map("n", "<Esc>", ":noh <CR>")
+  map("n", "<C-e>", ":noh <CR>")
 
   -- yank from current cursor to end of line
   -- map("n", "Y", "yg$")
@@ -34,22 +43,24 @@ M.misc = function()
   -- navigation within insert mode
   -- map("i", "<Home>", "<ESC>^i")
 
-  -- easier navigation between windows
-  map("n", "<C-A-Left>",  "<C-w>h")
-  map("n", "<C-A-Right>", "<C-w>l")
-  map("n", "<C-A-Up>",    "<C-w>k")
-  map("n", "<C-A-Down>",  "<C-w>j")
+  map("n", "<leader>n", ":set rnu! <CR>") -- toggle numbers
+  map("n", "<C-a>", "ggVG") -- select whole file content
 
-  map("n", "<leader>x", ":lua require('core.utils').close_buffer() <CR>") -- close  buffer
-  map("n", "<C-a>", ":%y+ <CR>") -- copy whole file content
   map("n", "<S-t>", ":enew <CR>") -- new buffer
-  map("n", "<C-t>b", ":tabnew <CR>") -- new tabs
-  -- map("n", maps.misc.line_number_toggle, ":set nu! <CR>") -- toggle numbers
+  map("n", "<C-t>", ":tabnew <CR>") -- new tabs
+
+  map("n", "<C-q>", ":q <CR>") -- ctrl + q to quit
+  map("i", "<C-q>", "<Esc>:q <CR>") -- ctrl + q to quit
+
   map("n", "<C-s>", ":w <CR>") -- ctrl + s to save file
   map("i", "<C-s>", "<Esc>:w <CR>") -- ctrl + s to save file
 
+  -- better tabbing
+  map("v", "<", "<gv")
+  map("v", ">", ">gv")
+
   -- Move Line(s) Up
-  map("n", "<A-Up>", ":m .-2<CR>==")
+  map("n", "<A-Up>", "<cmd>m .-2<CR>==")
   map("i", "<A-Up>", "<Esc>:m .-2<CR>==i")
   map("v", "<A-Up>", ":m '<-2<CR>gv=gv")
   -- Move Line(s) Down
@@ -57,19 +68,14 @@ M.misc = function()
   map("i", "<A-Down>", "<Esc>:m .+1<CR>==i")
   map("v", "<A-Down>", ":m '>+1<CR>gv=gv")
 
-  -- terminal mappings --
-  -- get out of terminal mode
-  map("t", "<S-Esc>", "<C-\\><C-n>")
-  -- hide a term from within terminal mode
-  map("t", "<C-Esc>", "<C-\\><C-n> :lua require('core.utils').close_buffer() <CR>")
-  -- pick a hidden term
-  map("n", "<leader>T", ":Telescope terms <CR>")
-  -- Open terminals
-  -- TODO this opens on top of an existing vert/hori term, fixme
-  -- map("n", term_maps.new_horizontal, ":execute 15 .. 'new +terminal' | let b:term_type = 'hori' | startinsert <CR>")
-  -- map("n", term_maps.new_vertical, ":execute 'vnew +terminal' | let b:term_type = 'vert' | startinsert <CR>")
-  map("n", "<leader>t", ":execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>")
-  -- terminal mappings end --
+  -- Duplicate Line(s) Up
+  map("n", "<S-A-Up>", "\"9Y\"9P")
+  map("i", "<S-A-Up>", "<Esc>\"9Y\"9Pi")
+  map("v", "<S-A-Up>", "\"9Y\"9P`[v`]")
+  -- Duplicate Line(s) Down
+  map("n", "<S-A-Down>", "\"9Y\"9p")
+  map("i", "<S-A-Down>", "<Esc>\"9Y\"9pi")
+  map("v", "<S-A-Down>", "\"9Y\"9Pgv")
 
   -- Add Packer commands because we are not loading it at startup
   cmd "silent! command PackerClean lua require 'plugins' require('packer').clean()"
@@ -82,6 +88,19 @@ M.misc = function()
 end
 
 -- below are all plugin related mappings
+
+M.focus = function()
+  -- easier navigation between windows
+  map("n", "<C-A-Left>",  "<cmd>FocusSplitLeft<CR>")
+  map("n", "<C-A-Right>", "<cmd>FocusSplitRight<CR>")
+  map("n", "<C-A-Up>",    "<cmd>FocusSplitUp<CR>")
+  map("n", "<C-A-Down>",  "<cmd>FocusSplitDown<CR>")
+end
+
+M.close_buffers = function()
+  map("n", "<leader>xx",  "<cmd>BDelete this<CR>")
+  map("n", "<leuder>xo",  "<cmd>BDelete hidden<CR>")
+end
 
 M.tabline = function()
    map("n", "<TAB>", ":TablineBufferNext <CR>")
@@ -143,19 +162,35 @@ M.lspconfig = function()
 end
 
 M.nvimtree = function()
-   map("n", "<C-n>", ":NvimTreeToggle <CR>")
+   map("n", "<C-n>", "<cmd>NvimTreeToggle <CR>")
+   -- map("n", plugin_maps.nvimtree.focus, ":NvimTreeFocus <CR>")
+end
+
+M.diffview = function()
+   map("n", "<leader>gs", "<cmd>DiffviewOpen <CR>")
    -- map("n", plugin_maps.nvimtree.focus, ":NvimTreeFocus <CR>")
 end
 
 M.telescope = function()
-   map("n", "<leader>fb", ":Telescope buffers <CR>")
-   map("n", "<leader>ff", ":Telescope find_files <CR>")
-   map("n", "<leader>fa", ":Telescope find_files follow=true no_ignore=true hidden=true <CR>")
-   -- map("n", "<leader>", ":Telescope git_commits <CR>")
-   -- map("n", "<leader>", ":Telescope git_status <CR>")
-   -- map("n", "<leader>", ":Telescope help_tags <CR>")
-   map("n", "<leader>fw", ":Telescope live_grep <CR>")
-   map("n", "<leader>fo", ":Telescope oldfiles <CR>")
+   map("n", "<leader>fb", "<cmd>Telescope buffers <CR>")
+   map("n", "<leader>ff", "<cmd>Telescope find_files hidden=true <CR>")
+   map("n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true <CR>")
+   map("n", "<leader>fh", "<cmd>Telescope help_tags <CR>")
+   map("n", "<leader>fw", "<cmd>Telescope live_grep <CR>")
+   map("n", "<leader>fo", "<cmd>Telescope oldfiles <CR>")
+end
+
+M.gitsigns = function()
+   map("n", "<leader>gb", "<Cmd>Gitsigns toggle_current_line_blame<CR>")
+   map("n", "<leader>hs", "<cmd>Gitsigns stage_hunk<CR>")
+   map("v", "<leader>hs", ":Gitsigns stage_hunk<CR>")
+   map("n", "<leader>hu", "<cmd>Gitsigns undo_stage_hunk<CR>")
+   map("n", "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>")
+   map("v", "<leader>hr", ":Gitsigns reset_hunk<CR>")
+   map("n", "<leader>hR", "<cmd>Gitsigns reset_buffer<CR>")
+   map("n", "<leader>hp", "<cmd>Gitsigns preview_hunk<CR>")
+   map("n", "<leader>hS", "<cmd>Gitsigns stage_buffer<CR>")
+   map("n", "<leader>hU", "<cmd>Gitsigns reset_buffer_index<CR>")
 end
 
 return M

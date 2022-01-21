@@ -94,12 +94,4 @@ M.signature = function()
    end
 end
 
-M.gitsigns = function()
-   local present, gitsigns = pcall(require, "gitsigns")
-   if present then
-      gitsigns.setup {
-      }
-   end
-end
-
 return M
