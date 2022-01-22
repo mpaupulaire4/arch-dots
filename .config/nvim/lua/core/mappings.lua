@@ -7,17 +7,26 @@ local M = {}
 
 -- these mappings will only be called during initialization
 M.misc = function()
-
   -- Better jumts and tag follows
   map("n", "<C-f>", '<C-]>')
-  -- map("", "<C-[>", '<C-o>')
-  -- map("", "<C-]>", '<C-i>')
+  -- map("n", "<C-[>", '<C-o>')
+  -- map("n", "<C-]>", '<C-i>')
 
   -- Alternate Esc
-  map({"n", "i", "v", "c"}, "<C-e>", '<Esc>')
+  map({"n", "v", "c"}, "<C-e>", '<Esc>')
   map({"n", "i", "v", "c"}, "<Esc>", '<Nop>')
   -- Don't copy the replaced text after pasting in visual mode
   map("v", "p", '"_dP')
+
+  -- Replace text and go to insert mode
+  map("v", "i", '"_di')
+
+  -- insert mode and completion related
+  map("i", "<C-e>",   'pumvisible() ? "<C-e>" : "<C-c>"', { expr = true })
+  map("i", "<BS>",    'pumvisible() ? "<C-e><BS>"  : "<BS>"', { expr = true })
+  map("i", "<CR>",    'pumvisible() ? (complete_info().selected == -1 ? "<C-e><CR>" : "<C-y>") : "<CR>"', { expr = true })
+  map("i", "<Tab>",   'pumvisible() ? "<C-n>" : "<Tab>"', { expr = true })
+  map("i", "<S-Tab>", 'pumvisible() ? "<C-p>" : "<S-Tab>"', { expr = true })
 
   -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
   -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
@@ -100,11 +109,6 @@ end
 M.close_buffers = function()
   map("n", "<leader>xx",  "<cmd>BDelete this<CR>")
   map("n", "<leuder>xo",  "<cmd>BDelete hidden<CR>")
-end
-
-M.tabline = function()
-   map("n", "<TAB>", ":TablineBufferNext <CR>")
-   map("n", "<S-TAB>", ":TablineBufferPrevious <CR>")
 end
 
 M.comment = function()

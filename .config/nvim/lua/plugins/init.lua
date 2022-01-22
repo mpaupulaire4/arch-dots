@@ -74,27 +74,30 @@ return packer.startup(function()
    }
 
    -- lsp stuff
-   use "williamboman/nvim-lsp-installer"
 
    use {
       "neovim/nvim-lspconfig",
-      requires = "williamboman/nvim-lsp-installer",
       opt = true,
       setup = function()
          require("core.utils").packer_lazy_load "nvim-lspconfig"
          -- reload the current file so lsp actually starts for it
          vim.defer_fn(function()
             vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
-         end, 1)
+          end, 1)
       end,
-      config = "require('plugins.configs.lspconfig')",
    }
 
    use {
-      "ray-x/lsp_signature.nvim",
-      after = "nvim-lspconfig",
-      config = "require('plugins.configs.others').signature()",
+     "williamboman/nvim-lsp-installer",
+     after = "nvim-lspconfig",
+     config = "require('plugins.configs.lspconfig')",
    }
+
+   -- use {
+   --    "ray-x/lsp_signature.nvim",
+   --    after = "nvim-lspconfig",
+   --    config = "require('plugins.configs.others').signature()",
+   -- }
 
    use {
       "andymass/vim-matchup",
@@ -104,36 +107,27 @@ return packer.startup(function()
       end,
    }
 
-   -- cmp related in insert mode only
+   -- coq related in insert mode only
    use {
-      "hrsh7th/nvim-cmp",
-      event = "InsertEnter",
-      config = "require('plugins.configs.cmp')",
+     'ms-jpq/coq_nvim',
+     branch = "coq",
+     event = "InsertEnter",
+     setup = function()
+       require('plugins.configs.coq')
+     end,
    }
 
    use {
-      "hrsh7th/cmp-nvim-lua",
-      after = "nvim-cmp",
+     'ms-jpq/coq.thirdparty',
+     branch = "3p",
+     after = "coq_nvim",
+     config = "require('plugins.configs.coq_3p')"
    }
 
-   use {
-      "hrsh7th/cmp-nvim-lsp",
-      after = "cmp-nvim-lua",
-   }
-
-   use {
-      "hrsh7th/cmp-buffer",
-      after = "cmp-nvim-lsp",
-   }
-
-   use {
-      "hrsh7th/cmp-path",
-      after = "cmp-buffer",
-   }
    -- misc plugins
    use {
       "windwp/nvim-autopairs",
-      after = "nvim-cmp",
+      after = "coq_nvim",
       config = "require('plugins.configs.others').autopairs()",
    }
 
