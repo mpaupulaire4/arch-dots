@@ -5,12 +5,18 @@ local cmd = vim.cmd
 
 local M = {}
 
+function _G.set_terminal_keymaps()
+  local opts = {noremap = true}
+  vim.api.nvim_buf_set_keymap(0, 't', '<c-e>', [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', '<c-e>', [[:ToggleTerm<cr>]], opts)
+end
+
 -- these mappings will only be called during initialization
 M.misc = function()
   -- Better jumts and tag follows
   map("n", "<C-f>", '<C-]>')
-  -- map("n", "<C-[>", '<C-o>')
-  -- map("n", "<C-]>", '<C-i>')
+  -- map("", "<C-[>", '<C-o>')
+  -- map("", "<C-]>", '<C-i>')
 
   -- Alternate Esc
   map({"n", "v", "c"}, "<C-e>", '<Esc>')
@@ -19,7 +25,7 @@ M.misc = function()
   map("v", "p", '"_dP')
 
   -- Replace text and go to insert mode
-  map("v", "i", '"_di')
+  -- map("v", "i", '"_di')
 
   -- insert mode and completion related
   map("i", "<C-e>",   'pumvisible() ? "<C-e>" : "<C-c>"', { expr = true })
@@ -125,30 +131,10 @@ M.dashboard = function()
 end
 
 M.lspconfig = function()
-   local m = {
-      declaration = "gD",
-      definition = "gd",
-      hover = "K",
-      implementation = "gi",
-      signature_help = "gk",
-      add_workspace_folder = "<leader>wa",
-      remove_workspace_folder = "<leader>wr",
-      list_workspace_folders = "<leader>wl",
-      type_definition = "<leader>D",
-      rename = "<leader>rn",
-      code_action = "<leader>ca",
-      references = "gr",
-      float_diagnostics = "ge",
-      goto_prev = "[d",
-      goto_next = "]d",
-      set_loclist = "<leader>q",
-      formatting = "<leader>fm",
-   }
-
    -- See `:help vim.lsp.*` for documentation on any of the below functions
-   map("n", m.declaration, "<cmd>lua vim.lsp.buf.declaration()<CR>")
-   map("n", m.definition, "<cmd>lua vim.lsp.buf.definition()<CR>")
-   map("n", m.hover, "<cmd>lua vim.lsp.buf.hover()<CR>")
+   -- map("n", m.declaration, "<cmd>lua vim.lsp.buf.declaration()<CR>")
+   -- map("n", m.definition, "<cmd>lua vim.lsp.buf.definition()<CR>")
+   -- map("n", "<C-i>", "<cmd>lua vim.lsp.buf.hover()<CR>")
    -- map("n", m.implementation, "<cmd>lua vim.lsp.buf.implementation()<CR>")
    -- map("n", m.signature_help, "<cmd>lua vim.lsp.buf.signature_help()<CR>")
    -- map("n", m.add_workspace_folder, "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
@@ -156,8 +142,8 @@ M.lspconfig = function()
    -- map("n", m.list_workspace_folders, "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
    -- map("n", m.type_definition, "<cmd>lua vim.lsp.buf.type_definition()<CR>")
    -- map("n", m.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
-   map("n", m.code_action, "<cmd>lua vim.lsp.buf.code_action()<CR>")
-   map("n", m.references, "<cmd>lua vim.lsp.buf.references()<CR>")
+   -- map("n", m.code_action, "<cmd>lua vim.lsp.buf.code_action()<CR>")
+   -- map("n", m.references, "<cmd>lua vim.lsp.buf.references()<CR>")
    -- map("n", m.float_diagnostics, "<cmd>lua vim.diagnostic.open_float()<CR>")
    -- map("n", m.goto_prev, "<cmd>lua vim.diagnostic.goto_prev()<CR>")
    -- map("n", m.goto_next, "<cmd>lua vim.diagnostic.goto_next()<CR>")
@@ -170,11 +156,6 @@ M.nvimtree = function()
    -- map("n", plugin_maps.nvimtree.focus, ":NvimTreeFocus <CR>")
 end
 
-M.diffview = function()
-   map("n", "<leader>gs", "<cmd>DiffviewOpen <CR>")
-   -- map("n", plugin_maps.nvimtree.focus, ":NvimTreeFocus <CR>")
-end
-
 M.telescope = function()
    map("n", "<leader>fb", "<cmd>Telescope buffers <CR>")
    map("n", "<leader>ff", "<cmd>Telescope find_files hidden=true <CR>")
@@ -182,6 +163,15 @@ M.telescope = function()
    map("n", "<leader>fh", "<cmd>Telescope help_tags <CR>")
    map("n", "<leader>fw", "<cmd>Telescope live_grep <CR>")
    map("n", "<leader>fo", "<cmd>Telescope oldfiles <CR>")
+
+   -- LSP related
+   map("n", "gd", "<cmd>Telescope lsp_definitions<cr>")
+   map("n", "gr", "<cmd>Telescope lsp_references<cr>")
+   map("n", "<leader>ca", "<cmd>Telescope lsp_code_actions<cr>")
+end
+
+M.toggleterm = function()
+   map("n", "<leader>gs", "<cmd>lua _lazygit_toggle()<CR>")
 end
 
 M.gitsigns = function()
@@ -192,7 +182,7 @@ M.gitsigns = function()
    map("n", "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>")
    map("v", "<leader>hr", ":Gitsigns reset_hunk<CR>")
    map("n", "<leader>hR", "<cmd>Gitsigns reset_buffer<CR>")
-   map("n", "<leader>hp", "<cmd>Gitsigns preview_hunk<CR>")
+   map("n", "<leader>hd", "<cmd>Gitsigns preview_hunk<CR>")
    map("n", "<leader>hS", "<cmd>Gitsigns stage_buffer<CR>")
    map("n", "<leader>hU", "<cmd>Gitsigns reset_buffer_index<CR>")
 end

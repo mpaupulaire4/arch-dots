@@ -6,11 +6,14 @@ bluez
 bluez-utils
 dunst
 efibootmgr
+fd
 firefox
 git
+git-delta
 grml-zsh-config
 jq
 kitty
+lazygit
 linux
 linux-firmware
 lvm2

@@ -1,15 +1,24 @@
--- Bubbles config for lualine
--- Author: lokesh-krishna
--- MIT license, see LICENSE for more details.
--- rst
+local theme = require'lualine.themes.onedark'
 
-require('lualine').setup({
+local fg = '#c678dd'
+local bg = '#282c34'
+
+theme.inactive = {
+  a = { fg = fg, bg = bg, gui = 'bold' },
+  b = { fg = bg, bg = fg },
+  c = { fg = bg, bg = fg },
+}
+
+require('lualine').setup {
   options = {
-    theme = 'onedark',
+    theme = theme,
     component_separators = '|',
     section_separators = { left = '', right = '' },
     disabled_filetypes = {
-
+      "help",
+      "dashboard",
+      "NvimTree",
+      "terminal",
     }
   },
   sections = {
@@ -58,7 +67,6 @@ require('lualine').setup({
       },
       -- { 'mode', separator = { left = '' }, right_padding = 2 },
     },
-    lualine_b = {},
     lualine_c = {
       {
         'diagnostics',
@@ -77,7 +85,7 @@ require('lualine').setup({
   },
   extensions = {
     "nvim-tree",
-    "chadtree"
+    "toggleterm"
   },
-})
+}
 

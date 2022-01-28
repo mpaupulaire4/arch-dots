@@ -49,6 +49,14 @@ telescope.setup {
       color_devicons = true,
       set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
    },
+   pickers = {
+    lsp_code_actions = {
+      theme = 'cursor'
+    },
+    lsp_definitions = {
+      theme = 'cursor'
+    },
+   },
    extensions = {
      fzf = {
        fuzzy = true,                    -- false will only do exact matching
@@ -59,7 +67,7 @@ telescope.setup {
    }
 }
 
-local extensions = { "fzf" }
+local extensions = { "fzf", "notify" }
 
 pcall(function()
    for _, ext in ipairs(extensions) do
