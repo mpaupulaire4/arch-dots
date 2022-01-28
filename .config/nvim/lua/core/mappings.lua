@@ -19,7 +19,7 @@ M.misc = function()
   -- map("", "<C-]>", '<C-i>')
 
   -- Alternate Esc
-  map({"n", "v", "c"}, "<C-e>", '<Esc>')
+  map({"", "n", "v", "c"}, "<C-e>", '<Esc>')
   map({"n", "i", "v", "c"}, "<Esc>", '<Nop>')
   -- Don't copy the replaced text after pasting in visual mode
   map("v", "p", '"_dP')

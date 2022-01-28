@@ -16,6 +16,7 @@ M.blankline = function()
          "help",
          "terminal",
          "dashboard",
+         "alpha",
          "packer",
          "lspinfo",
          "TelescopePrompt",
