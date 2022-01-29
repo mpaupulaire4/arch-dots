@@ -6,19 +6,6 @@
   pager = delta
 [interactive]
   diffFilter = delta --color-only --features=interactive
-[delta]
-  features = decorations calochortus-lyallii
-  side-by-side = true
-[delta "interactive"]
-  keep-plus-minus-markers = false
-; [delta "decorations"]
-;   commit-decoration-style = blue ol
-;   commit-style = raw
-;   file-style = omit
-;   hunk-header-decoration-style = blue box
-;   hunk-header-file-style = red
-;   hunk-header-line-number-style = "#067a00"
-;   hunk-header-style = file line-number syntax
 [difftool]
   prompt = true
 [diff]
@@ -33,31 +20,19 @@
   rebase = true
 [init]
   defaultBranch = main
-[delta "calochortus-lyallii"]
-    # author: https://github.com/manojkarthick
-  ; commit-decoration-style = none
+[delta]
+  features = interactive side-by-side onedark
+[delta "interactive"]
+  keep-plus-minus-markers = false
+[delta "onedark"]
   dark = true
-  ; file-added-label = [+]
-  ; file-copied-label = [C]
-  ; file-decoration-style = none
-  ; file-modified-label = [M]
-  ; file-removed-label = [-]
-  ; file-renamed-label = [R]
-  ; file-style = 232 bold 184
-  ; hunk-header-decoration-style = none
-  ; hunk-header-file-style = "#999999"
-  ; hunk-header-line-number-style = bold "#03a4ff"
-  ; hunk-header-style = file line-number syntax
-  ; line-numbers = true
-  ; line-numbers-left-style = black
-  ; line-numbers-minus-style = "#B10036"
-  ; line-numbers-plus-style = "#03a4ff"
-  ; line-numbers-right-style = black
-  line-numbers-zero-style = "#999999"
-  ; minus-emph-style = syntax bold "#780000"
-  ; minus-style = syntax "#400000"
-  ; plus-emph-style = syntax bold "#007800"
-  ; plus-style = syntax "#004000"
-  ; whitespace-error-style = "#280050" reverse
-  ; zero-style = syntax
-  syntax-theme = Dark+ 
+  plus-style = syntax "#003000"
+  minus-style = syntax "#400000"
+  file-decoration-style = ol ul
+  hunk-header-style = omit
+  line-numbers-left-format = "{nm:>4}│"
+  line-numbers-right-format = "{np:>4}│"
+  line-numbers-zero-style = white
+  line-numbers-minus-style = red
+  line-numbers-plus-style = green
+  syntax-theme = base16 

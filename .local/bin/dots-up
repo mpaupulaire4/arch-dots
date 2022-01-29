@@ -9,7 +9,7 @@ touch $DEFAULT_PKGS
 touch $FOREIGN_PKGS
 
 # Do an update
-sudo DIFFPROG='nvim -d' pacman_program="paru" pacmatic -Syu
+DIFFPROG='nvim -d' pacman_program="paru" pacmatic -Syu
 
 # Install Any PKGs needed but not ignored from .pkgs
 paru -Qqe |

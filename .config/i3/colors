@@ -29,27 +29,28 @@ client.unfocused        $base01 $base00 $base05 $base01 $base01
 client.urgent           $base08 $base08 $base00 $base08 $base08
 client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
-############    status bar settings   ############
-# bar {
-#     font pango:Fira Code Nerd Font 12
-#     i3bar_command i3bar --transparency
-#     position bottom
-#     mode hide
-#     modifier $Mod
-#     tray_output none
-#     status_command /usr/bin/i3status-rs ./.config/i3/status.toml
-#     colors {
-#         background $base00
-#         separator  $base01
-#         statusline $base04
 
-#         # State             Border  BG      Text
-#         focused_workspace   $base05 $base0D $base00
-#         active_workspace    $base05 $base03 $base00
-#         inactive_workspace  $base03 $base01 $base05
-#         urgent_workspace    $base08 $base08 $base00
-#         binding_mode        $base00 $base0A $base00
-#     }
-#     workspace_buttons yes
-#     strip_workspace_numbers yes
-# }
+############    status bar settings   ############
+bar {
+    font pango:Fira Code Nerd Font 12
+    i3bar_command i3bar --transparency
+    position top
+    mode hide
+    modifier Mod4
+    tray_output none
+    status_command /usr/bin/i3status-rs ./.config/i3/status.toml
+    colors {
+        background $base00
+        separator  $base01
+        statusline $base04
+
+        # State             Border  BG      Text
+        focused_workspace   $base05 $base0D $base00
+        active_workspace    $base05 $base03 $base00
+        inactive_workspace  $base03 $base01 $base05
+        urgent_workspace    $base08 $base08 $base00
+        binding_mode        $base00 $base0A $base00
+    }
+    workspace_buttons yes
+    strip_workspace_numbers yes
+}
