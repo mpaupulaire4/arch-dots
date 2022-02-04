@@ -35,4 +35,4 @@
   line-numbers-zero-style = white
   line-numbers-minus-style = red
   line-numbers-plus-style = green
-  syntax-theme = base16 
+  syntax-theme = Solarized (dark) 

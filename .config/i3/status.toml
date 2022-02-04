@@ -9,6 +9,11 @@
 # format = "Nightshade"
 
 [[block]]
+block = "time"
+interval = 20
+format = "%a %d/%m %R"
+
+[[block]]
 block = "memory"
 display_type = "memory"
 format_mem = "{mem_used_percents}"
@@ -52,11 +57,6 @@ natural_mapping = true
 show_volume_when_muted = true
 on_click = "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
 device_kind = "source"
-
-[[block]]
-block = "time"
-interval = 20
-format = "%a %d/%m %R"
 
 [[block]]
 block = "battery"
