@@ -30,14 +30,6 @@ return packer.startup(function()
     -- end
   }
 
-   -- use {
-   --   "glepnir/dashboard-nvim",
-   --   config = "require('plugins.configs.dashboard')",
-   --   setup = function()
-   --     require("core.mappings").dashboard()
-   --   end,
-   -- }
-   --
    use {
      "kyazdani42/nvim-web-devicons",
      after = "onedark.nvim",

@@ -168,6 +168,7 @@ M.telescope = function()
    map("n", "gd", "<cmd>Telescope lsp_definitions<cr>")
    map("n", "gr", "<cmd>Telescope lsp_references<cr>")
    map("n", "<leader>ca", "<cmd>Telescope lsp_code_actions<cr>")
+   map("n", "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>")
 end
 
 M.toggleterm = function()
@@ -185,6 +186,8 @@ M.gitsigns = function()
    map("n", "<leader>hd", "<cmd>Gitsigns preview_hunk<CR>")
    map("n", "<leader>hS", "<cmd>Gitsigns stage_buffer<CR>")
    map("n", "<leader>hU", "<cmd>Gitsigns reset_buffer_index<CR>")
+   map("n", "<leader>hn", "<cmd>Gitsigns next_hunk<CR>")
+   map("n", "<leader>hp", "<cmd>Gitsigns prev_hunk<CR>")
 end
 
 return M
