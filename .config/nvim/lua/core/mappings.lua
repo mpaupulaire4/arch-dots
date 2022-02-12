@@ -8,7 +8,7 @@ local M = {}
 function _G.set_terminal_keymaps()
   local opts = {noremap = true}
   vim.api.nvim_buf_set_keymap(0, 't', '<c-e>', [[<C-\><C-n>]], opts)
-  vim.api.nvim_buf_set_keymap(0, 'n', '<c-e>', [[:ToggleTerm<cr>]], opts)
+  vim.api.nvim_buf_set_keymap(0, 'n', '<c-e>', '<cmd>ToggleTerm<cr>', opts)
 end
 
 -- these mappings will only be called during initialization
@@ -20,7 +20,7 @@ M.misc = function()
 
   -- Alternate Esc
   map({"", "n", "v", "c"}, "<C-e>", '<Esc>')
-  map({"n", "i", "v", "c"}, "<Esc>", '<Nop>')
+  -- map({"n", "i", "v", "c"}, "<Esc>", '<Nop>')
   -- Don't copy the replaced text after pasting in visual mode
   map("v", "p", '"_dP')
 
@@ -113,8 +113,8 @@ M.focus = function()
 end
 
 M.close_buffers = function()
-  map("n", "<leader>xx",  "<cmd>BDelete this<CR>")
-  map("n", "<leuder>xo",  "<cmd>BDelete hidden<CR>")
+  map("n", "<leader>c",  "<cmd>BDelete this<CR>")
+  -- map("n", "<leuder>x",  "<cmd>BDelete hidden<CR>")
 end
 
 M.comment = function()
@@ -134,14 +134,14 @@ M.lspconfig = function()
    -- See `:help vim.lsp.*` for documentation on any of the below functions
    -- map("n", m.declaration, "<cmd>lua vim.lsp.buf.declaration()<CR>")
    -- map("n", m.definition, "<cmd>lua vim.lsp.buf.definition()<CR>")
-   -- map("n", "<C-i>", "<cmd>lua vim.lsp.buf.hover()<CR>")
+   map("n", "H", "<cmd>lua vim.lsp.buf.hover()<CR>")
    -- map("n", m.implementation, "<cmd>lua vim.lsp.buf.implementation()<CR>")
-   -- map("n", m.signature_help, "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+   map("n", "L", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
    -- map("n", m.add_workspace_folder, "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
    -- map("n", m.remove_workspace_folder, "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
    -- map("n", m.list_workspace_folders, "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
    -- map("n", m.type_definition, "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-   -- map("n", m.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
+   map("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>")
    -- map("n", m.code_action, "<cmd>lua vim.lsp.buf.code_action()<CR>")
    -- map("n", m.references, "<cmd>lua vim.lsp.buf.references()<CR>")
    -- map("n", m.float_diagnostics, "<cmd>lua vim.diagnostic.open_float()<CR>")
@@ -163,6 +163,7 @@ M.telescope = function()
    map("n", "<leader>fh", "<cmd>Telescope help_tags <CR>")
    map("n", "<leader>fw", "<cmd>Telescope live_grep <CR>")
    map("n", "<leader>fo", "<cmd>Telescope oldfiles <CR>")
+   map("n", "<leader>ft", "<cmd>Telescope termfinder find <CR>")
 
    -- LSP related
    map("n", "gd", "<cmd>Telescope lsp_definitions<cr>")
@@ -173,6 +174,7 @@ end
 
 M.toggleterm = function()
    map("n", "<leader>gs", "<cmd>lua _lazygit_toggle()<CR>")
+   map("n", "<leader>d", "<cmd>lua _lazydocker_toggle()<CR>")
 end
 
 M.gitsigns = function()

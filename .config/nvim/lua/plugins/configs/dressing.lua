@@ -1,6 +1,9 @@
-require('dressing').setup {
+local dressing = require('dressing')
+
+dressing.setup {
   input = {
     enabled = true,
+    insert_only = true,
   },
   select = {
     enabled = true,

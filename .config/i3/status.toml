@@ -58,29 +58,29 @@ show_volume_when_muted = true
 on_click = "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
 device_kind = "source"
 
-[[block]]
-block = "battery"
-interval = 20
-allow_missing = true
-hide_missing = true
-format = "{percentage} {time}"
+# [[block]]
+# block = "battery"
+# interval = 20
+# allow_missing = true
+# hide_missing = true
+# format = "{percentage} {time}"
 
 [theme]
 name = "nord-dark"
 
-# [theme.overrides]
+[theme.overrides]
 # alternating_tint_bg
 # alternating_tint_fg
-# idle_bg
-# idle_fg
-# info_bg
-# info_fg
-# good_bg
-# good_fg
-# warning_bg
-# warning_fg
-# critical_bg
-# critical_fg
+idle_bg = "#282c34" 
+idle_fg = "#c8ccd4" 
+info_bg = "#56b6c2" 
+info_fg = "#282c34" 
+good_bg = "#98c379" 
+good_fg = "#282c34" 
+warning_bg = "#d19a66" 
+warning_fg = "#282c34" 
+critical_bg = "#e06c75" 
+critical_fg = "#282c34" 
 # separator_bg
 # separator_fg
 # separator

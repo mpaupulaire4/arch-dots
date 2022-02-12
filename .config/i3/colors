@@ -35,8 +35,8 @@ bar {
     font pango:Fira Code Nerd Font 12
     i3bar_command i3bar --transparency
     position top
-    mode hide
-    modifier Mod4
+#     mode hide
+#     modifier Mod4
     tray_output none
     status_command /usr/bin/i3status-rs ./.config/i3/status.toml
     colors {

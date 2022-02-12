@@ -8,6 +8,6 @@ focus.setup {
   cursorline = false,
   signcolumn = false,
   cursorcolumn = false,
-  excluded_filetypes = { 'fterm', 'term', 'toggleterm' }
+  excluded_filetypes = { 'fterm', 'term', 'toggleterm', 'dbui' }
 }
 

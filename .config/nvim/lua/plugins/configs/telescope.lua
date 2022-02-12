@@ -10,7 +10,8 @@ telescope.setup {
    defaults = {
      mappings = {
        i = {
-         ["<C-e>"] = actions.close
+         ["<C-e>"] = actions.close,
+         ["<C-c>"] = actions.delete_buffer,
        },
      },
       vimgrep_arguments = {
@@ -63,6 +64,15 @@ telescope.setup {
        override_generic_sorter = true,  -- override the generic sorter
        override_file_sorter = true,     -- override the file sorter
        case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+     },
+     termfinder = {
+       mappings = {
+         rename_term = '<C-r>',
+         delete_term = '<C-c>',
+         vertical_term = '<C-v>',
+         horizontal_term = '<C-h>',
+         float_term = '<C-f>'
+       }
      }
    }
 }
