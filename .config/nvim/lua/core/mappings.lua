@@ -64,6 +64,9 @@ M.misc = function()
   map("n", "<S-t>", ":enew <CR>") -- new buffer
   map("n", "<C-t>", ":tabnew <CR>") -- new tabs
 
+  map("n", "<Tab>", "<cmd>bnext<CR>") -- new buffer
+  map("n", "<S-Tab>", "<cmd>bprevious<CR>") -- new tabs
+
   map("n", "<C-q>", ":q <CR>") -- ctrl + q to quit
   map("i", "<C-q>", "<Esc>:q <CR>") -- ctrl + q to quit
 
@@ -112,18 +115,17 @@ M.focus = function()
   map("n", "<C-A-Down>",  "<cmd>FocusSplitDown<CR>")
 end
 
-M.close_buffers = function()
-  map("n", "<leader>c",  "<cmd>BDelete this<CR>")
-  -- map("n", "<leuder>x",  "<cmd>BDelete hidden<CR>")
+M.mini = function()
+  map("n", "<C-c>",  "<cmd>lua MiniBufremove.delete()<CR>")
 end
 
-M.comment = function()
-   map("n", "<leader>/", ":lua require('Comment.api').toggle_current_linewise()<CR>")
-   map("v", "<leader>/", ":lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
-end
+-- M.comment = function()
+--    map("n", "<leader>/", ":lua require('Comment.api').toggle_current_linewise()<CR>")
+--    map("v", "<leader>/", ":lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
+-- end
 
 M.dashboard = function()
-   map("n", "<leader>bm", ":DashboardJumpMarks <CR>")
+   -- map("n", "<leader>bm", ":DashboardJumpMarks <CR>")
    map("n", "<leader>fn", ":DashboardNewFile <CR>")
    map("n", "<leader>db", ":Dashboard <CR>")
    map("n", "<leader>l", ":SessionLoad <CR>")

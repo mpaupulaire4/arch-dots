@@ -8,28 +8,6 @@ M.autopairs = function()
    end
 end
 
-M.blankline = function()
-   require("indent_blankline").setup {
-      indentLine_enabled = 1,
-      char = "▏",
-      filetype_exclude = {
-         "help",
-         "terminal",
-         "dashboard",
-         "alpha",
-         "packer",
-         "lspinfo",
-         "TelescopePrompt",
-         "TelescopeResults",
-         "NvimTree",
-         "",
-      },
-      buftype_exclude = { "terminal" },
-      show_trailing_blankline_indent = false,
-      -- show_first_indent_level = false,
-   }
-end
-
 M.colorizer = function()
    local present, colorizer = pcall(require, "colorizer")
    if present then
@@ -47,13 +25,6 @@ M.colorizer = function()
          mode = "background", -- Set the display mode.
       })
       vim.cmd "ColorizerReloadAllBuffers"
-   end
-end
-
-M.comment = function()
-   local present, nvim_comment = pcall(require, "Comment")
-   if present then
-      nvim_comment.setup()
    end
 end
 

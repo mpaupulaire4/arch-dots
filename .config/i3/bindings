@@ -182,3 +182,19 @@ mode $mode_launch {
   bindsym Return                mode "default"
   bindsym $Mod+$Launch          mode "default"
 }
+
+#############         Power Menu          ##################
+
+# resize
+set $mod_powermenu Power Menu: [P]oweroff [R]eboot [S]leep
+bindsym $Mod+Shift+Escape mode "$mod_powermenu"
+mode "$mod_powermenu" {
+  bindsym $Mod+p      exec --no-startup-id systemctl poweroff
+  bindsym $Mod+r      exec --no-startup-id systemctl reboot
+  bindsym $Mod+s      exec --no-startup-id systemctl suspend
+
+  bindsym Escape            mode "default"
+  bindsym Return            mode "default"
+  bindsym $Mod+Escape       mode "default"
+  bindsym $Mod+Shift+Escape mode "default"
+}

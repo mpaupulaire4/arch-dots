@@ -17,6 +17,11 @@ return packer.startup(function()
     event = "VimEnter",
   }
 
+  use {
+    "stevearc/dressing.nvim",
+    config = "require('plugins.configs.dressing')",
+  }
+
   use  {
     "navarasu/onedark.nvim",
     config = "require('plugins.configs.onedark')"
@@ -34,12 +39,6 @@ return packer.startup(function()
   }
 
   use {
-    "stevearc/dressing.nvim",
-    after = "plenary.nvim",
-    config = "require('plugins.configs.dressing')",
-  }
-
-  use {
     "rcarriga/nvim-notify",
     after = "dressing.nvim",
     config = "require('plugins.configs.nvim-notify')",
@@ -48,7 +47,7 @@ return packer.startup(function()
   use {
     "lukas-reineke/indent-blankline.nvim",
     event = "BufRead",
-    config = "require('plugins.configs.others').blankline()",
+    config = "require('plugins.configs.blankline')",
   }
 
   use {
@@ -70,10 +69,31 @@ return packer.startup(function()
   }
 
   use {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    after = 'nvim-treesitter'
+  }
+
+  use {
+    'RRethy/nvim-treesitter-textsubjects',
+    after = 'nvim-treesitter'
+  }
+
+  use {
     'nvim-lualine/lualine.nvim',
     event = "BufRead",
     requires = 'kyazdani42/nvim-web-devicons',
     config = "require('plugins.configs.lualine')"
+  }
+
+  use {
+    'echasnovski/mini.nvim',
+    opt = true,
+    branch = 'stable',
+    config = "require('plugins.configs.mini')",
+    setup = function()
+      require("core.utils").packer_lazy_load "mini.nvim"
+      require("core.mappings").mini()
+    end,
   }
 
   -- git stuff
@@ -172,11 +192,11 @@ return packer.startup(function()
 
   use {
     "numToStr/Comment.nvim",
-    module = "Comment",
-    config = "require('plugins.configs.others').comment()",
+    opt = true,
+    config = "require('plugins.configs.comment')",
     setup = function()
-      require("core.mappings").comment()
-    end,
+      require("core.utils").packer_lazy_load "Comment.nvim"
+    end
   }
 
   -- file managing , picker etc
@@ -244,15 +264,6 @@ return packer.startup(function()
   }
 
   use {
-    "kazhala/close-buffers.nvim",
-    cmd = {"BDelete", "BWipeout"},
-    config = "require('plugins.configs.close_buffers')",
-    setup = function()
-      require("core.mappings").close_buffers()
-    end,
-  }
-
-  use {
     "akinsho/toggleterm.nvim",
     opt = true,
     config = "require('plugins.configs.toggleterm')",
@@ -282,4 +293,3 @@ return packer.startup(function()
   }
 
 end)
-

@@ -4,6 +4,7 @@ local g = vim.g
 opt.title = true
 opt.clipboard = "unnamedplus"
 opt.cmdheight = 1
+opt.scrolloff = 999
 opt.cul = true -- cursor line
 
 -- Indentline

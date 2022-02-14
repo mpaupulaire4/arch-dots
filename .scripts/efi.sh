@@ -1,1 +1,8 @@
-efibootmgr --disk /dev/nvme0n1 --part 1 --create --label "Arch Linux" --loader /vmlinuz-linux --unicode 'cryptdevice=UUID=f4630dac-3644-462e-8c5c-7182801bfee1:cryptlvm root=/dev/datafortress/root resume=/dev/datafortress/swap rw initrd=\intel-ucode.img initrd=\initramfs-linux.img' --verbose
+efibootmgr \
+  --disk /dev/nvme0n1 \
+  --part 1 \
+  --create --label "Arch Linux" \
+  --loader /vmlinuz-linux \
+  --verbose \
+  --unicode \
+  'cryptdevice=UUID=f128eccb-7943-413c-aa74-17729008289e:cryptlvm root=/dev/datafortress/root resume=/dev/datafortress/root resume_offset=34816 rw initrd=\intel-ucode.img initrd=\initramfs-linux.img'

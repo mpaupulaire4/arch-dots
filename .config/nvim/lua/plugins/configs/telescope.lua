@@ -11,6 +11,7 @@ telescope.setup {
      mappings = {
        i = {
          ["<C-e>"] = actions.close,
+         ["<Esc>"] = actions.close,
          ["<C-c>"] = actions.delete_buffer,
        },
      },

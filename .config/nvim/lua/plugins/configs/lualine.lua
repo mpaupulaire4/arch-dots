@@ -30,9 +30,18 @@ require('lualine').setup {
     },
     lualine_c = {},
     lualine_x = {},
-    lualine_y = { 'filetype', 'progress' },
+    lualine_y = {
+      'filetype',
+      {
+        'diagnostics',
+        sources = { 'nvim_lsp' },
+        colored = true,           -- Displays diagnostics status in color if set to true.
+        update_in_insert = false, -- Update diagnostics in insert mode.
+        always_visible = false,   -- Show diagnostics even if there are none.
+      },
+    },
     lualine_z = {
-      { 'location', separator = { right = '' }, left_padding = 2 },
+      { 'location', separator = { left = '' }, left_padding = 2 },
     },
   },
   inactive_sections = {
@@ -54,27 +63,31 @@ require('lualine').setup {
   tabline = {
     lualine_a = {
       {
-        'filename',
-        separator = {
-          -- left = '',
-          right = ''
-        },
-        right_padding = 2,
-        path = 1,
-        symbols = {
-          modified = " "
-        }
+        'buffers',
+        show_filename_only = false,
+        filetype_names = {
+          TelescopePrompt = 'Telescope',
+          dashboard = 'Dashboard',
+          packer = 'Packer',
+          fzf = 'FZF',
+          alpha = 'Alpha'
+        }, -- Shows specific buffer name for that filetype ( { `filetype` = `buffer_name`, ... } )
       },
+      -- {
+      --   'filename',
+      --   separator = {
+      --     -- left = '',
+      --     right = ''
+      --   },
+      --   right_padding = 2,
+      --   path = 1,
+      --   symbols = {
+      --     modified = " "
+      --   }
+      -- },
       -- { 'mode', separator = { left = '' }, right_padding = 2 },
     },
     lualine_c = {
-      {
-        'diagnostics',
-        sources = { 'nvim_lsp' },
-        colored = true,           -- Displays diagnostics status in color if set to true.
-        update_in_insert = false, -- Update diagnostics in insert mode.
-        always_visible = false,   -- Show diagnostics even if there are none.
-      }
     },
     lualine_x = {},
     lualine_y = {},
