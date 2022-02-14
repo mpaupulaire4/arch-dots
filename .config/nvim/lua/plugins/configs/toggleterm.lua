@@ -31,7 +31,11 @@ toggleterm.setup {
   --   end
   -- end,
   open_mapping = [[<leader>t]],
-  -- on_open = fun(t: Terminal), -- function to run when the terminal opens
+  on_open = function(t)  -- function to run when the terminal opens
+    local opts = {noremap = true}
+    vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<c-e>', [[<C-\><C-n>]], opts)
+    vim.api.nvim_buf_set_keymap(t.bufnr, 'n', '<c-e>', '<cmd>ToggleTerm<cr>', opts)
+  end,
   -- on_close = fun(t: Terminal), -- function to run when the terminal closes
   hide_numbers = true, -- hide the number column in toggleterm buffers
   -- shade_filetypes = {},
@@ -51,6 +55,7 @@ toggleterm.setup {
     -- the 'curved' border is a custom border type
     -- not natively supported but implemented in this plugin.
     -- border = 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
+    border = 'curved',
     -- width = <value>,
     -- height = <value>,
     winblend = 3,

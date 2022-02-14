@@ -16,5 +16,4 @@ vim.cmd [[ autocmd BufEnter,BufRead,BufWinEnter,FileType,WinEnter * lua require(
 -- File extension specific tabbing
 -- vim.cmd [[ autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 ]]
 --
-vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 

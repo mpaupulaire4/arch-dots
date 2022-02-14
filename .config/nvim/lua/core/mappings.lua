@@ -5,12 +5,6 @@ local cmd = vim.cmd
 
 local M = {}
 
-function _G.set_terminal_keymaps()
-  local opts = {noremap = true}
-  vim.api.nvim_buf_set_keymap(0, 't', '<c-e>', [[<C-\><C-n>]], opts)
-  vim.api.nvim_buf_set_keymap(0, 'n', '<c-e>', '<cmd>ToggleTerm<cr>', opts)
-end
-
 -- these mappings will only be called during initialization
 M.misc = function()
   -- Better jumts and tag follows
