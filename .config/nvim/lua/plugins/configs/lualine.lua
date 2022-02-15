@@ -19,6 +19,8 @@ require('lualine').setup {
       "dashboard",
       "NvimTree",
       "terminal",
+      "dbui",
+      "dbout",
     }
   },
   sections = {
@@ -70,7 +72,8 @@ require('lualine').setup {
           dashboard = 'Dashboard',
           packer = 'Packer',
           fzf = 'FZF',
-          alpha = 'Alpha'
+          alpha = 'Alpha',
+          dbui = 'Dadbod'
         }, -- Shows specific buffer name for that filetype ( { `filetype` = `buffer_name`, ... } )
       },
       -- {

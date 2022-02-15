@@ -1,3 +1,4 @@
+local mappings = require "core.mappings"
 vim.g.db_ui_table_helpers = {
 
 }
@@ -13,4 +14,4 @@ vim.g.db_ui_icons = {
     connection_error = '',
 }
 
-
+mappings.dadbod();

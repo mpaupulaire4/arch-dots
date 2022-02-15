@@ -170,7 +170,11 @@ end
 
 M.toggleterm = function()
    map("n", "<leader>gs", "<cmd>lua _lazygit_toggle()<CR>")
-   map("n", "<leader>d", "<cmd>lua _lazydocker_toggle()<CR>")
+   map("n", "<leader>do", "<cmd>lua _lazydocker_toggle()<CR>")
+end
+
+M.dadbod = function()
+   map("n", "<leader>dd", "<cmd>DBUIToggle<CR>")
 end
 
 M.gitsigns = function()

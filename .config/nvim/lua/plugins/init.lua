@@ -292,4 +292,10 @@ return packer.startup(function()
     setup = "require('plugins.configs.dadbod')",
   }
 
+  use {
+    "kristijanhusak/vim-dadbod-completion",
+    after = {"vim-dadbod", "nvim-cmp"},
+    setup = "require('plugins.configs.dadbod')",
+  }
+
 end)
