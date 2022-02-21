@@ -78,7 +78,7 @@ telescope.setup {
    }
 }
 
-local extensions = { "fzf", "notify" }
+local extensions = { "notify" }
 
 pcall(function()
    for _, ext in ipairs(extensions) do

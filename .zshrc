@@ -355,7 +355,7 @@ fi
 
 export EDITOR=micro
 export NPM_TOKEN="$(grep -s //registry.npmjs.org/:_authToken= $NPM_CONFIG_USERCONFIG | cut -c34- )"
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.local/share/cargo/bin:$PATH"
 source /usr/share/nvm/init-nvm.sh
 source $HOME/.zsh.env.local
 

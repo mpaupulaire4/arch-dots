@@ -4,13 +4,8 @@ local g = vim.g
 opt.title = true
 opt.clipboard = "unnamedplus"
 opt.cmdheight = 1
-opt.scrolloff = 999
+-- opt.scrolloff = 999
 opt.cul = true -- cursor line
-
--- Indentline
-opt.expandtab = true
-opt.shiftwidth = 2
-opt.smartindent = true
 
 -- disable tilde on end of buffer: https://github.com/neovim/neovim/pull/8546#issuecomment-643643758
 opt.fillchars = {

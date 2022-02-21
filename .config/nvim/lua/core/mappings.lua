@@ -164,7 +164,7 @@ M.telescope = function()
    -- LSP related
    map("n", "gd", "<cmd>Telescope lsp_definitions<cr>")
    map("n", "gr", "<cmd>Telescope lsp_references<cr>")
-   map("n", "<leader>ca", "<cmd>Telescope lsp_code_actions<cr>")
+   map("n", "<leader>a", "<cmd>Telescope lsp_code_actions<cr>")
    map("n", "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>")
 end
 

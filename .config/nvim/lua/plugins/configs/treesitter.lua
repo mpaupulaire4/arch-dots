@@ -13,9 +13,6 @@ ts_config.setup {
   matchup = {
     enable = true
   },
-  indent = {
-    enable = true
-  },
   textobjects = {
     select = {
       enable = true,

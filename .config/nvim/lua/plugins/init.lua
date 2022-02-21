@@ -45,8 +45,13 @@ return packer.startup(function()
   }
 
   use {
-    "lukas-reineke/indent-blankline.nvim",
+    'tpope/vim-sleuth',
     event = "BufRead",
+  }
+
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    after = 'vim-sleuth',
     config = "require('plugins.configs.blankline')",
   }
 
@@ -124,6 +129,11 @@ return packer.startup(function()
   }
 
   use {
+    "simrat39/rust-tools.nvim",
+    after = "nvim-lspconfig",
+  }
+
+  use {
     "williamboman/nvim-lsp-installer",
     after = "cmp-nvim-lsp",
     -- config = "require('plugins.configs.lspconfig')",
@@ -174,6 +184,11 @@ return packer.startup(function()
   }
 
   use {
+    "ray-x/cmp-treesitter",
+    after = "nvim-cmp",
+  }
+
+  use {
     "hrsh7th/cmp-path",
     after = "nvim-cmp",
   }
@@ -211,19 +226,20 @@ return packer.startup(function()
 
   use {
     'nvim-telescope/telescope-fzf-native.nvim',
-    opt = true,
+    after = "telescope.nvim",
     run = 'make',
-    setup = function()
-      require("core.utils").packer_lazy_load "telescope-fzf-native.nvim"
-    end
+    config = function()
+      require("telescope").load_extension "fzf"
+    end,
   }
 
   use {
     "nvim-telescope/telescope.nvim",
-    after = "telescope-fzf-native.nvim",
+    opt = true,
     requires = { "nvim-telescope/telescope-fzf-native.nvim" },
     config = "require('plugins.configs.telescope')",
     setup = function()
+      require("core.utils").packer_lazy_load "telescope.nvim"
       require("core.mappings").telescope()
     end,
   }
@@ -296,6 +312,14 @@ return packer.startup(function()
     "kristijanhusak/vim-dadbod-completion",
     after = {"vim-dadbod", "nvim-cmp"},
     setup = "require('plugins.configs.dadbod')",
+  }
+
+  use {
+    'saecki/crates.nvim',
+    after = { "nvim-cmp" },
+    event = { "BufRead Cargo.toml" },
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = "require('plugins.configs.crates')",
   }
 
 end)
