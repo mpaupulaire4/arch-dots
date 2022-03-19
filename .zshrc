@@ -344,6 +344,26 @@ fi
 #vimhelp ()    { vim -c "help $1" -c on -c "au! VimEnter *" }
 
 ## END OF FILE #################################################################
+function dprune () {
+  green="`tput setaf 2`"
+  normal="`tput sgr0`"
+
+  echo -e 'Stopping containers... \c'
+  docker stop `docker ps -aq` &> /dev/null || true
+  echo "${green}done${normal}"
+
+  echo -e 'Pruning containers... \c'
+  docker rm `docker ps -aq` &> /dev/null || true
+  echo "${green}done${normal}"
+
+  echo -e 'Pruning volumes... \c'
+  docker volume rm `docker volume ls` &> /dev/null || true
+  echo "${green}done${normal}"
+
+  echo -e 'Pruning dangling images... \c'
+  docker rmi `docker images -f 'dangling=true' -q` &> /dev/null || true
+  echo "${green}done${normal}"
+}
 # source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 if test -d /.config/environment.d/; then
   for profile in /.config/environment.d/*.conf; do
