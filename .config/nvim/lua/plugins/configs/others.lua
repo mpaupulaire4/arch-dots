@@ -1,13 +1,13 @@
 local M = {}
 
-M.autopairs = function()
-   local present1, autopairs = pcall(require, "nvim-autopairs")
-
-   if present1 then
-      autopairs.setup({fast_wrap = {}})
-   end
-end
-
+-- M.autopairs = function()
+--    local present1, autopairs = pcall(require, "nvim-autopairs")
+--
+--    if present1 then
+--       autopairs.setup({fast_wrap = {}})
+--    end
+-- end
+--
 M.colorizer = function()
    local present, colorizer = pcall(require, "colorizer")
    if present then

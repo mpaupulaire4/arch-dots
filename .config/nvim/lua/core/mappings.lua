@@ -55,14 +55,13 @@ M.misc = function()
   map("n", "<leader>n", ":set rnu! <CR>") -- toggle numbers
   map("n", "<C-a>", "ggVG") -- select whole file content
 
-  map("n", "<S-t>", ":enew <CR>") -- new buffer
-  map("n", "<C-t>", ":tabnew <CR>") -- new tabs
+  -- map("n", "<S-t>", ":enew <CR>") -- new buffer
+  -- map("n", "<C-t>", ":tabnew <CR>") -- new tabs
 
-  map("n", "<Tab>", "<cmd>bnext<CR>") -- new buffer
-  map("n", "<S-Tab>", "<cmd>bprevious<CR>") -- new tabs
+  map("n", "<Tab>", "<cmd>bnext<CR>") -- next buffer
+  map("n", "<S-Tab>", "<cmd>bprevious<CR>") -- prev buffer
 
-  map("n", "<C-q>", ":q <CR>") -- ctrl + q to quit
-  map("i", "<C-q>", "<Esc>:q <CR>") -- ctrl + q to quit
+  map({"n", "i"}, "<C-q>", "<cmd>q <CR>") -- ctrl + q to quit
 
   map("n", "<C-s>", ":w <CR>") -- ctrl + s to save file
   map("i", "<C-s>", "<Esc>:w <CR>") -- ctrl + s to save file
@@ -144,7 +143,7 @@ M.lspconfig = function()
    -- map("n", m.goto_prev, "<cmd>lua vim.diagnostic.goto_prev()<CR>")
    -- map("n", m.goto_next, "<cmd>lua vim.diagnostic.goto_next()<CR>")
    -- map("n", m.set_loclist, "<cmd>lua vim.diagnostic.setloclist()<CR>")
-   -- map("n", m.formatting, "<cmd>lua vim.lsp.buf.formatting()<CR>")
+   map("n", "<leader>p", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>")
 end
 
 M.nvimtree = function()
@@ -154,7 +153,7 @@ end
 
 M.telescope = function()
    map("n", "<leader>fb", "<cmd>Telescope buffers <CR>")
-   map("n", "<leader>ff", "<cmd>Telescope find_files hidden=true <CR>")
+   map("n", "<leader>ff", "<cmd>Telescope find_files <CR>")
    map("n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true <CR>")
    map("n", "<leader>fh", "<cmd>Telescope help_tags <CR>")
    map("n", "<leader>fw", "<cmd>Telescope live_grep <CR>")
