@@ -17,11 +17,6 @@ return packer.startup(function()
     event = "VimEnter",
   }
 
-  use {
-    "stevearc/dressing.nvim",
-    config = "require('plugins.configs.dressing')",
-  }
-
   use  {
     "navarasu/onedark.nvim",
     config = "require('plugins.configs.onedark')"
@@ -36,12 +31,6 @@ return packer.startup(function()
     "kyazdani42/nvim-web-devicons",
     after = "onedark.nvim",
     config = "require('plugins.configs.icons')",
-  }
-
-  use {
-    "rcarriga/nvim-notify",
-    after = "dressing.nvim",
-    config = "require('plugins.configs.nvim-notify')",
   }
 
   use {
@@ -226,6 +215,16 @@ return packer.startup(function()
   }
 
   use {
+    "nvim-telescope/telescope.nvim",
+    opt = true,
+    config = "require('plugins.configs.telescope')",
+    setup = function()
+      require("core.utils").packer_lazy_load "telescope.nvim"
+      require("core.mappings").telescope()
+    end,
+  }
+
+  use {
     'nvim-telescope/telescope-fzf-native.nvim',
     after = "telescope.nvim",
     run = 'make',
@@ -235,14 +234,15 @@ return packer.startup(function()
   }
 
   use {
-    "nvim-telescope/telescope.nvim",
-    opt = true,
-    requires = { "nvim-telescope/telescope-fzf-native.nvim" },
-    config = "require('plugins.configs.telescope')",
-    setup = function()
-      require("core.utils").packer_lazy_load "telescope.nvim"
-      require("core.mappings").telescope()
-    end,
+    "stevearc/dressing.nvim",
+    after = "telescope.nvim",
+    config = "require('plugins.configs.dressing')",
+  }
+
+  use {
+    "rcarriga/nvim-notify",
+    after = "dressing.nvim",
+    config = "require('plugins.configs.nvim-notify')",
   }
 
   use {

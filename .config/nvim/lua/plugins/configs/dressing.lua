@@ -11,9 +11,6 @@ dressing.setup {
     backend = "telescope",
 
     -- Options for telescope selector
-    telescope = {
-      -- can be 'dropdown', 'cursor', or 'ivy'
-      theme = "dropdown",
-    },
+    telescope = require('telescope.themes').get_dropdown({}),
   },
 }
