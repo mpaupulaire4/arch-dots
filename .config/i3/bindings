@@ -23,7 +23,9 @@ set $Float      F
 set $Tab        T
 set $Split      S
 set $Launch     minus
+set $PrintScreen P
 
+include local_bindings
 
 #############         Bindings           ##################
 
