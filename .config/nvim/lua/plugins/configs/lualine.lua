@@ -66,7 +66,7 @@ require('lualine').setup {
     lualine_a = {
       {
         'buffers',
-        show_filename_only = false,
+        -- show_filename_only = false,
         filetype_names = {
           TelescopePrompt = 'Telescope',
           dashboard = 'Dashboard',
