@@ -137,7 +137,7 @@ M.lspconfig = function()
    -- map("n", m.list_workspace_folders, "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
    -- map("n", m.type_definition, "<cmd>lua vim.lsp.buf.type_definition()<CR>")
    map("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>")
-   -- map("n", m.code_action, "<cmd>lua vim.lsp.buf.code_action()<CR>")
+   map("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>")
    -- map("n", m.references, "<cmd>lua vim.lsp.buf.references()<CR>")
    -- map("n", m.float_diagnostics, "<cmd>lua vim.diagnostic.open_float()<CR>")
    -- map("n", m.goto_prev, "<cmd>lua vim.diagnostic.goto_prev()<CR>")
@@ -163,7 +163,7 @@ M.telescope = function()
    -- LSP related
    map("n", "gd", "<cmd>Telescope lsp_definitions<cr>")
    map("n", "gr", "<cmd>Telescope lsp_references<cr>")
-   map("n", "<leader>a", "<cmd>Telescope lsp_code_actions<cr>")
+   -- map("n", "<leader>a", "<cmd>Telescope lsp_code_actions<cr>")
    map("n", "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>")
 end
 

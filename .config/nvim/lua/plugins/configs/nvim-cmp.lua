@@ -34,7 +34,7 @@ cmp.setup {
       return vim_item
     end
   },
-  mapping = {
+  mapping = cmp.mapping.preset.insert {
     ['<PageUp>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<PageDown>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
