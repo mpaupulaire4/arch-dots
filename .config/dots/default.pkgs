@@ -12,7 +12,6 @@ git
 git-delta
 grml-zsh-config
 i3status-rust
-jq
 kitty
 lazygit
 linux
@@ -32,7 +31,6 @@ papirus-icon-theme
 pipewire
 pipewire-alsa
 pipewire-pulse
-postgresql-libs
 pulsemixer
 python-pip
 reflector
