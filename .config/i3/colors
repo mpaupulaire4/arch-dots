@@ -33,8 +33,8 @@ client.background       $base07
 ############    status bar settings   ############
 bar {
     font pango:Fira Code Nerd Font 12
-    i3bar_command i3bar --transparency
     position top
+#     i3bar_command i3bar --transparency
 #     mode hide
 #     modifier Mod4
     tray_output none

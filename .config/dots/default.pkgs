@@ -28,7 +28,6 @@ openvpn
 pacman-contrib
 pacmatic
 papirus-icon-theme
-pipewire
 pipewire-alsa
 pipewire-pulse
 pulsemixer
@@ -37,8 +36,10 @@ reflector
 ripgrep
 rustup
 sof-firmware
+sudo
 udiskie
 unzip
+wireplumber
 xcursor-comix
 xdg-user-dirs
 xdg-utils
