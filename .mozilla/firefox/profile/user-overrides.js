@@ -7,12 +7,10 @@ user_pref("_user.js.parrot", "overrides section syntax error");
   user_pref("signon.rememberSignons", false);
 /* 5007: exclude "Undo Closed Tabs" in Session Restore ***/
   // user_pref("browser.sessionstore.max_tabs_undo", 0);
-/* 5008: disable resuming session from crash ***/
-  user_pref("browser.sessionstore.resume_from_crash", false);
 /* 5010: disable location bar suggestion types
  * [SETTING] Privacy & Security>Address Bar>When using the address bar, suggest ***/
   // user_pref("browser.urlbar.suggest.history", false);
-  user_pref("browser.urlbar.suggest.bookmark", false);
+  // user_pref("browser.urlbar.suggest.bookmark", false);
   // user_pref("browser.urlbar.suggest.openpage", false);
   user_pref("browser.urlbar.suggest.topsites", false); // [FF78+]
 

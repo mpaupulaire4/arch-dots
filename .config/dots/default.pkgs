@@ -14,8 +14,9 @@ grml-zsh-config
 i3status-rust
 kitty
 lazygit
-linux
 linux-firmware
+linux-zen
+linux-zen-headers
 lvm2
 man-db
 man-pages
@@ -43,5 +44,6 @@ wireplumber
 xcursor-comix
 xdg-user-dirs
 xdg-utils
+xorg-xeyes
 zsh
 zsh-completions

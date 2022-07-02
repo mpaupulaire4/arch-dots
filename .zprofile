@@ -7,3 +7,4 @@ export NVM_DIR="$XDG_DATA_HOME/nvm"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export WLR_DRM_NO_MODIFIERS=1
