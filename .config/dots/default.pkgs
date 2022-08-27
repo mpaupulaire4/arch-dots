@@ -44,5 +44,7 @@ xcursor-comix
 xdg-user-dirs
 xdg-utils
 xorg-xeyes
+zellij
+zoxide
 zsh
 zsh-completions

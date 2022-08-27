@@ -372,8 +372,6 @@ if test -d /.config/environment.d/; then
   unset profile
 fi
 
-eval "$(zoxide init zsh)"
-
 export EDITOR=micro
 export NPM_TOKEN="$(grep -s //registry.npmjs.org/:_authToken= $NPM_CONFIG_USERCONFIG | cut -c34- )"
 export PATH="$HOME/.local/bin:$HOME/.local/share/cargo/bin:$PATH"
@@ -407,4 +405,6 @@ source $HOME/.zsh.env.local
 
 alias dots='/usr/bin/git --git-dir=$HOME/.dots.git/ --work-tree=$HOME'
 alias cd='z'
-alias cdi='zi'
+
+eval "$(zoxide init zsh)"
+# eval "$(zellij setup --generate-auto-start zsh)"
