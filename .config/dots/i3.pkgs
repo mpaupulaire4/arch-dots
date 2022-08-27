@@ -9,3 +9,4 @@ xdg-desktop-portal-gtk
 xf86-video-intel
 xorg-server
 xorg-xrandr
+i3status-rust

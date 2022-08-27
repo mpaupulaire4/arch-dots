@@ -372,6 +372,7 @@ if test -d /.config/environment.d/; then
   unset profile
 fi
 
+eval "$(zoxide init zsh)"
 
 export EDITOR=micro
 export NPM_TOKEN="$(grep -s //registry.npmjs.org/:_authToken= $NPM_CONFIG_USERCONFIG | cut -c34- )"
@@ -405,3 +406,5 @@ source $HOME/.zsh.env.local
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 alias dots='/usr/bin/git --git-dir=$HOME/.dots.git/ --work-tree=$HOME'
+alias cd='z'
+alias cdi='zi'

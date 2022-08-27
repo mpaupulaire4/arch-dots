@@ -9,3 +9,4 @@ swaylock
 wl-clipboard
 xdg-desktop-portal-wlr
 xorg-xwayland
+i3status-rust
