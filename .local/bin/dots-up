@@ -9,7 +9,7 @@ touch $DEFAULT_PKGS
 touch $FOREIGN_PKGS
 
 # Do an update
-DIFFPROG='nvim -d' pacman_program="paru" pacmatic -Syu
+paru -Syu
 
 # Install Any PKGs needed but not ignored from .pkgs
 paru -Qqe |
@@ -38,3 +38,6 @@ comm -23 <(sort $CONFIG_DIR/*.pkgs) <(sort $DEFAULT_PKGS) |
 
 comm -23 <(sort $CONFIG_DIR/*.pkgs) <(sort $FOREIGN_PKGS) |
   comm -23 <(paru -Qqem) - > $FOREIGN_PKGS
+
+# Check for pacnew/saves
+DIFFPROG='nvim -d' pacdiff -s
