@@ -1,0 +1,256 @@
+---
+# Configuration for zellij.
+
+# In order to troubleshoot your configuration try using the following command:
+# `zellij setup --check`
+# It should show current config locations and features that are enabled.
+
+# Choose the theme that is specified in the themes section.
+# For some examples, see: https://github.com/zellij-org/zellij/tree/main/example/themes
+# Default: default
+theme: dark
+themes:
+  dark:
+    fg: [171, 178, 191] #ABB2BF
+    bg: [30, 33, 39] #1E2127
+    gray: [92, 99, 112] #5C6370
+    black: [30, 33, 39] #1E2127
+    red: [224, 108, 117] #E06C75
+    green: [152, 195, 121]  #98C379
+    yellow: [209, 154, 102] #D19A66
+    blue: [97, 175, 239]  #61AFEF
+    magenta: [198, 120, 221] #C678DD
+    cyan: [86, 182, 194] #56B6C2
+    white: [171, 178, 191] #ABB2BF
+    orange: [229,131,64]
+# Choose the mode that zellij uses when starting up.
+# Default: normal
+default_mode: locked
+
+keybinds:
+    unbind: true
+    locked:
+        - action: [SwitchToMode: Normal]
+          key: [Ctrl: 't']
+    normal:
+        - action: [SwitchToMode: Locked]
+          key: [Esc, Char: "\n", Ctrl: 'e']
+        - action: [ToggleFocusFullscreen, SwitchToMode: Locked]
+          key: [Ctrl: 't']
+        - action: [ToggleFloatingPanes, SwitchToMode: Locked]
+          key: [Ctrl: 'f']
+        - action: [SwitchToMode: Pane]
+          key: [Char: 'p']
+        - action: [SwitchToMode: Tab]
+          key: [Char: 't']
+        - action: [SwitchToMode: Resize]
+          key: [Ctrl: 'r']
+        - action: [SwitchToMode: Scroll]
+          key: [Ctrl: 's']
+        - action: [SwitchToMode: EnterSearch, SearchInput: [0]]
+          key: [Char: '/']
+        - action: [Detach]
+          key: [Ctrl: 'd']
+        - action: [SwitchToMode: Move]
+          key: [Ctrl: 'm']
+        - action: [MoveFocusOrTab: Left]
+          key: [Left]
+        - action: [MoveFocusOrTab: Right]
+          key: [Right]
+        - action: [MoveFocus: Down]
+          key: [Down]
+        - action: [MoveFocus: Up]
+          key: [Up]
+        # uncomment this and adjust key if using copy_on_select=false
+        # - action: [Copy: ]
+        #   key: [ Alt: 'c']
+    resize:
+        - action: [SwitchToMode: Locked]
+          key: [Esc, Char: "\n", Ctrl: 'e']
+        - action: [Resize: Left]
+          key: [Left]
+        - action: [Resize: Down]
+          key: [Down]
+        - action: [Resize: Up]
+          key: [Up, ]
+        - action: [Resize: Right]
+          key: [Right]
+        - action: [MoveFocusOrTab: Left]
+          key: [Alt: Left]
+        - action: [MoveFocusOrTab: Right]
+          key: [Alt: Right]
+        - action: [MoveFocus: Down]
+          key: [Alt: Down]
+        - action: [MoveFocus: Up]
+          key: [Alt: Up]
+    pane:
+        - action: [SwitchToMode: Locked]
+          key: [Esc, Char: "\n", Ctrl: 'e']
+        - action: [NewPane: , SwitchToMode: Locked]
+          key: [Char: 'n']
+        - action: [NewPane: Down, SwitchToMode: Locked]
+          key: [Char: 'd']
+        - action: [NewPane: Right, SwitchToMode: Locked]
+          key: [Char: 'r']
+        # - action: [CloseFocus, SwitchToMode: Locked]
+        #   key: [Char: 'x']
+        # - action: [ToggleFocusFullscreen, SwitchToMode: Locked]
+        #   key: [Char: 'f']
+        # - action: [TogglePaneFrames, SwitchToMode: Locked]
+        #   key: [Char: 'z']
+        # - action: [ToggleFloatingPanes, SwitchToMode: Locked]
+        #   key: [Char: 'f']
+        - action: [TogglePaneEmbedOrFloating, SwitchToMode: Locked]
+          key: [Char: 'e']
+    move:
+        - action: [SwitchToMode: Locked]
+          key: [Esc, Char: "\n", Ctrl: 'e']
+        - action: [MovePane: Left]
+          key: [Left]
+        - action: [MovePane: Down]
+          key: [Down]
+        - action: [MovePane: Up]
+          key: [Up, ]
+        - action: [MovePane: Right]
+          key: [Right]
+    tab:
+        - action: [SwitchToMode: Locked]
+          key: [Esc, Char: "\n", Ctrl: 'e']
+        - action: [NewTab: , SwitchToMode: RenameTab, TabNameInput: [0]]
+          key: [Char: 'n']
+        - action: [SwitchToMode: RenameTab, TabNameInput: [0]]
+          key: [Char: 'r']
+    scroll:
+        - action: [SwitchToMode: Locked]
+          key: [Esc, Char: "\n", Ctrl: 'e']
+        - action: [EditScrollback, SwitchToMode: Locked]
+          key: [Char: 'e']
+        - action: [ScrollDown]
+          key: [Down]
+        - action: [ScrollUp]
+          key: [Up]
+        - action: [PageScrollDown]
+          key: [PageDown]
+        - action: [PageScrollUp]
+          key: [PageUp]
+        - action: [HalfPageScrollDown]
+          key: [Right]
+        - action: [HalfPageScrollUp]
+          key: [Left]
+        - action: [SwitchToMode: EnterSearch, SearchInput: [0]]
+          key: [Char: '/']
+    entersearch:
+        - action: [SwitchToMode: Search]
+          key: [Char: "\n"]
+        - action: [SearchInput: [27], SwitchToMode: Scroll]
+          key: [Esc, Ctrl: 'e']
+    search:
+        - action: [SwitchToMode: Locked]
+          key: [Esc, Char: "\n", Ctrl: 'e']
+        - action: [ScrollDown]
+          key: [Down]
+        - action: [ScrollUp]
+          key: [Up]
+        - action: [PageScrollDown]
+          key: [PageDown]
+        - action: [PageScrollUp]
+          key: [PageUp]
+        - action: [HalfPageScrollDown]
+          key: [Right]
+        - action: [HalfPageScrollUp]
+          key: [Left]
+        - action: [Search: Down]
+          key: [Char: 'n']
+        - action: [Search: Up]
+          key: [Char: 'N']
+        - action: [SearchToggleOption: CaseSensitivity]
+          key: [Char: 'c']
+        - action: [SearchToggleOption: Wrap]
+          key: [Char: 'w']
+        - action: [SearchToggleOption: WholeWord]
+          key: [Char: 'o']
+    renametab:
+        - action: [SwitchToMode: Locked]
+          key: [Char: "\n"]
+        - action: [UndoRenameTab , SwitchToMode: Locked]
+          key: [Esc, Ctrl: 'e']
+    renamepane:
+        - action: [SwitchToMode: Locked]
+          key: [Char: "\n"]
+        - action: [UndoRenamePane , SwitchToMode: Locked]
+          key: [Esc, Ctrl: 'e']
+    session:
+        - action: [SwitchToMode: Locked]
+          key: [Ctrl: 't', Esc, Char: "\n"]
+        # - action: [Detach]
+        #   key: [Char: 'd']
+plugins:
+    - path: tab-bar
+      tag: tab-bar
+    - path: status-bar
+      tag: status-bar
+    - path: strider
+      tag: strider
+    - path: compact-bar
+      tag: compact-bar
+
+# Choose what to do when zellij receives SIGTERM, SIGINT, SIGQUIT or SIGHUP
+# eg. when terminal window with an active zellij session is closed
+# Options:
+#   - detach (Default)
+#   - quit
+#on_force_close: quit
+
+# Send a request for a simplified ui (without arrow fonts) to plugins
+# Options:
+#   - true
+#   - false (Default)
+#simplified_ui: true
+
+# Choose the path to the default shell that zellij will use for opening new panes
+# Default: $SHELL
+# default_shell: fish
+
+# Toggle between having pane frames around the panes
+# Options:
+#   - true (default)
+#   - false
+#pane_frames: true
+
+# Toggle enabling the mouse mode.
+# On certain configurations, or terminals this could
+# potentially interfere with copying text.
+# Options:
+#   - true (default)
+#   - false
+#mouse_mode: false
+
+# Configure the scroll back buffer size
+# This is the number of lines zellij stores for each pane in the scroll back
+# buffer. Excess number of lines are discarded in a FIFO fashion.
+# Valid values: positive integers
+# Default value: 10000
+#scroll_buffer_size: 10000
+
+# Provide a command to execute when copying text. The text will be piped to
+# the stdin of the program to perform the copy. This can be used with
+# terminal emulators which do not support the OSC 52 ANSI control sequence
+# that will be used by default if this option is not set.
+# Examples:
+#copy_command: "xclip -selection clipboard" # x11
+#copy_command: "wl-copy"                    # wayland
+#copy_command: "pbcopy"                     # osx
+
+# Choose the destination for copied text
+# Allows using the primary selection buffer (on x11/wayland) instead of the system clipboard.
+# Does not apply when using copy_command.
+# Options:
+#   - system (default)
+#   - primary
+#copy_clipboard: primary
+
+# Enable or disable automatic copy (and clear) of selection when releasing mouse
+#copy_on_select: true
+
+# Path to the default editor to use to edit pane scrollbuffer
+# scrollback_editor: /usr/bin/nvim

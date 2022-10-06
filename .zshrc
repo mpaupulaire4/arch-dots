@@ -408,3 +408,5 @@ alias cd='z'
 
 eval "$(zoxide init zsh)"
 # eval "$(zellij setup --generate-auto-start zsh)"
+ZELLIJ_AUTO_ATTACH=true
+eval "$(zellij setup --generate-auto-start zsh)"

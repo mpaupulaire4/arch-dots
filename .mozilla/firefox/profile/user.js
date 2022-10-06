@@ -1402,7 +1402,7 @@ user_pref("_user.js.parrot", "overrides section syntax error");
   user_pref("accessibility.typeaheadfind", true); // enable "Find As You Type"
 /* UX BEHAVIOR ***/
   user_pref("browser.quitShortcut.disabled", true); // disable Ctrl-Q quit shortcut [LINUX] [MAC] [FF87+]
-  user_pref("browser.tabs.closeWindowWithLastTab", false);
+  user_pref("browser.tabs.closeWindowWithLastTab", true);
   user_pref("browser.tabs.loadBookmarksInTabs", true); // open bookmarks in a new tab [FF57+]
 /* UX FEATURES ***/
   user_pref("extensions.pocket.enabled", false); // Pocket Account [FF46+]
