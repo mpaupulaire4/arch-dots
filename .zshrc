@@ -407,6 +407,4 @@ alias dots='/usr/bin/git --git-dir=$HOME/.dots.git/ --work-tree=$HOME'
 alias cd='z'
 
 eval "$(zoxide init zsh)"
-# eval "$(zellij setup --generate-auto-start zsh)"
-ZELLIJ_AUTO_ATTACH=true
 eval "$(zellij setup --generate-auto-start zsh)"
