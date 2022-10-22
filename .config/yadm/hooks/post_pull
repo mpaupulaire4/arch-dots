@@ -1,6 +1,9 @@
 #!/bin/bash
 # updots
-CONFIG_DIR=${XDG_CONFIG_HOME:-$HOME}/dots
+
+[ ! $YADM_HOOK_EXIT -eq 0 ] && exit $YADM_HOOK_EXIT;
+
+CONFIG_DIR=${XDG_CONFIG_HOME:-$HOME}/yadm/pkgs
 DEFAULT_PKGS=$CONFIG_DIR/default.pkgs
 FOREIGN_PKGS=$CONFIG_DIR/foreign.pkgs
 
@@ -41,3 +44,4 @@ comm -23 <(sort $CONFIG_DIR/*.pkgs) <(sort $FOREIGN_PKGS) |
 
 # Check for pacnew/saves
 DIFFPROG='nvim -d' pacdiff -s
+

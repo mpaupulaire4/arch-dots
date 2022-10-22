@@ -1,0 +1,78 @@
+#!/bin/bash -e
+
+source $HOME/.scripts/utils.sh
+
+cd "$HOME"
+
+echo "Updating the yadm repo origin URL"
+yadm remote set-url origin "git@github.com:MyUser/dotfiles.git"
+
+echo "Init submodules"
+yadm submodule update --recursive --init
+
+echo "Settting Up DNS Resolution"
+sudo ln -sf /run/systemd/resolve/stub-resolve.conf /etc/resolve.conf
+
+echo 'Updating'
+sudo pacman -Syu
+
+if ! command -v paru >/dev/null 2>&1; then
+  echo 'Installing Paru'
+  sudo pacman -S rustup
+  rustup toolchain install stable
+  rustup default stable
+  git clone https://aur.archlinux.org/paru.git
+  cd paru
+  makepkg -si
+  cd ..
+  rm -rf paru
+
+  paru --gendb
+fi
+
+if [ ! -f "/etc/xdg/reflector/reflector.conf" ]; then
+  echo 'Installing Reflector';
+  sudo mkdir -p /etc/xdg/reflector
+  sudo cp -i $HOME/.config/reflector/reflector.conf /etc/xdg/reflector/reflector.conf
+  paru -S reflector --needed
+  sudo systemctl enable --now reflector.service
+fi
+
+if ! systemctl is-enabled bluetooth.service >/dev/null 2>&1; then
+  echo 'Configuring Bluetooth';
+  paru -S bluez bluez-utils --needed
+  sudo systemctl enable bluetooth.service
+fi
+
+if [ ! -f "/usr/share/nvm/init-nvm.sh" ]; then
+  echo 'Installing NVM and Node';
+  paru -S nvm --needed
+  source /usr/share/nvm/init-nvm.sh
+  nvm install 'lts/*'
+  nvm install-latest-npm
+  corepack enable
+fi
+
+# if yorn 'Install Sway?'; then
+#   paru -S sway grim slurp swayidle swaylock swaybg xorg-xwayland --needed
+# fi
+#
+# if yorn 'Install I3?'; then
+#   paru -S xorg-server xorg-xrandr xf86-video-intel autorandr i3-gaps --needed
+# fi
+
+if ! systemctl is-enabled ly.service >/dev/null 2>&1; then
+  echo 'Installing Display Manager: ly';
+  paru -S ly --needed
+  sudo systemctl enable ly.service
+fi
+
+# if yorn 'Install and enable power management?'; then
+#   paru -S tlp
+#   sudo systemctl enable tlp
+# fi
+
+if ! systemctl --user is-enabled ssh-agent >/dev/null 2>&1; then
+  echo 'Enable ssh agaent systemd unit?';
+  systemctl --user enable ssh-agent
+fi
