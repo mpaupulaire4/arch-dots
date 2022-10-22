@@ -4,6 +4,7 @@ base
 bc
 bluez
 bluez-utils
+deno
 dunst
 efibootmgr
 fd
