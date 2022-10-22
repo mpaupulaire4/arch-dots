@@ -4,7 +4,7 @@ user_pref("_user.js.parrot", "overrides section syntax error");
 /* 5003: disable saving passwords
  * [NOTE] This does not clear any passwords already saved
  * [SETTING] Privacy & Security>Logins and Passwords>Ask to save logins and passwords for websites ***/
-  user_pref("signon.rememberSignons", false);
+  // user_pref("signon.rememberSignons", false);
 /* 5007: exclude "Undo Closed Tabs" in Session Restore ***/
   // user_pref("browser.sessionstore.max_tabs_undo", 0);
 /* 5010: disable location bar suggestion types
