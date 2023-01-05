@@ -1,7 +1,8 @@
 arandr
 autorandr
 feh
-i3-gaps
+i3-wm
+i3status-rust
 maim
 picom
 xclip
@@ -9,4 +10,3 @@ xdg-desktop-portal-gtk
 xf86-video-intel
 xorg-server
 xorg-xrandr
-i3status-rust
