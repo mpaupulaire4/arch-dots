@@ -16,12 +16,14 @@ paru -Syu
 
 # Install Any PKGs needed but not ignored from .pkgs
 paru -Qqe |
+  sort |
   comm -23 <(sort $CONFIG_DIR/*.pkgs) - |
   comm -12 <(sort $DEFAULT_PKGS) - |
   paru -S - --needed
 
 # # Install Any Foreign PKGs needed but not ignored from .pkgs
 paru -Qqe |
+  sort |
   comm -23 <(sort $CONFIG_DIR/*.pkgs) - |
   comm -12 <(sort $FOREIGN_PKGS) - |
   paru -S - --needed
