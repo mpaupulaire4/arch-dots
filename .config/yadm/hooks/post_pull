@@ -39,10 +39,10 @@ fi
 
 # Regenerate .pkgs ignoring ignored pkgs
 comm -23 <(sort $CONFIG_DIR/*.pkgs) <(sort $DEFAULT_PKGS) |
-  comm -23 <(paru -Qqen) - > $DEFAULT_PKGS
+  comm -23 <(paru -Qqen | sort) - > $DEFAULT_PKGS
 
 comm -23 <(sort $CONFIG_DIR/*.pkgs) <(sort $FOREIGN_PKGS) |
-  comm -23 <(paru -Qqem) - > $FOREIGN_PKGS
+  comm -23 <(paru -Qqem | sort) - > $FOREIGN_PKGS
 
 # Check for pacnew/saves
 DIFFPROG='nvim -d' pacdiff -s
