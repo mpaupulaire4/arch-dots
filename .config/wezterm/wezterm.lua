@@ -10,6 +10,12 @@ local theme = wezterm.color.get_builtin_schemes()[color_scheme]
 -- The filled in variant of the > symbol
 local SOLID_RIGHT_ARROW = ' '
 
+-- TODO: handle clicking/ opening links from terminal
+-- TODO: look into better formating for tab bar and right status
+--      https://wezfurlong.org/wezterm/config/lua/window-events/format-tab-title.html
+--      https://wezfurlong.org/wezterm/config/lua/config/tab_bar_style.html
+--      https://wezfurlong.org/wezterm/config/lua/window/set_right_status.html
+--      https://wezfurlong.org/wezterm/config/appearance.html#retro-tab-bar-appearance
 wezterm.on(
   'format-tab-title',
   function(tab, tabs, panes, config, hover, max_width)
