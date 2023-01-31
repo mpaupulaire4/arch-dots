@@ -41,7 +41,7 @@ bindsym $Mod+slash                exec --no-startup-id rofi -show drun
 # bindsym $Mod+w                  exec --no-startup-id rofi -show wifi
 
 # core
-bindsym $Mod+Return         exec --no-startup-id kitty
+bindsym $Mod+Return         exec --no-startup-id wezterm
 
 # Notifications script
 bindsym $Mod+Escape         exec --no-startup-id dunstctl close

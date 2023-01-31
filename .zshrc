@@ -148,4 +148,4 @@ source $HOME/.zsh.env.local
 # load-nvmrc
 
 eval "$(zoxide init zsh)"
-eval "$(zellij setup --generate-auto-start zsh)"
+# eval "$(zellij setup --generate-auto-start zsh)"

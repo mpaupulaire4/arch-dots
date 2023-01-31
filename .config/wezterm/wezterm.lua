@@ -16,6 +16,7 @@ local SOLID_RIGHT_ARROW = ' '
 --      https://wezfurlong.org/wezterm/config/lua/config/tab_bar_style.html
 --      https://wezfurlong.org/wezterm/config/lua/window/set_right_status.html
 --      https://wezfurlong.org/wezterm/config/appearance.html#retro-tab-bar-appearance
+-- TODO: Setup ssh
 wezterm.on(
   'format-tab-title',
   function(tab, tabs, panes, config, hover, max_width)
@@ -51,7 +52,6 @@ wezterm.on(
   end
 )
 return {
-  enable_kitty_keyboard = true,
   color_scheme = color_scheme,
   font = wezterm.font_with_fallback {
     'Fira Code Nerd Font',
