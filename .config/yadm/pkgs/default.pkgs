@@ -13,7 +13,6 @@ git
 git-delta
 github-cli
 grml-zsh-config
-kitty
 lazygit
 linux-firmware
 linux-zen
@@ -47,7 +46,6 @@ xdg-user-dirs
 xdg-utils
 xorg-xeyes
 yadm
-zellij
 zip
 zoxide
 zsh
