@@ -13,6 +13,7 @@ git
 git-delta
 github-cli
 grml-zsh-config
+intel-ucode
 lazygit
 linux-firmware
 linux-zen
@@ -37,6 +38,9 @@ ripgrep
 rustup
 sof-firmware
 sudo
+systemd-resolvconf
+tlp
+tlp-rdw
 ttf-firacode-nerd
 udiskie
 unzip

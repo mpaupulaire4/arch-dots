@@ -1,29 +1,42 @@
 #!/bin/bash -e
 
-source $HOME/.scripts/utils.sh
-
 cd "$HOME"
 
-echo "Updating the yadm repo origin URL"
-yadm remote set-url origin "git@github.com:MyUser/dotfiles.git"
+echo "Updating"
+sudo pacman -Syu --noconfirm
 
-echo "Init submodules"
-yadm submodule update --recursive --init
+if ! command -v ssh >/dev/null 2>&1; then
+  echo "Installing SSH"
+  sudo pacman -S openssh --noconfirm --needed
+fi
+
+if [ ! -f "$HOME/.ssh/id_ed25519.pub" ]; then
+  echo "Generating ssh key"
+  ssh-keygen -t ed25519
+fi
+
+if [ ! -f "$HOME/.zsh.env.local" ]; then
+  echo "Generating local env file"
+  touch "$HOME/.zsh.env.local"
+fi
+
+echo "Updating the yadm repo origin URL"
+yadm remote set-url origin "git@github.com:mpaupulaire4/arch-dots.git"
+
+# echo "Init submodules"
+# yadm submodule update --recursive --init
 
 echo "Settting Up DNS Resolution"
 sudo ln -sf /run/systemd/resolve/stub-resolve.conf /etc/resolve.conf
 
-echo 'Updating'
-sudo pacman -Syu
-
 if ! command -v paru >/dev/null 2>&1; then
   echo 'Installing Paru'
-  sudo pacman -S rustup
+  sudo pacman -S rustup --noconfirm
   rustup toolchain install stable
   rustup default stable
   git clone https://aur.archlinux.org/paru.git
   cd paru
-  makepkg -si
+  makepkg -si --needed --noconfirm
   cd ..
   rm -rf paru
 
@@ -34,21 +47,21 @@ if [ ! -f "/etc/xdg/reflector/reflector.conf" ]; then
   echo 'Installing Reflector';
   sudo mkdir -p /etc/xdg/reflector
   sudo cp -i $HOME/.config/reflector/reflector.conf /etc/xdg/reflector/reflector.conf
-  paru -S reflector --needed
+  paru -S reflector --needed --noconfirm
   sudo systemctl enable --now reflector.service
 fi
 
 if ! systemctl is-enabled bluetooth.service >/dev/null 2>&1; then
   echo 'Configuring Bluetooth';
-  paru -S bluez bluez-utils --needed
+  paru -S bluez bluez-utils --needed --noconfirm
   sudo systemctl enable bluetooth.service
 fi
 
 if [ ! -f "/usr/share/nvm/init-nvm.sh" ]; then
   echo 'Installing NVM and Node';
-  paru -S nvm --needed
+  paru -S nvm --needed --noconfirm
   source /usr/share/nvm/init-nvm.sh
-  nvm install 'lts/*'
+  nvm install "lts/*"
   nvm install-latest-npm
   corepack enable
 fi
@@ -63,14 +76,16 @@ fi
 
 if ! systemctl is-enabled ly.service >/dev/null 2>&1; then
   echo 'Installing Display Manager: ly';
-  paru -S ly --needed
+  paru -S ly --needed --noconfirm
   sudo systemctl enable ly.service
 fi
 
-# if yorn 'Install and enable power management?'; then
-#   paru -S tlp
-#   sudo systemctl enable tlp
-# fi
+if ! systemctl is-enabled tlp.service >/dev/null 2>&1; then
+  echo 'Instalingl and enabling power management?'
+  paru -S tlp tlp-rdw --needed --noconfirm
+  sudo systemctl enable tlp
+  sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
+fi
 
 if ! systemctl --user is-enabled ssh-agent >/dev/null 2>&1; then
   echo 'Enable ssh agaent systemd unit?';
