@@ -13,28 +13,11 @@ touch $FOREIGN_PKGS
 # Do an update
 paru -Syu
 
-# Install Any PKGs needed but not ignored from .pkgs
+# Install Any PKGs needed
 paru -Qqe |
   sort |
   comm -23 <(sort $CONFIG_DIR/*.pkgs) - |
-  comm -12 <(sort $DEFAULT_PKGS) - |
   paru -S - --needed
-
-# # Install Any Foreign PKGs needed but not ignored from .pkgs
-paru -Qqe |
-  sort |
-  comm -23 <(sort $CONFIG_DIR/*.pkgs) - |
-  comm -12 <(sort $FOREIGN_PKGS) - |
-  paru -S - --needed
-
-if [[ -e $1 ]]; then
-  paru -Qqe |
-    sort |
-    comm -23 <(sort $CONFIG_DIR/*.pkgs) - |
-    comm -12 <(sort $1) - |
-    paru -S - --needed
-fi
-
 
 # Regenerate .pkgs ignoring ignored pkgs
 comm -23 <(sort $CONFIG_DIR/*.pkgs) <(sort $DEFAULT_PKGS) |
