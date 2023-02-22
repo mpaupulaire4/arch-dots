@@ -41,6 +41,7 @@ if ! command -v paru >/dev/null 2>&1; then
   rm -rf paru
 
   paru --gendb
+  paru -S paru
 fi
 
 if [ ! -f "/etc/xdg/reflector/reflector.conf" ]; then
