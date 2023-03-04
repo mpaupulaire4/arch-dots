@@ -1,6 +1,5 @@
 grim
 gtk-layer-shell
-rofi-lbonn-wayland
 slurp
 sway
 swaybg
