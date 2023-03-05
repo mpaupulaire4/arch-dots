@@ -149,3 +149,6 @@ source $HOME/.zsh.env.local
 
 eval "$(zoxide init zsh)"
 # eval "$(zellij setup --generate-auto-start zsh)"
+if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
+    export MOZ_ENABLE_WAYLAND=1
+fi

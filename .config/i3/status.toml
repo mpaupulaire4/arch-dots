@@ -1,44 +1,26 @@
 # [[block]]
 # block = "bluetooth"
-# mac = "DC:0D:11:A1:6A:99"
-# format = "Corne {percentage}"
-#
-# [[block]]
-# block = "bluetooth"
 # mac = "4C:87:5D:7D:D5:C4"
 # format = "Nightshade"
-
+#
+invert_scrolling = true
 [[block]]
-block = "time"
-interval = 20
-format = "%a %d/%m %R"
-
-[[block]]
-block = "memory"
-display_type = "memory"
-format_mem = "{mem_used_percents}"
-format_swap = "{swap_used_percents}"
+block = "net"
+format = " $icon {$ssid[$signal_strength:$frequency]|Wired} "
+interval = 10
+[[block.click]]
+button = "left"
+cmd = 'wezterm start --class "nmtui" nmtui'
 
 [[block]]
 block = "cpu"
 interval = 1
-icons_format = "{icon}"
-format = "{utilization:3} {barchart}"
-
-# [[block]]
-# block = "net"
-# device = "wlan0"
-# format = "{ssid} {signal_strength}"
-# interval = 5
-# hide_inactive = true
-# hide_missing = true
+format = " $icon $utilization "
+format_alt = " $icon $frequency{ $boost|} "
 
 [[block]]
-block = "networkmanager"
-on_click = "kitty -e nmtui"
-interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
-interface_name_include = []
-ap_format = "{ssid^10}"
+block = "memory"
+format = " $icon $mem_used_percents.eng(w:1) "
 
 [[block]]
 block = "backlight"
@@ -46,47 +28,63 @@ block = "backlight"
 [[block]]
 block = "sound"
 driver = "pulseaudio"
+headphones_indicator =  true
 natural_mapping = true
 show_volume_when_muted = true
-on_click = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 
 [[block]]
 block = "sound"
 driver = "pulseaudio"
-natural_mapping = true
-show_volume_when_muted = true
-on_click = "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
 device_kind = "source"
+show_volume_when_muted = true
+
+[[block]]
+block = "time"
+interval = 20
+
+[[block]]
+block = "battery"
+# if_command = "cat /sys/class/power_supply/BAT1/capacity"
+interval = 20
+missing_format = ""
+format = " $icon $percentage {$time |}"
 
 # [[block]]
-# block = "battery"
-# interval = 20
-# allow_missing = true
-# hide_missing = true
-# format = "{percentage} {time}"
+# block = "menu"
+# text = " \uf011 "
+# [[block.items]]
+# display = " -&gt;   Sleep   &lt;-"
+# cmd = "systemctl suspend"
+# [[block.items]]
+# display = " -&gt; Power Off &lt;-"
+# cmd = "poweroff"
+# confirm_msg = "Are you sure you want to power off?"
+# [[block.items]]
+# display = " -&gt;  Reboot   &lt;-"
+# cmd = "reboot"
+# confirm_msg = "Are you sure you want to reboot?"
+
 
 [theme]
-name = "nord-dark"
-
+theme = "nord-dark"
 [theme.overrides]
-# alternating_tint_bg
-# alternating_tint_fg
-idle_bg = "#282c34" 
-idle_fg = "#c8ccd4" 
-info_bg = "#56b6c2" 
-info_fg = "#282c34" 
-good_bg = "#98c379" 
-good_fg = "#282c34" 
-warning_bg = "#d19a66" 
-warning_fg = "#282c34" 
-critical_bg = "#e06c75" 
-critical_fg = "#282c34" 
+alternating_tint_bg = "#282c34"
+idle_bg = "#282c34"
+idle_fg = "#c8ccd4"
+info_bg = "#61afef"
+info_fg = "#282c34"
+good_bg = "#98c379"
+good_fg = "#282c34"
+warning_bg = "#e5c07b"
+warning_fg = "#282c34"
+critical_bg = "#e06c75"
+critical_fg = "#282c34"
 # separator_bg
 # separator_fg
 # separator
 
 [icons]
-name = "material-nf"
+icons = "material-nf"
 
 # set $base00 #282c34
 # set $base01 #353b45
@@ -104,4 +102,3 @@ name = "material-nf"
 # set $base0D #61afef
 # set $base0E #c678dd
 # set $base0F #be5046
-

@@ -1,3 +1,14 @@
-input '1133:16495:Logitech_MX_Ergo' {
-	pointer_accel 1
+input type:pointer {
+  pointer_accel 1
+}
+
+input type:touchpad {
+  click_method    clickfinger
+  dwt             enabled
+  dwtp            enabled
+  natural_scroll  enabled
+  tap             enabled
+  tap_button_map  lrm
+  scroll_method   two_finger
+  pointer_accel   0.85
 }
