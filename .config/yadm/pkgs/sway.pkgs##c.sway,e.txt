@@ -6,6 +6,7 @@ swaybg
 swayidle
 swaylock
 wl-clipboard
+wofi
 xdg-desktop-portal-wlr
 xorg-xwayland
 i3status-rust

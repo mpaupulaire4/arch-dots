@@ -5,6 +5,7 @@ i3-wm
 i3status-rust
 maim
 picom
+rofi
 xclip
 xdg-desktop-portal-gtk
 xf86-video-intel
