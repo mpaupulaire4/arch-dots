@@ -1,0 +1,8 @@
+show=drun
+term=wezterm
+hide_scroll=true
+matching=fuzzy
+insensitive=true
+gtk_dark=true
+colors=./colors
+style=./styles.css

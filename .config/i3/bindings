@@ -1,5 +1,3 @@
-set $Mod        Mod4
-
 # alt direction keys
 set $up         U
 set $down       E
@@ -33,12 +31,6 @@ include local_bindings
 bindsym $Mod+Shift+BackSpace      kill
 bindsym $Mod+Shift+Ctrl+BackSpace      exit
 
-
-# launchers
-bindsym $Mod+Tab                  exec --no-startup-id $XDG_CONFIG_HOME/i3/scripts/bwmenu.sh
-bindsym $Mod+slash                exec --no-startup-id rofi -show drun
-# bindsym $Mod+Tab                exec --no-startup-id rofi -show window
-# bindsym $Mod+w                  exec --no-startup-id rofi -show wifi
 
 # core
 bindsym $Mod+Return         exec --no-startup-id wezterm

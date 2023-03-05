@@ -1,6 +1,9 @@
+set $Mod        Mod4
+
 include ~/.config/i3/global
 include ~/.config/i3/bindings
 include ~/.config/i3/colors
+include ./launchers
 include ./outputs
 include ./inputs
 

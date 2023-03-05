@@ -1,0 +1,93 @@
+element selected {
+    text-color: --wofi-color1;
+}
+
+#window {
+    /* font:   "Roboto 12"; */
+
+    background-color:   transparent;
+    text-color:         --wofi-color5;
+
+    margin:     0px;
+    padding:    0px;
+    spacing:    0px;
+
+    /* rad1:   16px; */
+    /* rad2:   12px; */
+}
+
+window {
+    /* width:          720; */
+    border-radius:  @rad1;
+
+    background-color:   --wofi-color0;
+}
+
+mainbox {
+    padding:    10px;
+}
+
+inputbar {
+    background-color:   --wofi-color1;
+    border-color:       --wofi-color3;
+
+    border:         2px;
+    /* border-radius:  @rad2; */
+
+    padding:    8px 12px;
+    spacing:    8px;
+    /* children:   [ prompt, entry ]; */
+}
+
+prompt {
+    text-color: --wofi-color2;
+}
+
+entry {
+    placeholder:        "Search";
+    placeholder-color:  --wofi-color3;
+}
+
+message {
+    margin:             12px 0 0;
+    border-radius:      @rad2;
+    border-color:       --wofi-color2;
+    background-color:   --wofi-color2;
+}
+
+textbox {
+    padding:    8px 24px;
+}
+
+listview {
+    background-color:   transparent;
+
+    margin:     12px 0 0;
+    lines:      10;
+    columns:    1;
+
+    fixed-height: false;
+}
+
+element {
+    padding:        8px 12px;
+    spacing:        8px;
+    border-radius:  @rad2;
+}
+
+element normal active {
+    text-color: --wofi-color3;
+}
+
+element selected normal, element selected active {
+    background-color:   --wofi-color3;
+}
+
+element-icon {
+    size:           1em;
+    vertical-align: 0.5;
+}
+
+element-text {
+    text-color: inherit;
+}
