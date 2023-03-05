@@ -1,1 +1,3 @@
-./pkgs/ignore.pkgs
+./pkgs/*.pkgs
+!./pkgs/default.pkgs
+!./pkgs/foreign.pkgs
