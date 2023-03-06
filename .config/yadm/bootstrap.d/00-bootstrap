@@ -92,3 +92,10 @@ if ! systemctl --user is-enabled ssh-agent >/dev/null 2>&1; then
   echo 'Enable ssh agaent systemd unit?';
   systemctl --user enable ssh-agent
 fi
+
+if [ ! -z `yadm config --get local.class laptop` -a \
+    ! systemctl is-enabled thermald.service >/dev/null 2>&1 ]; then
+  echo "Installing and enabling thermald"
+  paru -S thermald --needed --noconfirm
+  sudo systemctl enable thermald.service
+fi
