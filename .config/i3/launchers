@@ -1,0 +1,5 @@
+# launchers
+# bindsym $Mod+Tab                  exec --no-startup-id $XDG_CONFIG_HOME/i3/scripts/bwmenu.sh
+bindsym $Mod+slash                exec --no-startup-id rofi -show drun
+bindsym $Mod+Tab                exec --no-startup-id rofi -show window
+# bindsym $Mod+w                  exec --no-startup-id rofi -show wifi

@@ -6,5 +6,6 @@ include ~/.config/i3/colors
 include ./launchers
 include ./outputs
 include ./inputs
+include ./idle
 
 exec_always ./import-gsettings

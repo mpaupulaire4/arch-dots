@@ -21,5 +21,5 @@ output 'Dell Inc. DELL U2720Q 1X3CBH3' {
 output eDP-1 {
   scale 1.5
   mode 2256x1504@59.997Hz
-  bg ~/Pictures/walls/nord-color-blast.png fill
+  bg ~/Pictures/walls/shooting-star.jpg fill
 }

@@ -1,0 +1,11 @@
+ignore-empty-password
+daemonize
+image=$HOME/Pictures/walls/night-sky.jpeg
+color=282c34
+bs-hl-color=e06c75
+inside-color=282c34
+inside-clear-color=d19a66
+inside-caps-lock-color=c678dd
+inside-ver-color=56b6c2
+inside-wrong-color=e06c75
+key-hl-color=98c379
