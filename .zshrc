@@ -112,13 +112,6 @@ function dprune () {
   echo "${green}done${normal}"
 }
 
-if test -d /.config/environment.d/; then
-  for profile in /.config/environment.d/*.conf; do
-  	test -r "$profile" && . "$profile"
-  done
-  unset profile
-fi
-
 export EDITOR=micro
 export NPM_TOKEN="$(grep -s //registry.npmjs.org/:_authToken= $NPM_CONFIG_USERCONFIG | cut -c34- )"
 export PATH="$HOME/.local/bin:$HOME/.local/share/cargo/bin:$PATH"
@@ -127,28 +120,5 @@ export PATH="$FLYCTL_INSTALL/bin:$PATH"
 source /usr/share/nvm/init-nvm.sh
 source $HOME/.zsh.env.local
 
-# load-nvmrc() {
-#   local node_version="$(nvm version)"
-#   local nvmrc_path="$(nvm_find_nvmrc)"
-
-#   if [ -n "$nvmrc_path" ]; then
-#     local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-#     if [ "$nvmrc_node_version" = "N/A" ]; then
-#       nvm install
-#     elif [ "$nvmrc_node_version" != "$node_version" ]; then
-#       nvm use
-#     fi
-#   elif [ "$node_version" != "$(nvm version default)" ]; then
-#     echo "Reverting to nvm default version"
-#     nvm use default
-#   fi
-# }
-# add-zsh-hook chpwd load-nvmrc
-# load-nvmrc
-
 eval "$(zoxide init zsh)"
 # eval "$(zellij setup --generate-auto-start zsh)"
-if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
-    export MOZ_ENABLE_WAYLAND=1
-fi
