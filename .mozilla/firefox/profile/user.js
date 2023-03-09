@@ -1210,6 +1210,7 @@ user_pref("_user.js.parrot", "SUCCESS: No no he's not dead, he's, he's restin'!"
 /*** MY OVERRIDES ***/
 user_pref("_user.js.parrot", "overrides section syntax error");
 
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 /* 5003: disable saving passwords
  * [NOTE] This does not clear any passwords already saved
  * [SETTING] Privacy & Security>Logins and Passwords>Ask to save logins and passwords for websites ***/
@@ -1222,15 +1223,6 @@ user_pref("_user.js.parrot", "overrides section syntax error");
   // user_pref("browser.urlbar.suggest.bookmark", false);
   // user_pref("browser.urlbar.suggest.openpage", false);
   user_pref("browser.urlbar.suggest.topsites", false); // [FF78+]
-
-
-/* 1702: set behaviour on "+ Tab" button to display container menu on left click [FF74+]
- * [NOTE] The menu is always shown on long press and right click
- * [SETTING] General>Tabs>Enable Container Tabs>Settings>Select a container for each new tab ***/
-  user_pref("privacy.userContext.newTabContainerOnLeftClick.enabled", true);
-
-
-
 
 /*** [SECTION 9000]: PERSONAL
   Non-project related but useful. If any interest you, add them to your overrides
@@ -1245,5 +1237,4 @@ user_pref("_user.js.parrot", "overrides section syntax error");
   user_pref("browser.tabs.loadBookmarksInTabs", true); // open bookmarks in a new tab [FF57+]
 /* UX FEATURES ***/
   user_pref("extensions.pocket.enabled", false); // Pocket Account [FF46+]
-  user_pref("identity.fxaccounts.enabled", false); // Firefox Accounts & Sync [FF60+] [RESTART]
 /* OTHER ***/
