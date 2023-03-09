@@ -38,6 +38,7 @@ rustup
 sof-firmware
 sudo
 systemd-resolvconf
+thermald
 tlp
 tlp-rdw
 ttf-firacode-nerd

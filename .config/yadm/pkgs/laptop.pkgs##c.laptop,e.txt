@@ -1,3 +1,2 @@
 iio-sensor-proxy
 powertop
-thermald
