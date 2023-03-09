@@ -9,5 +9,5 @@ include ./inputs
 include ./idle
 include ./gestures
 
-exec_always $HOME/.config/sway/import-gsettings
-exec_always pgrep swaycons || $HOME/.config/sway/swaycons
+exec_always $HOME/.config/sway/scripts/import-gsettings
+exec_always pgrep swaycons || $HOME/.config/sway/scripts/swaycons
