@@ -15,9 +15,9 @@ if [ ! -f "$HOME/.ssh/id_ed25519.pub" ]; then
   ssh-keygen -t ed25519
 fi
 
-if [ ! -f "$HOME/.zsh.env.local" ]; then
+if [ ! -f "$XDG_CONFIG_HOME/zsh/zsh.env.local" ]; then
   echo "Generating local env file"
-  touch "$HOME/.zsh.env.local"
+  touch "$XDG_CONFIG_HOME/zsh/zsh.env.local"
 fi
 
 echo "Updating the yadm repo origin URL"
