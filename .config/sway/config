@@ -7,5 +7,6 @@ include ./launchers
 include ./outputs
 include ./inputs
 include ./idle
+include ./gestures
 
 exec_always ./import-gsettings

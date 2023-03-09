@@ -1,6 +1,7 @@
 /*** MY OVERRIDES ***/
 user_pref("_user.js.parrot", "overrides section syntax error");
 
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 /* 5003: disable saving passwords
  * [NOTE] This does not clear any passwords already saved
  * [SETTING] Privacy & Security>Logins and Passwords>Ask to save logins and passwords for websites ***/

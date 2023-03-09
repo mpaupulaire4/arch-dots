@@ -1,5 +1,5 @@
 # Lock Screen and DPMS
-set $lock     swaylock -C $HOME/sway/lock --daemonize
+set $lock     swaylock -C $HOME/.config/sway/lock --daemonize
 set $bl_time  300
 set $lk_time  315
 set $lb_time  15
