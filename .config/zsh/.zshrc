@@ -113,11 +113,7 @@ function dprune () {
   echo "${green}done${normal}"
 }
 
-export EDITOR=micro
-export NPM_TOKEN="$(grep -s //registry.npmjs.org/:_authToken= $NPM_CONFIG_USERCONFIG | cut -c34- )"
-export PATH="$HOME/.local/bin:$HOME/.local/share/cargo/bin:$PATH"
-export FLYCTL_INSTALL="/home/mpaupulaire/.fly"
-export PATH="$FLYCTL_INSTALL/bin:$PATH"
+# export NPM_TOKEN="$(grep -s //registry.npmjs.org/:_authToken= $NPM_CONFIG_USERCONFIG | cut -c34- )"
 source /usr/share/nvm/init-nvm.sh
 source $XDG_CONFIG_HOME/zsh/zsh.env.local
 
