@@ -1,6 +1,6 @@
 {
   "version": "1.9.2",
-  "date": 1678368293494,
+  "date": 1678464284580,
   "preferences": {
     "automaticMode": {
       "active": true,
@@ -15,7 +15,7 @@
       "icon": "circle",
       "iconRandom": false,
       "iconRandomExcluded": [],
-      "numberMode": "keep",
+      "numberMode": "keepuntilrestart",
       "removal": 900000
     },
     "iconColor": "default",
@@ -48,11 +48,11 @@
       }
     },
     "browserActionPopup": true,
-    "pageAction": false,
-    "contextMenu": true,
+    "pageAction": true,
+    "contextMenu": false,
     "contextMenuBookmarks": false,
     "keyboardShortcuts": {
-      "AltC": true,
+      "AltC": false,
       "AltP": true,
       "AltN": false,
       "AltShiftC": false,
@@ -62,7 +62,7 @@
     },
     "replaceTabs": false,
     "closeRedirectorTabs": {
-      "active": false,
+      "active": true,
       "delay": 2000,
       "domains": [
         "t.co",
@@ -94,8 +94,8 @@
     },
     "statistics": false,
     "ui": {
-      "expandPreferences": false,
-      "popupDefaultTab": "isolation-global"
+      "expandPreferences": true,
+      "popupDefaultTab": "isolation-per-domain"
     }
   }
 }

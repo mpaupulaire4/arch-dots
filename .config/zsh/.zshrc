@@ -1,4 +1,6 @@
 ## set command prediction from history, see 'man 1 zshcontrib'
+zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 is4 && zrcautoload predict-on && \
 zle -N predict-on         && \
 zle -N predict-off        && \
@@ -24,8 +26,6 @@ setopt printexitvalue
 is4 && setopt histignorealldups
 
 ## compsys related snippets ##
-mkdir -p $XDG_CACHE_HOME/zsh
-compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 ## to have more convenient account completion, specify your logins:
 #my_accounts=(
 # {grml,grml1}@foo.invalid
