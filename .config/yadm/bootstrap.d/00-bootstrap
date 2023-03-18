@@ -3,11 +3,11 @@
 cd "$HOME"
 
 echo "Updating"
-sudo pacman -Syu --noconfirm
+sudo pacman -Syu
 
 if ! command -v ssh >/dev/null 2>&1; then
   echo "Installing SSH"
-  sudo pacman -S openssh --noconfirm --needed
+  sudo pacman -S openssh --needed
 fi
 
 if [ ! -f "$HOME/.ssh/id_ed25519.pub" ]; then
@@ -31,12 +31,12 @@ sudo ln -sf /run/systemd/resolve/stub-resolve.conf /etc/resolve.conf
 
 if ! command -v paru >/dev/null 2>&1; then
   echo 'Installing Paru'
-  sudo pacman -S rustup --noconfirm
+  sudo pacman -S rustup
   rustup toolchain install stable
   rustup default stable
   git clone https://aur.archlinux.org/paru.git
   cd paru
-  makepkg -si --needed --noconfirm
+  makepkg -si --needed
   cd ..
   rm -rf paru
 
@@ -48,19 +48,19 @@ if [ ! -f "/etc/xdg/reflector/reflector.conf" ]; then
   echo 'Installing Reflector';
   sudo mkdir -p /etc/xdg/reflector
   sudo cp -i $HOME/.config/reflector/reflector.conf /etc/xdg/reflector/reflector.conf
-  paru -S reflector --needed --noconfirm
+  paru -S reflector --needed
   sudo systemctl enable --now reflector.service
 fi
 
 if ! systemctl is-enabled bluetooth.service >/dev/null 2>&1; then
   echo 'Configuring Bluetooth';
-  paru -S bluez bluez-utils --needed --noconfirm
+  paru -S bluez bluez-utils --needed
   sudo systemctl enable bluetooth.service
 fi
 
 if [ ! -f "/usr/share/nvm/init-nvm.sh" ]; then
   echo 'Installing NVM and Node';
-  paru -S nvm --needed --noconfirm
+  paru -S nvm --needed
   source /usr/share/nvm/init-nvm.sh
   nvm install "lts/*"
   nvm install-latest-npm
@@ -77,13 +77,13 @@ fi
 
 if ! systemctl is-enabled ly.service >/dev/null 2>&1; then
   echo 'Installing Display Manager: ly';
-  paru -S ly --needed --noconfirm
+  paru -S ly --needed
   sudo systemctl enable ly.service
 fi
 
 if ! systemctl is-enabled tlp.service >/dev/null 2>&1; then
   echo 'Instalingl and enabling power management?'
-  paru -S tlp tlp-rdw --needed --noconfirm
+  paru -S tlp tlp-rdw --needed
   sudo systemctl enable tlp
   sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
 fi
@@ -95,6 +95,6 @@ fi
 
 if ! systemctl is-enabled thermald.service >/dev/null 2>&1; then
   echo "Installing and enabling thermald"
-  paru -S thermald --needed --noconfirm
+  paru -S thermald --needed
   sudo systemctl enable thermald.service
 fi

@@ -36,7 +36,7 @@ bar {
     mode hide
     modifier Mod4
     tray_output none
-    status_command /usr/bin/i3status-rs ./.config/i3/status.toml
+    status_command /usr/bin/i3status-rs $HOME/.config/i3/status.toml
     colors {
         background $base00
         separator  $base01

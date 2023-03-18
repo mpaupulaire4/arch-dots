@@ -1,7 +1,7 @@
 /******
 *    name: arkenfox user.js
-*    date: 7 February 2023
-* version: 109
+*    date: 12 March 2023
+* version: 110
 *     url: https://github.com/arkenfox/user.js
 * license: MIT: https://github.com/arkenfox/user.js/blob/master/LICENSE.txt
 
@@ -557,13 +557,6 @@ user_pref("privacy.userContext.ui.enabled", true);
 
 /*** [SECTION 2000]: PLUGINS / MEDIA / WEBRTC ***/
 user_pref("_user.js.parrot", "2000 syntax error: the parrot's snuffed it!");
-/* 2001: disable WebRTC (Web Real-Time Communication)
- * Firefox desktop uses mDNS hostname obfuscation and the private IP is never exposed until
- * required in TRUSTED scenarios; i.e. after you grant device (microphone or camera) access
- * [TEST] https://browserleaks.com/webrtc
- * [1] https://groups.google.com/g/discuss-webrtc/c/6stQXi72BEU/m/2FwZd24UAQAJ
- * [2] https://datatracker.ietf.org/doc/html/draft-ietf-mmusic-mdns-ice-candidates#section-3.1.1 ***/
-   // user_pref("media.peerconnection.enabled", false);
 /* 2002: force WebRTC inside the proxy [FF70+] ***/
 user_pref("media.peerconnection.ice.proxy_only_if_behind_proxy", true);
 /* 2003: force a single network interface for ICE candidates generation [FF42+]
@@ -954,9 +947,9 @@ user_pref("_user.js.parrot", "5000 syntax error: the parrot's taken 'is last bow
    // user_pref("extensions.formautofill.addresses.enabled", false); // [FF55+]
    // user_pref("extensions.formautofill.creditCards.enabled", false); // [FF56+]
    // user_pref("extensions.formautofill.heuristics.enabled", false); // [FF55+]
-/* 5017: limit events that can cause a pop-up ***/
+/* 5018: limit events that can cause a pop-up ***/
    // user_pref("dom.popup_allowed_events", "click dblclick mousedown pointerdown");
-/* 5018: disable page thumbnail collection ***/
+/* 5019: disable page thumbnail collection ***/
    // user_pref("browser.pagethumbnails.capturing_disabled", true); // [HIDDEN PREF]
 
 /*** [SECTION 5500]: OPTIONAL HARDENING
@@ -1143,6 +1136,13 @@ user_pref("_user.js.parrot", "7000 syntax error: the parrot's pushing up daisies
  * [NOTE] To remove all subscriptions, reset "dom.push.userAgentID"
  * [1] https://support.mozilla.org/kb/push-notifications-firefox ***/
    // user_pref("dom.push.enabled", false);
+/* 7020: disable WebRTC (Web Real-Time Communication)
+ * [WHY] Firefox desktop uses mDNS hostname obfuscation and the private IP is never exposed until
+ * required in TRUSTED scenarios; i.e. after you grant device (microphone or camera) access
+ * [TEST] https://browserleaks.com/webrtc
+ * [1] https://groups.google.com/g/discuss-webrtc/c/6stQXi72BEU/m/2FwZd24UAQAJ
+ * [2] https://datatracker.ietf.org/doc/html/draft-ietf-mmusic-mdns-ice-candidates#section-3.1.1 ***/
+   // user_pref("media.peerconnection.enabled", false);
 
 /*** [SECTION 8000]: DON'T BOTHER: FINGERPRINTING
    [WHY] They are insufficient to help anti-fingerprinting and do more harm than good
@@ -1214,27 +1214,36 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 /* 5003: disable saving passwords
  * [NOTE] This does not clear any passwords already saved
  * [SETTING] Privacy & Security>Logins and Passwords>Ask to save logins and passwords for websites ***/
-  // user_pref("signon.rememberSignons", false);
+user_pref("signon.rememberSignons", false);
 /* 5007: exclude "Undo Closed Tabs" in Session Restore ***/
-  // user_pref("browser.sessionstore.max_tabs_undo", 0);
+// user_pref("browser.sessionstore.max_tabs_undo", 0);
 /* 5010: disable location bar suggestion types
  * [SETTING] Privacy & Security>Address Bar>When using the address bar, suggest ***/
-  // user_pref("browser.urlbar.suggest.history", false);
-  // user_pref("browser.urlbar.suggest.bookmark", false);
-  // user_pref("browser.urlbar.suggest.openpage", false);
-  user_pref("browser.urlbar.suggest.topsites", false); // [FF78+]
+// user_pref("browser.urlbar.suggest.history", false);
+// user_pref("browser.urlbar.suggest.bookmark", false);
+// user_pref("browser.urlbar.suggest.openpage", false);
+user_pref("browser.urlbar.suggest.topsites", false); // [FF78+]
+/* 5017: disable Form Autofill
+ * If .supportedCountries includes your region (browser.search.region) and .supported
+ * is "detect" (default), then the UI will show. Stored data is not secure, uses JSON
+ * [NOTE] Heuristics controls Form Autofill on forms without @autocomplete attributes
+ * [SETTING] Privacy & Security>Forms and Autofill>Autofill addresses
+ * [1] https://wiki.mozilla.org/Firefox/Features/Form_Autofill ***/
+user_pref("extensions.formautofill.addresses.enabled", false); // [FF55+]
+user_pref("extensions.formautofill.creditCards.enabled", false); // [FF56+]
+user_pref("extensions.formautofill.heuristics.enabled", false); // [FF55+]
 
 /*** [SECTION 9000]: PERSONAL
   Non-project related but useful. If any interest you, add them to your overrides
 ***/
 /* APPEARANCE ***/
-  user_pref("ui.systemUsesDarkTheme", 1); // [FF67+] [HIDDEN PREF]
+user_pref("ui.systemUsesDarkTheme", 1); // [FF67+] [HIDDEN PREF]
 /* CONTENT BEHAVIOR ***/
-  user_pref("accessibility.typeaheadfind", true); // enable "Find As You Type"
+user_pref("accessibility.typeaheadfind", true); // enable "Find As You Type"
 /* UX BEHAVIOR ***/
-  user_pref("browser.quitShortcut.disabled", true); // disable Ctrl-Q quit shortcut [LINUX] [MAC] [FF87+]
-  user_pref("browser.tabs.closeWindowWithLastTab", true);
-  user_pref("browser.tabs.loadBookmarksInTabs", true); // open bookmarks in a new tab [FF57+]
+user_pref("browser.quitShortcut.disabled", true); // disable Ctrl-Q quit shortcut [LINUX] [MAC] [FF87+]
+user_pref("browser.tabs.closeWindowWithLastTab", true);
+user_pref("browser.tabs.loadBookmarksInTabs", true); // open bookmarks in a new tab [FF57+]
 /* UX FEATURES ***/
-  user_pref("extensions.pocket.enabled", false); // Pocket Account [FF46+]
+user_pref("extensions.pocket.enabled", false); // Pocket Account [FF46+]
 /* OTHER ***/

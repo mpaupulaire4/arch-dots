@@ -1,0 +1,11 @@
+[global]
+color = "#FFFFFF" # this must be a valid color
+focused_color = "" # to disable a focused_color set this to ""
+icon = "类" # to disable a default icon just set this to ""
+size = "14pt" # must be a valid pango size value
+
+[app_id]
+"org.wezfurlong.wezterm" = { icon = "" }
+
+[title]
+NVIM = { app_id = ["org.wezfurlong.wezterm", "Alacritty"], icon = "", color = "#8fff6d" }

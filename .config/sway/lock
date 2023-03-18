@@ -1,4 +1,3 @@
-ignore-empty-password
 daemonize
 image=$HOME/Pictures/walls/night-sky.jpeg
 color=282c34
