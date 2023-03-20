@@ -57,7 +57,7 @@ return {
     'Fira Code Nerd Font',
   },
   -- font = wezterm.font 'Fira Code',
-  font_size = 16,
+  font_size = 14,
   disable_default_key_bindings = true,
   keys = binds.keys,
   key_tables = binds.key_tables,
