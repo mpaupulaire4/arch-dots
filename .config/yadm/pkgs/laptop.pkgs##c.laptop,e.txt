@@ -2,3 +2,4 @@ iio-sensor-proxy
 powertop
 fprintd
 ufw
+keyd
