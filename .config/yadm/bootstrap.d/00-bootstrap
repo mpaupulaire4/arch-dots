@@ -5,6 +5,11 @@ cd "$HOME"
 echo "Updating"
 sudo pacman -Syu
 
+if [ ! -L "/etc/pacman.conf" ]; then
+  echo "Linking pacman.conf"
+  sudo ln -sf "$HOME/.config/pacman/pacman.conf" /etc/pacman.conf
+fi
+
 if ! command -v ssh >/dev/null 2>&1; then
   echo "Installing SSH"
   sudo pacman -S openssh --needed
@@ -20,14 +25,18 @@ if [ ! -f "$XDG_CONFIG_HOME/zsh/zsh.env.local" ]; then
   touch "$XDG_CONFIG_HOME/zsh/zsh.env.local"
 fi
 
-echo "Updating the yadm repo origin URL"
-yadm remote set-url origin "git@github.com:mpaupulaire4/arch-dots.git"
+if [[ "$(yadm remote get-url origin)" != "git@github.com:mpaupulaire4/arch-dots.git" ]]; then
+  echo "Updating the yadm repo origin URL"
+  yadm remote set-url origin "git@github.com:mpaupulaire4/arch-dots.git"
+fi
 
 # echo "Init submodules"
 # yadm submodule update --recursive --init
 
-echo "Settting Up DNS Resolution"
-sudo ln -sf /run/systemd/resolve/stub-resolve.conf /etc/resolve.conf
+if [ ! -L "/etc/resolve.conf" ]; then
+  echo "Settting Up DNS Resolution"
+  sudo ln -sf /run/systemd/resolve/stub-resolve.conf /etc/resolve.conf
+fi
 
 if ! command -v paru >/dev/null 2>&1; then
   echo 'Installing Paru'
