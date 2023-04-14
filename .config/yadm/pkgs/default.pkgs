@@ -24,6 +24,7 @@ micro
 neovim
 networkmanager
 networkmanager-openvpn
+nfs-utils
 openssh
 openvpn
 pacman-contrib
