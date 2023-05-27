@@ -10,9 +10,6 @@ mkdir -pv $CONFIG_DIR
 touch $DEFAULT_PKGS
 touch $FOREIGN_PKGS
 
-# Do an update
-paru -Syu
-
 # Install Any PKGs needed
 paru -Qqe |
   sort |
