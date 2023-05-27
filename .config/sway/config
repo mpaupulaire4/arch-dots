@@ -6,8 +6,10 @@ include ~/.config/i3/colors
 include ./launchers
 include ./outputs
 include ./inputs
-include ./idle
 include ./gestures
 
 exec_always $HOME/.config/sway/scripts/import-gsettings
+# Tab Icons
 exec_always pgrep swaycons || $HOME/.config/sway/scripts/swaycons
+# Lock Screen and DPMS
+exec_always pgrep swayidle || swayidle -w &
