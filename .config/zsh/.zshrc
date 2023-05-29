@@ -25,6 +25,7 @@ setopt printexitvalue
 
 alias dots='yadm'
 alias cd='z'
+alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
 ## global aliases (for those who like them) ##
 
