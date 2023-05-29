@@ -1,8 +1,11 @@
 deno
+direnv
 github-cli
 helix
 lazygit
 neovim
+nix
 ripgrep
 rustup
+starship
 wezterm

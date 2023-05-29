@@ -1,0 +1,12 @@
+#!/bin/bash -e
+
+
+if ! command -v nix >/dev/null 2>&1; then
+  echo "Installing nix and devenv"
+  sudo pacman -S nix --needed
+  echo "trusted-users = root $USER" | sudo tee -a /etc/nix/nix.conf
+  sudo systemctl enable --now nix-daemon.service
+  nix-env -iA cachix -f https://cachix.org/api/v1/install
+  cachix use devenv
+  nix-env -if https://github.com/cachix/devenv/tarball/latest
+fi
