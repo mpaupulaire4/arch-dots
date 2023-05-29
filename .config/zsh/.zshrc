@@ -25,19 +25,6 @@ setopt printexitvalue
 ## one, the older command is removed from the list
 is4 && setopt histignorealldups
 
-## compsys related snippets ##
-## to have more convenient account completion, specify your logins:
-#my_accounts=(
-# {grml,grml1}@foo.invalid
-# grml-devel@bar.invalid
-#)
-#other_accounts=(
-# {fred,root}@foo.invalid
-# vera@bar.invalid
-#)
-#zstyle ':completion:*:my-accounts' users-hosts $my_accounts
-#zstyle ':completion:*:other-accounts' users-hosts $other_accounts
-
 ## aliases ##
 
 alias dots='yadm'
@@ -63,30 +50,6 @@ alias cd='z'
 #alias -g T='|tail'
 #alias -g V='| vim -'
 
-## Download a file and display it locally
-#uopen() {
-#    emulate -L zsh
-#    if ! [[ -n "$1" ]] ; then
-#        print "Usage: uopen \$URL/\$file">&2
-#        return 1
-#    else
-#        FILE=$1
-#        MIME=$(curl --head $FILE | \
-#               grep Content-Type | \
-#               cut -d ' ' -f 2 | \
-#               cut -d\; -f 1)
-#        MIME=${MIME%$'\r'}
-#        curl $FILE | see ${MIME}:-
-#    fi
-#}
-
-## log out? set timeout in seconds...
-## ...and do not log out in some specific terminals:
-#if [[ "${TERM}" == ([Exa]term*|rxvt|dtterm|screen*) ]] ; then
-#    unset TMOUT
-#else
-#    TMOUT=1800
-#fi
 
 ## ctrl-s will no longer freeze the terminal.
 stty erase "^?"
@@ -117,5 +80,7 @@ function dprune () {
 source /usr/share/nvm/init-nvm.sh
 source $XDG_CONFIG_HOME/zsh/zsh.env.local
 
+eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+eval "$(direnv hook zsh)"
 # eval "$(zellij setup --generate-auto-start zsh)"
