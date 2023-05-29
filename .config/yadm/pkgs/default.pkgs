@@ -11,7 +11,6 @@ firefox
 git
 git-delta
 grml-zsh-config
-helix
 linux-firmware
 linux-zen
 linux-zen-headers
@@ -20,7 +19,6 @@ ly
 man-db
 man-pages
 micro
-neovim
 networkmanager
 networkmanager-openvpn
 nfs-utils
@@ -34,6 +32,7 @@ pulsemixer
 python-pip
 reflector
 sof-firmware
+starship
 sudo
 systemd-resolvconf
 thermald
@@ -42,6 +41,7 @@ tlp-rdw
 ttf-firacode-nerd
 udiskie
 unzip
+wezterm
 wireplumber
 xcursor-comix
 xdg-user-dirs
