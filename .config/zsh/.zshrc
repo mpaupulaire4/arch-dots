@@ -21,10 +21,6 @@ setopt NO_clobber
 ## alert me if something failed
 setopt printexitvalue
 
-## if a new command line being added to the history list duplicates an older
-## one, the older command is removed from the list
-is4 && setopt histignorealldups
-
 ## aliases ##
 
 alias dots='yadm'
@@ -80,7 +76,8 @@ function dprune () {
 source /usr/share/nvm/init-nvm.sh
 source $XDG_CONFIG_HOME/zsh/zsh.env.local
 
-eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
+prompt off
+eval "$(starship init zsh)"
 # eval "$(zellij setup --generate-auto-start zsh)"
