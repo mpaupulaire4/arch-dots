@@ -4,18 +4,21 @@ format = """
 $directory\
 $cmd_duration\
 $fill\
-$nix_shell\
+( $nix_shell\
 $username\
-$hostname\
+$hostname )\
 $fill\
-$pijul_channel\
+( $pijul_channel\
 $git_branch\
 $git_status\
-$git_state\
+$git_state)\
 $line_break\
 $character"""
 
 add_newline = true
+
+[fill]
+symbol = '-'
 
 [directory]
 style = "blue"
@@ -49,3 +52,4 @@ style = "yellow"
 [nix_shell]
 format = '[$symbol(\($name\))]($style)'
 symbol = " "
+style = "cyan"
