@@ -74,6 +74,7 @@ function dprune () {
 }
 
 # export NPM_TOKEN="$(grep -s //registry.npmjs.org/:_authToken= $NPM_CONFIG_USERCONFIG | cut -c34- )"
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/nvm/init-nvm.sh
 source $XDG_CONFIG_HOME/zsh/zsh.env.local
 
