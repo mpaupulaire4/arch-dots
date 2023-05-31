@@ -13,3 +13,5 @@ exec_always $HOME/.config/sway/scripts/import-gsettings
 exec_always pgrep swaycons || $HOME/.config/sway/scripts/swaycons
 # Lock Screen and DPMS
 exec_always pgrep swayidle || swayidle -w &
+# Display config
+exec_always pgrep kanshi || kanshi &

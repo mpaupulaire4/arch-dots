@@ -1,5 +1,6 @@
 grim
 gtk-layer-shell
+kanshi
 slurp
 sway
 swaybg
