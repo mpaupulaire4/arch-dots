@@ -1,14 +1,47 @@
+output eDP-1 scale 1.5
+
 profile laptop {
-  output "eDP-1"                                    mode 2256x1504@59.997Hz scale 1.5
+  output eDP-1 {
+    enable
+    mode 2256x1504@59.997Hz
+  }
 }
 
 profile docked {
-  output "eDP-1"                                    mode 2256x1504@59.997Hz position 792,3120   scale 1.5
-  output "Acer Technologies ET322QK C 0x00009730"   mode 3840x2160@60Hz     position 0,840
-  output "Dell Inc. DELL U2720Q 1X3CBH3"            mode 3840x2160@59.997Hz position 3840,0     transform 90
+  output eDP-1                                      position 792,3120   transform normal  scale 1.5
+  output "Acer Technologies ET322QK C 0x02019630"   position 0,840      transform normal  scale 1
+  output "Dell Inc. DELL U2720Q 1X3CBH3"            position 3840,0     transform 270     scale 1
+}
+
+profile docked-programming {
+  output "Dell Inc. DELL U2720Q 1X3CBH3" {
+    enable
+    mode 2560x1440
+    position 0,0
+    transform normal
+  }            
+  
+  output "BNQ BenQ RD280U G5R0010301Q" {
+    enable
+    mode 2560x1600
+    position 2560,0   
+    transform normal 
+  }
+  
+  output eDP-1 {
+    disable
+    mode 2256x1504
+    position 2560,1600   
+    transform normal 
+  }
 }
 
 profile desktop {
-  output "Acer Technologies ET322QK C 0x00009730"   mode 3840x2160@60Hz     position 0,840
-  output "Dell Inc. DELL U2720Q 1X3CBH3"            mode 3840x2160@59.997Hz position 3840,0     transform 90
+  output "Acer Technologies ET322QK C 0x00009730"   mode 3840x2160@60Hz       position 0,840
+  output "Dell Inc. DELL U2720Q 1X3CBH3"            mode 2560x1440@59.951Hz   position 3840,0     transform 270
+}
+
+profile office {
+  output eDP-1                                      position 0,1440   transform normal  scale 1.5
+  output "Dell Inc. DELL U3421WE 30D8753"           position 0,0      mode 3440x1440      transform normal
 }

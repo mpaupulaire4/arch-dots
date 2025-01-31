@@ -25,7 +25,7 @@ setopt printexitvalue
 
 alias dots='yadm'
 alias cd='z'
-alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+# alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 
 ## global aliases (for those who like them) ##
 
@@ -83,3 +83,6 @@ eval "$(direnv hook zsh)"
 prompt off
 eval "$(starship init zsh)"
 # eval "$(zellij setup --generate-auto-start zsh)"
+
+# bun completions
+[ -s "/home/mpaupulaire/.bun/_bun" ] && source "/home/mpaupulaire/.bun/_bun"

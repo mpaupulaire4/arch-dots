@@ -1,4 +1,4 @@
-output 'Acer Technologies ET322QK C 0x00009730' {
+output 'Acer Technologies ET322QK C 0x02019630' {
   bg ~/Pictures/walls/nord-japan.png fit
 }
 
@@ -7,7 +7,15 @@ output 'Ancor Communications Inc ASUS PB278 E6LMTF174677' {
 }
 
 output 'Dell Inc. DELL U2720Q 1X3CBH3' {
-  bg ~/Pictures/walls/nord-color-blast.png fill
+  bg ~/Pictures/walls/stary-sky.png fill
+}
+
+output 'BNQ BenQ RD280U G5R0010301Q' {
+  bg ~/Pictures/walls/abstract.png fill
+}
+
+output 'Dell Inc. DELL U3421WE 30D8753' {
+  bg ~/Pictures/walls/abstract.png fill
 }
 
 output eDP-1 {

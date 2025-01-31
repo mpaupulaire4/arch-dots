@@ -33,7 +33,7 @@ return {
     -- { key = '%', mods = 'ALT|CTRL', action = act.SplitHorizontal{ domain =  'CurrentPaneDomain' } },
     -- { key = 'PageUp', mods = 'NONE', action = act.ScrollByPage(-1) },
     -- { key = 'PageDown', mods = 'NONE', action = act.ScrollByPage(1) },
-    { key = 't',   mods = 'CTRL',       action = to_mode('Command', true) },
+    { key = 't',   mods = 'CTRL',       action = to_mode('Command') },
   },
 
   key_tables = {
@@ -41,7 +41,6 @@ return {
       { key = 't',          mods = 'CTRL',                             action = act.TogglePaneZoomState },
       { key = 'd',          mods = 'CTRL',                             action = act.ShowDebugOverlay },
       { key = 'n',          mods = 'CTRL',                             action = act.SpawnTab 'CurrentPaneDomain' },
-      { key = 'g',          mods = 'CTRL',                             action = act.SpawnTab 'CurrentPaneDomain' },
       { key = 'c',          mods = 'CTRL',                             action = act.ActivateCopyMode },
       { key = 's',          mods = 'CTRL',                             action = act.Search { CaseSensitiveString = "" } },
       { key = 'Tab',        action = act.ActivateTabRelative(1) },
@@ -58,45 +57,24 @@ return {
         key = 'g',
         mods = 'CTRL',
         action = act.SpawnCommandInNewTab {
-          -- An optional label.
-          -- The label is only used for SpawnCommands that are listed in
-          -- the `launch_menu` configuration section.
-          -- If the label is omitted, a default will be produced based
-          -- on the `args` field.
           label = 'LazyGit',
-
-          -- The argument array specifying the command and its arguments.
-          -- If omitted, the default program for the target domain will be
-          -- spawned.
           args = { 'lazygit' },
-
-          -- Sets addditional environment variables in the environment for
-          -- this command invocation.
           set_environment_variables = {
             SOMETHING = 'a value',
           },
-
-          -- Specifiy that the multiplexer domain of the currently active pane
-          -- should be used to start this process.  This is usually what you
-          -- want to happen and this is the default behavior if you omit
-          -- the domain.
           domain = 'CurrentPaneDomain',
-
-          -- Since: 20230320-124340-559cb7b0
-          -- Specify the initial position for a GUI window when this command
-          -- is used in a context that will create a new window, such as with
-          -- wezterm.mux.spawn_window, SpawnCommandInNewWindow
-          position = {
-            x = 10,
-            y = 300,
-            -- Optional origin to use for x and y.
-            -- Possible values:
-            -- * "ScreenCoordinateSystem" (this is the default)
-            -- * "MainScreen" (the primary or main screen)
-            -- * "ActiveScreen" (whichever screen hosts the active/focused window)
-            -- * {Named="HDMI-1"} - uses a screen by name. See wezterm.gui.screens()
-            -- origin = "ScreenCoordinateSystem"
+        }
+      },
+      {
+        key = 'f',
+        mods = 'CTRL',
+        action = act.SpawnCommandInNewTab {
+          label = 'Explorer',
+          args = { 'lf' },
+          set_environment_variables = {
+            SOMETHING = 'a value',
           },
+          domain = 'CurrentPaneDomain',
         }
       },
     },
