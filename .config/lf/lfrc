@@ -1,0 +1,69 @@
+#!/bin/sh 
+
+# interpreter for shell commands
+set shell sh
+set shellopts '-eu'
+set info size:time
+set ifs "\n"
+set scrolloff 10
+set icons
+set drawbox
+set sixel
+set previewer pistol
+
+setlocal ~/Downloads/ sortby time
+setlocal ~/Downloads/ reverse
+
+map <esc> quit
+
+# define a custom 'open' command
+# This command is called when current file is not a directory. You may want to
+# use either file extensions and/or mime types here. Below uses an editor for
+# text files and a file opener for the rest.
+cmd open &{{
+    case $(file --mime-type -Lb $f) in
+        text/*) lf -remote "send $id \$$EDITOR \$fx";;
+        *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+    esac
+}}
+
+cmd create %{{
+    IFS=" "
+    if [[ "$*" == */ ]]; then
+        mkdir -p -- "$*"
+    else
+        mkdir -p -- $(dirname "$*")
+        touch "$*"
+    fi
+    lf -remote "send $id select \"$*\""
+}}
+map a push :create<space>
+
+cmd trash %gio trash $fx
+map d trash
+
+cmd on-redraw %{{
+    if [ $lf_width -le 80 ]; then
+        lf -remote "send $id set ratios 1:2"
+    elif [ $lf_width -le 160 ]; then
+        lf -remote "send $id set ratios 1:2:3"
+    else
+        lf -remote "send $id set ratios 1:2:3:5"
+    fi
+}}
+on-redraw
+
+cmd on-cd &{{
+    # '&' commands run silently in background (which is what we want here),
+    # but are not connected to stdout.
+    # To make sure our escape sequence still reaches stdout we pipe it to /dev/tty
+    # printf "\033]0; $PWD\007" > /dev/tty
+    # printf "\033]0; $(pwd | sed "s|$HOME|~|")\007" > /dev/tty
+    printf "\033]0; ${PWD/#$HOME/\~}\007" > /dev/tty
+
+		branch=$(git branch --show-current 2>/dev/null) || true
+    # fmt="\033[34;1m%d\033[0m\033[1m%f\033[0m\033[33;1m%S$(git branch)\033[0m"
+    fmt="\033[34;1m%d\033[0m\033[1m%f\033[0m\033[32;1m%S$branch\033[0m"
+    lf -remote "send $id set promptfmt \"$fmt\""
+}}
+on-cd
